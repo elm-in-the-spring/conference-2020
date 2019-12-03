@@ -13,5 +13,8 @@ node_modules
 # Desktop Services Store on macOS
 .DS_Store
 
-# IDE giPlugin
+# History Plugin
 .history/
+
+# Intellij IDE project settings folder
+.idea
