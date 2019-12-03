@@ -9,10 +9,10 @@
   height: inherit; }
 
 body {
-  font-family: 'Source Sans Pro', 'Trebuchet MS', 'Lucida Grande', 'Bitstream Vera Sans', 'Helvetica Neue', sans-serif;
+  font-family: "Lato", sans-serif;
   margin: 0;
   text-align: center;
-  color: #293c4b; }
+  color: #f9cac8; }
 
 h1 {
   font-size: 30px; }

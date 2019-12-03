@@ -6,15 +6,21 @@
     https://github.com/halfzebra/create-elm-app/issues/320
 */
 
+$blue: #2a7ab0;
+$pink: #f9cac8;
+$white: #ffffff;
+$lato: 'Lato', sans-serif;
+$londrina: 'Londrina Solid', cursive;
+
 [data-elm-hot="true"] {
     height: inherit;
 }
 
 body {
-    font-family: 'Source Sans Pro', 'Trebuchet MS', 'Lucida Grande', 'Bitstream Vera Sans', 'Helvetica Neue', sans-serif;
+    font-family: $lato;
     margin: 0;
     text-align: center;
-    color: #293c4b;
+    color: $pink;
 }
 
 h1 {
