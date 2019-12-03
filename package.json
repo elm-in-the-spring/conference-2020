@@ -1,0 +1,28 @@
+{
+  "name": "conference-site-2020",
+  "version": "1.0.0",
+  "description": "Elm in the Spring Conference 2020 website",
+  "main": "index.js",
+  "author": "Caroline Artz <ceartz@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "css:build": "node-sass-chokidar src/ -o src/",
+    "css:watch": "yarn css:build && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "start": "concurrently \"yarn:css:watch\" \"PORT=8888 elm-app start\"",
+    "dev": "yarn start"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.7.3",
+    "concurrently": "^5.0.0",
+    "glob": "^7.1.6",
+    "mini-css-extract-plugin": "^0.8.0",
+    "node-sass-chokidar": "^1.4.0",
+    "postcss-loader": "^3.0.0",
+    "prettier": "^1.19.1",
+    "purgecss-webpack-plugin": "^1.6.0",
+    "sanitize.css": "^11.0.0",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.0.1",
+    "webpack-merge": "^4.2.2"
+  }
+}
