@@ -1,7 +1,7 @@
 module Main exposing (..)
 
 import Browser
-import Html exposing (Html, text, div, h1, img, section, main_)
+import Html exposing (Html, text, div, h1, img, section, main_, h2)
 import Html.Attributes exposing (src, class)
 
 
@@ -44,9 +44,9 @@ view model =
             , div [ class "intro__logo--text" ] []
             , div
                 [ class "intro__details" ]
-                [ div [] []
-                , div [] []
-                , div [] []
+                [ h2 [] [text "May 1, 2020"]
+                , h2 [] [text "🌸"]
+                , h2 [] [text "Chicago, IL"]
                 ]
             , div
                 [ class "intro__tagline" ] []

@@ -45,4 +45,31 @@ img {
 main {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  align-items: center; }
+  align-items: center;
+  height: 100vh;
+  min-height: 100vh; }
+
+.intro {
+  align-self: normal;
+  color: var(--theme-on-primary);
+  background: var(--theme-primary); }
+  .intro__details {
+    font-size: 1.5rem;
+    letter-spacing: 0.1em;
+    font-family: "Londrina Solid", cursive;
+    color: var(--theme-secondary);
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr fit-content(200px) 1fr;
+    grid-gap: 0.5em;
+    text-align: center; }
+    .intro__details > {
+      text-align: center; }
+    .intro__details > :first-child {
+      text-align: right; }
+    .intro__details > :last-child {
+      text-align: left; }
+
+.stay-tuned {
+  color: var(--theme-on-secondary);
+  background: var(--theme-secondary); }
