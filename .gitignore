@@ -18,3 +18,5 @@ node_modules
 
 # Intellij IDE project settings folder
 .idea
+
+.vscode
