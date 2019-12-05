@@ -1,0 +1,10 @@
+@import './variables';
+@import './mixins';
+
+:root.theme-light {
+  @include spread-map($theme-map-basic);
+}
+
+:root.theme-contrast {
+  @include spread-map($theme-map-contrast);
+}

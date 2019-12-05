@@ -6,9 +6,13 @@ More context in the issue:
 https://github.com/halfzebra/create-elm-app/issues/320
 */
 
-$blue: #2a7ab0;
-$pink: #f9cac8;
-$white: #fff;
+@import 'css/functions';
+@import 'css/themes';
+
+// $blue: #2a7ab0;
+// $pink: #f9cac8;
+// $white: #fff;
+
 $font-family-body: 'Lato', sans-serif;
 $font-family-display: 'Londrina Solid', cursive;
 
@@ -20,7 +24,7 @@ body {
   margin: 0;
   font-family: $font-family-body;
   text-align: center;
-  color: $pink;
+  color: theme-var($--theme-secondary);
 }
 
 h1 {

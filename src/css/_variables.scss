@@ -1,0 +1,21 @@
+// contrast theme
+$theme-map-contrast: (
+  $--theme-primary: #f34c84,
+  $--theme-secondary: #c297dc,
+  $--theme-surface: #2f2b2b,
+  $--theme-background: #1b1919,
+  $--theme-on-primary: #443e42,
+  $--theme-on-secondary: #000,
+  $--theme-on-surface: #f5f1f1
+);
+
+// override contrast theme
+$theme-map-basic: (
+  $--theme-primary: #2a7ab0,
+  $--theme-secondary: #f9cac8,
+  $--theme-surface: #fff,
+  $--theme-background: #fafafa,
+  $--theme-on-primary: #fff,
+  $--theme-on-secondary: #2a7ab0,
+  $--theme-on-surface: #000
+);
