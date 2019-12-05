@@ -1,7 +1,7 @@
 @import './variables';
 @import './mixins';
 
-:root.theme-light {
+:root.theme-basic {
   @include spread-map($theme-map-basic);
 }
 

@@ -6,8 +6,8 @@ More context in the issue:
 https://github.com/halfzebra/create-elm-app/issues/320
 */
 
-@import 'css/functions';
-@import 'css/themes';
+@import './css/functions';
+@import './css/themes';
 
 $font-family-body: 'Lato', sans-serif;
 $font-family-display: 'Londrina Solid', cursive;
@@ -34,4 +34,12 @@ body {
 img {
   max-width: 100%;
   height: auto;
+}
+
+// *************************
+
+main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  align-items: center;
 }
