@@ -9,10 +9,6 @@ https://github.com/halfzebra/create-elm-app/issues/320
 @import 'css/functions';
 @import 'css/themes';
 
-// $blue: #2a7ab0;
-// $pink: #f9cac8;
-// $white: #fff;
-
 $font-family-body: 'Lato', sans-serif;
 $font-family-display: 'Londrina Solid', cursive;
 
@@ -20,18 +16,22 @@ $font-family-display: 'Londrina Solid', cursive;
   height: inherit;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 16px;
+}
+
 body {
-  margin: 0;
   font-family: $font-family-body;
-  text-align: center;
   color: theme-var($--theme-secondary);
 }
 
-h1 {
-  font-size: 30px;
-}
-
 img {
-  margin: 20px 0;
-  max-width: 200px;
+  max-width: 100%;
+  height: auto;
 }
