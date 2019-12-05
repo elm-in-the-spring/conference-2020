@@ -1,8 +1,8 @@
 module Main exposing (..)
 
 import Browser
-import Html exposing (Html, text, div, h1, img)
-import Html.Attributes exposing (src)
+import Html exposing (Html, text, div, h1, img, section, main_)
+import Html.Attributes exposing (src, class)
 
 
 ---- MODEL ----
@@ -36,10 +36,29 @@ update msg model =
 
 view : Model -> Html Msg
 view model =
-    div []
-        [ img [ src "/logo.svg" ] []
-        , h1 [] [ text "Your Elm App is working!" ]
+    main_
+        []
+        [ section
+            [ class "intro" ]
+            [ div [ class "intro__logo--flower" ] []
+            , div [ class "intro__logo--text" ] []
+            , div
+                [ class "intro__details" ]
+                [ div [] []
+                , div [] []
+                , div [] []
+                ]
+            , div
+                [ class "intro__tagline" ] []
+            ]
+        , section
+            [ class "stay-tuned" ]
+            [ div [] []
+            , div [] []
+            , div [] []
+            ]
         ]
+
 
 
 
