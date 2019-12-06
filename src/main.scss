@@ -9,9 +9,6 @@ https://github.com/halfzebra/create-elm-app/issues/320
 @import './css/functions';
 @import './css/themes';
 
-$font-family-body: 'Lato', sans-serif;
-$font-family-display: 'Londrina Solid', cursive;
-
 [data-elm-hot='true'] {
   height: inherit;
 }
@@ -27,7 +24,7 @@ html {
 }
 
 body {
-  font-family: $font-family-body;
+  font-family: theme-var($--theme-font-family-body);
   color: theme-var($--theme-secondary);
 }
 
@@ -40,8 +37,7 @@ img {
 
 main {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  // grid-auto-rows: minmax(10px, 100vh);
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
   align-items: center;
   height: 100vh;
   min-height: 100vh;
@@ -51,29 +47,43 @@ main {
   align-self: normal;
   color: theme-var($--theme-on-primary);
   background: theme-var($--theme-primary);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 0.8em;
+
+  &__logo {
+    &--flower {
+      align-self: end;
+      padding-left: 20px;
+    }
+
+    &--text {
+      grid-column: span 2;
+      align-self: end;
+      padding-right: 20px;
+    }
+  }
 
   &__details {
-    font-size: 1.5rem;
+    grid-column: span 3;
+  }
+
+  &__date {
+    font-size: 2rem;
     letter-spacing: 0.1em;
-    font-family: $font-family-display;
+    font-family: theme-var($--theme-font-family-display);
     color: theme-var($--theme-secondary);
-    display: grid;
-    align-items: center;
-    grid-template-columns: 1fr fit-content(200px) 1fr;
-    grid-gap: 0.5em;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  &__tagline {
+    font-size: 1.3rem;
+    grid-column: span 3;
     text-align: center;
-
-    > {
-      text-align: center;
-    }
-
-    > :first-child {
-      text-align: right;
-    }
-
-    > :last-child {
-      text-align: left;
-    }
+    margin: 0 auto;
   }
 }
 

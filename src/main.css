@@ -6,13 +6,15 @@ More context in the issue:
 https://github.com/halfzebra/create-elm-app/issues/320
 */
 :root.theme-basic {
-  --theme-primary: #2a7ab0;
+  --theme-primary: #0e6ba9;
   --theme-secondary: #f9cac8;
   --theme-surface: #fff;
   --theme-background: #fafafa;
-  --theme-on-primary: #fff;
-  --theme-on-secondary: #2a7ab0;
-  --theme-on-surface: #000; }
+  --theme-on-primary: #d5eeff;
+  --theme-on-secondary: #0e6ba9;
+  --theme-on-surface: #000;
+  --theme-theme-font-family-body: "Montserrat", sans-serif;
+  --theme-font-family-display: "Londrina Solid", cursive; }
 
 :root.theme-contrast {
   --theme-primary: #f34c84;
@@ -21,7 +23,9 @@ https://github.com/halfzebra/create-elm-app/issues/320
   --theme-background: #1b1919;
   --theme-on-primary: #443e42;
   --theme-on-secondary: #000;
-  --theme-on-surface: #f5f1f1; }
+  --theme-on-surface: #f5f1f1;
+  --theme-theme-font-family-body: "Lato", sans-serif;
+  --theme-font-family-display: "Londrina Solid", cursive; }
 
 [data-elm-hot='true'] {
   height: inherit; }
@@ -35,7 +39,7 @@ html {
   font-size: 16px; }
 
 body {
-  font-family: "Lato", sans-serif;
+  font-family: var(--theme-theme-font-family-body);
   color: var(--theme-secondary); }
 
 img {
@@ -44,7 +48,7 @@ img {
 
 main {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
   align-items: center;
   height: 100vh;
   min-height: 100vh; }
@@ -52,23 +56,33 @@ main {
 .intro {
   align-self: normal;
   color: var(--theme-on-primary);
-  background: var(--theme-primary); }
+  background: var(--theme-primary);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 0.8em; }
+  .intro__logo--flower {
+    align-self: end;
+    padding-left: 20px; }
+  .intro__logo--text {
+    grid-column: span 2;
+    align-self: end;
+    padding-right: 20px; }
   .intro__details {
-    font-size: 1.5rem;
+    grid-column: span 3; }
+  .intro__date {
+    font-size: 2rem;
     letter-spacing: 0.1em;
-    font-family: "Londrina Solid", cursive;
+    font-family: var(--theme-font-family-display);
     color: var(--theme-secondary);
-    display: grid;
-    align-items: center;
-    grid-template-columns: 1fr fit-content(200px) 1fr;
-    grid-gap: 0.5em;
-    text-align: center; }
-    .intro__details > {
-      text-align: center; }
-    .intro__details > :first-child {
-      text-align: right; }
-    .intro__details > :last-child {
-      text-align: left; }
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; }
+  .intro__tagline {
+    font-size: 1.3rem;
+    grid-column: span 3;
+    text-align: center;
+    margin: 0 auto; }
 
 .stay-tuned {
   color: var(--theme-on-secondary);

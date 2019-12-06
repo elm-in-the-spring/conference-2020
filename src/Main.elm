@@ -1,7 +1,7 @@
 module Main exposing (..)
 
 import Browser
-import Html exposing (Html, text, div, h1, img, section, main_, h2)
+import Html exposing (Html, text, span, div, h1, img, section, main_, h2)
 import Html.Attributes exposing (src, class)
 
 
@@ -40,16 +40,23 @@ view model =
         []
         [ section
             [ class "intro" ]
-            [ div [ class "intro__logo--flower" ] []
-            , div [ class "intro__logo--text" ] []
+            [ div
+                [ class "intro__logo--flower" ]
+                [ img [ src "%PUBLIC_URL%/images/eits-logo-flower.svg"  ] [] ]
+            , div
+                [ class "intro__logo--text" ]
+                [ img [ src "%PUBLIC_URL%/images/eits-logo-text.svg" ] [] ]
             , div
                 [ class "intro__details" ]
-                [ h2 [] [text "May 1, 2020"]
-                , h2 [] [text "🌸"]
-                , h2 [] [text "Chicago, IL"]
+                [  h2
+                    [ class "intro__date" ]
+                    [ span [] [text "May 1, 2020"]
+                    , span [] [text "\u{00A0}🌸\u{00A0}"]
+                    , span [] [text "Chicago, IL"]
+                    ]
+                , div
+                    [ class "intro__tagline" ] [ text "A day to learn, teach, and share about Elm!" ]
                 ]
-            , div
-                [ class "intro__tagline" ] []
             ]
         , section
             [ class "stay-tuned" ]
