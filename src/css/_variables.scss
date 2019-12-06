@@ -4,6 +4,7 @@ $--theme-surface: --theme-surface;
 $--theme-background: --theme-background;
 $--theme-on-primary: --theme-on-primary;
 $--theme-on-secondary: --theme-on-secondary;
+$--theme-accent-1: --theme-accent-1;
 $--theme-on-surface: --theme-on-surface;
 
 $--theme-font-family-body: --theme-theme-font-family-body;
@@ -21,6 +22,7 @@ $theme-map-contrast: (
   $--theme-background: #1b1919,
   $--theme-on-primary: #443e42,
   $--theme-on-secondary: #000,
+  $--theme-accent-1: #af0097,
   $--theme-on-surface: #f5f1f1,
   $--theme-font-family-body: $lato,
   $--theme-font-family-display: $londrina
@@ -34,6 +36,7 @@ $theme-map-basic: (
   $--theme-background: #fafafa,
   $--theme-on-primary: #d5eeff,
   $--theme-on-secondary: #0e6ba9,
+  $--theme-accent-1: #af0097,
   $--theme-on-surface: #000,
   $--theme-font-family-body: $montserrat,
   $--theme-font-family-display: $londrina

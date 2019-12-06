@@ -12,6 +12,7 @@ https://github.com/halfzebra/create-elm-app/issues/320
   --theme-background: #fafafa;
   --theme-on-primary: #d5eeff;
   --theme-on-secondary: #0e6ba9;
+  --theme-accent-1: #af0097;
   --theme-on-surface: #000;
   --theme-theme-font-family-body: "Montserrat", sans-serif;
   --theme-font-family-display: "Londrina Solid", cursive; }
@@ -23,6 +24,7 @@ https://github.com/halfzebra/create-elm-app/issues/320
   --theme-background: #1b1919;
   --theme-on-primary: #443e42;
   --theme-on-secondary: #000;
+  --theme-accent-1: #af0097;
   --theme-on-surface: #f5f1f1;
   --theme-theme-font-family-body: "Lato", sans-serif;
   --theme-font-family-display: "Londrina Solid", cursive; }
@@ -37,6 +39,12 @@ https://github.com/halfzebra/create-elm-app/issues/320
 
 html {
   font-size: 16px; }
+  @media screen and (min-width: 600px) {
+    html {
+      font-size: 18px; } }
+  @media screen and (min-width: 900px) {
+    html {
+      font-size: 20px; } }
 
 body {
   font-family: var(--theme-theme-font-family-body);
@@ -54,6 +62,7 @@ main {
   min-height: 100vh; }
 
 .intro {
+  padding: 2rem;
   align-self: normal;
   color: var(--theme-on-primary);
   background: var(--theme-primary);
@@ -68,13 +77,14 @@ main {
     align-self: end;
     padding-right: 20px; }
   .intro__details {
-    grid-column: span 3; }
+    grid-column: span 3;
+    padding: 0 0.4rem; }
   .intro__date {
     font-size: 2rem;
     letter-spacing: 0.1em;
     font-family: var(--theme-font-family-display);
     color: var(--theme-secondary);
-    margin: auto;
+    margin: 10px auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: center; }
@@ -86,4 +96,24 @@ main {
 
 .stay-tuned {
   color: var(--theme-on-secondary);
-  background: var(--theme-secondary); }
+  background: var(--theme-secondary);
+  align-self: normal;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .stay-tuned__coming-soon {
+    font-size: 3.5rem; }
+
+.gradient-anim {
+  background: linear-gradient(to right, var(--theme-on-secondary) 20%, #449dd5 40%, #449dd5 60%, var(--theme-on-secondary) 80%);
+  background-size: 200% auto;
+  color: #000;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 3s ease-in-out infinite alternate; }
+
+@keyframes shine {
+  to {
+    background-position: 200% center; } }

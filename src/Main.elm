@@ -1,7 +1,7 @@
 module Main exposing (..)
 
 import Browser
-import Html exposing (Html, text, span, div, h1, img, section, main_, h2)
+import Html exposing (Html, text, span, div, h1, img, section, main_, h2, h3)
 import Html.Attributes exposing (src, class)
 
 
@@ -60,9 +60,11 @@ view model =
             ]
         , section
             [ class "stay-tuned" ]
-            [ div [] []
-            , div [] []
-            , div [] []
+            [ h3 
+                [ class "stay-tuned__coming-soon" ] 
+                [ text "Speaker lineup and ticket sales" 
+                , span [ class "gradient-anim"] [ text " coming soon!" ]
+                ]
             ]
         ]
 

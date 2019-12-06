@@ -21,6 +21,14 @@ https://github.com/halfzebra/create-elm-app/issues/320
 
 html {
   font-size: 16px;
+
+  @media screen and (min-width: 600px) {
+    font-size: 18px;
+  }
+
+  @media screen and (min-width: 900px) {
+    font-size: 20px;
+  }
 }
 
 body {
@@ -44,6 +52,7 @@ main {
 }
 
 .intro {
+  padding: 2rem;
   align-self: normal;
   color: theme-var($--theme-on-primary);
   background: theme-var($--theme-primary);
@@ -66,6 +75,7 @@ main {
 
   &__details {
     grid-column: span 3;
+    padding: 0 0.4rem;
   }
 
   &__date {
@@ -73,7 +83,7 @@ main {
     letter-spacing: 0.1em;
     font-family: theme-var($--theme-font-family-display);
     color: theme-var($--theme-secondary);
-    margin: auto;
+    margin: 10px auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -90,4 +100,36 @@ main {
 .stay-tuned {
   color: theme-var($--theme-on-secondary);
   background: theme-var($--theme-secondary);
+  align-self: normal;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__coming-soon {
+    font-size: 3.5rem;
+  }
+}
+
+.gradient-anim {
+  background:
+    linear-gradient(
+      to right,
+      theme-var($--theme-on-secondary) 20%,
+      #449dd5 40%,
+      #449dd5 60%,
+      theme-var($--theme-on-secondary) 80%
+    );
+  background-size: 200% auto;
+  color: #000;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 3s ease-in-out infinite alternate;
+
+  @keyframes shine {
+    to {
+      background-position: 200% center;
+    }
+  }
 }
