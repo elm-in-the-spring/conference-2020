@@ -9,7 +9,8 @@
     "css:build": "node-sass-chokidar src/ -o src/",
     "css:watch": "yarn css:build && node-sass-chokidar src/ -o src/ --watch --recursive",
     "start": "concurrently \"yarn:css:watch\" \"PORT=8888 elm-app start\"",
-    "dev": "yarn start"
+    "dev": "yarn start",
+    "build": "elm-app build"
   },
   "devDependencies": {
     "autoprefixer": "^9.7.3",
