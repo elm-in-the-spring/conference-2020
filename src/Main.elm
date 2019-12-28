@@ -42,8 +42,8 @@ update msg model =
         OnUrlChange url ->
             ( { model | url = url }, Cmd.none )
 
-        NavigateTo url ->
-            ( model, Browser.Navigation.pushUrl model.navigationKey url )
+        NavigateTo urlString ->
+            ( model, Browser.Navigation.pushUrl model.navigationKey urlString )
 
 
 
