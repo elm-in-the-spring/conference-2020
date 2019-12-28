@@ -34,73 +34,87 @@ img {
 }
 
 // *************************
-
-main {
+#splash-page {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
   align-items: center;
   height: 100vh;
   min-height: 100vh;
-}
 
-.intro {
-  padding: 2rem;
-  align-self: normal;
-  color: theme-var($--theme-on-primary);
-  background: theme-var($--theme-primary);
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 0.8em;
+  .intro {
+    padding: 2rem;
+    align-self: normal;
+    color: theme-var($--theme-on-primary);
+    background: theme-var($--theme-primary);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 0.8em;
 
-  &__logo {
-    &--flower {
-      align-self: end;
-      padding-left: 20px;
+    &__logo {
+      &--flower {
+        align-self: end;
+        padding-left: 20px;
+      }
+
+      &--text {
+        grid-column: span 2;
+        align-self: end;
+        padding-right: 20px;
+      }
     }
 
-    &--text {
-      grid-column: span 2;
-      align-self: end;
-      padding-right: 20px;
+    &__details {
+      grid-column: span 3;
+      padding: 0 0.4rem;
+    }
+
+    &__date {
+      font-size: 2rem;
+      letter-spacing: 0.1em;
+      font-family: theme-var($--theme-font-family-display);
+      color: theme-var($--theme-secondary);
+      margin: 10px auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    &__tagline {
+      font-size: 1.3rem;
+      grid-column: span 3;
+      text-align: center;
+      margin: 0 auto;
     }
   }
 
-  &__details {
-    grid-column: span 3;
-    padding: 0 0.4rem;
-  }
-
-  &__date {
-    font-size: 2rem;
-    letter-spacing: 0.1em;
-    font-family: theme-var($--theme-font-family-display);
-    color: theme-var($--theme-secondary);
-    margin: 10px auto;
-    display: flex;
-    flex-wrap: wrap;
+  .stay-tuned {
+    color: theme-var($--theme-on-secondary);
+    background: theme-var($--theme-secondary);
+    align-self: normal;
+    padding: 2rem;
+    display: flex; align-items: center;
     justify-content: center;
+
+    &__coming-soon {
+      font-size: 3.5rem;
+    }
   }
 
-  &__tagline {
-    font-size: 1.3rem;
-    grid-column: span 3;
+  .footer {
     text-align: center;
-    margin: 0 auto;
+    position: absolute;
+    bottom: 10px;
+
+    a {
+      color: theme-var($--theme-on-secondary);
+    }
   }
 }
 
-.stay-tuned {
-  color: theme-var($--theme-on-secondary);
+#code-of-conduct {
   background: theme-var($--theme-secondary);
-  align-self: normal;
-  padding: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  &__coming-soon {
-    font-size: 3.5rem;
-  }
+  color: theme-var($--theme-on-secondary);
+  padding: 20px;
 }
 
 .gradient-anim {
