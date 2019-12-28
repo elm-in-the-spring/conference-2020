@@ -89,17 +89,44 @@ main {
   }
 }
 
-.stay-tuned {
-  color: theme-var($--theme-on-secondary);
-  background: theme-var($--theme-secondary);
-  align-self: normal;
-  padding: 2rem;
+.content {
+  height: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
 
-  &__coming-soon {
-    font-size: 3.5rem;
+  a {
+    color: theme-var($--theme-primary);
+  }
+
+  .cfp {
+    font-size: 1.5rem;
+    padding: 0 20px;
+
+    &__link {
+      text-align: center;
+    }
+  }
+
+  .stay-tuned {
+    color: theme-var($--theme-on-secondary);
+    background: theme-var($--theme-secondary);
+    padding: 2rem;
+    display: flex;
+
+    &__coming-soon {
+      padding: 0 2rem;
+      font-size: 1.5rem;
+    }
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
   }
 }
 

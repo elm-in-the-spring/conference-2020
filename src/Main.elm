@@ -1,8 +1,9 @@
-module Main exposing (..)
+module Main exposing (Model, Msg(..), init, main, update, view)
 
 import Browser
-import Html exposing (Html, text, span, div, h1, img, section, main_, h2, h3)
-import Html.Attributes exposing (src, class)
+import Html exposing (Html, a, div, h1, h2, h3, h5, img, main_, section, span, text)
+import Html.Attributes exposing (class, href, src)
+
 
 
 ---- MODEL ----
@@ -42,32 +43,52 @@ view model =
             [ class "intro" ]
             [ div
                 [ class "intro__logo--flower" ]
-                [ img [ src "%PUBLIC_URL%/images/eits-logo-flower.svg"  ] [] ]
+                [ img [ src "%PUBLIC_URL%/images/eits-logo-flower.svg" ] [] ]
             , div
                 [ class "intro__logo--text" ]
                 [ img [ src "%PUBLIC_URL%/images/eits-logo-text.svg" ] [] ]
             , div
                 [ class "intro__details" ]
-                [  h2
+                [ h2
                     [ class "intro__date" ]
-                    [ span [] [text "May 1, 2020"]
-                    , span [] [text "\u{00A0}🌸\u{00A0}"]
-                    , span [] [text "Chicago, IL"]
+                    [ span [] [ text "May 1, 2020" ]
+                    , span [] [ text "\u{00A0}🌸\u{00A0}" ]
+                    , span [] [ text "Chicago, IL" ]
                     ]
                 , div
-                    [ class "intro__tagline" ] [ text "A day to learn, teach, and share about Elm!" ]
+                    [ class "intro__tagline" ]
+                    [ text "A day to learn, teach, and share about Elm!" ]
                 ]
             ]
         , section
-            [ class "stay-tuned" ]
-            [ h3 
-                [ class "stay-tuned__coming-soon" ] 
-                [ text "Speaker lineup and ticket sales" 
-                , span [ class "gradient-anim"] [ text " coming soon!" ]
+            [ class "content" ]
+            [ div
+                [ class "cfp" ]
+                [ div []
+                    [ text "If you want to share your experience and learnings with the community, we’d love to hear from you! We will have speaking slots specifically for first-time speakers." ]
+                , div
+                    [ class "cfp__link" ]
+                    [ a
+                        [ href "https://www.papercall.io/elm-in-the-spring-2020" ]
+                        [ text "Submit Your Idea" ]
+                    ]
+                ]
+            , h5
+                [ class "stay-tuned__coming-soon", class "gradient-anim" ]
+                [ text "More Details coming soon!"
+                ]
+            , div
+                [ class "footer" ]
+                [ a
+                    [ href "https://2019.elminthespring.org/" ]
+                    [ text "2019 Site" ]
+                , text " | "
+                , a
+                    [ href "/code-of-conduct.md" ]
+                    [ text "Code of Conduct" ]
                 ]
             ]
         ]
-
 
 
 
