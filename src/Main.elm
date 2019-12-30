@@ -78,7 +78,10 @@ heroContent =
         [ class "hero" ]
             [ div [class "hero__headline"] [
                 img [src "%PUBLIC_URL%/images/hero-logo.png"] []
-            ] ]
+            ]
+            , div [class "ribbon"] [text "Chicago ❀ May 1, 2020"]
+
+            ]
 
 navigationContent : Html Msg
 navigationContent =

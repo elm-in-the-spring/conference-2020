@@ -207,6 +207,53 @@ nav.menu{
     text-transform: uppercase;
     color: $theme-dark-pink;
     letter-spacing: 2px;
-    font-size:36px;
+    font-size:2em;
+  }
+}
+
+$ribbon-bg: $theme-yellow;
+$tail: darken($ribbon-bg, 15%);
+$ribbonSize: 0.5em;
+
+.ribbon {
+  background: $ribbon-bg;
+  display: inline-block;
+  color: #000000;
+  padding: $ribbonSize 0.7em;
+  font-weight: 900;
+  letter-spacing: 2px;
+  position: relative;
+  font-size: 1em;
+  text-transform: uppercase;
+  transform-style: preserve-3d;
+  transform: rotate(-20deg) skew(-20deg, 10deg);
+  margin: 0 auto;
+  position: absolute;
+  right: 0;
+  bottom: 30px;
+  &:before,
+  &:after {
+    content: "";
+    width: 0;
+    height: 2em;
+    display: block;
+    background: #4993da;
+    position: absolute;
+    border-style: solid;
+    border-width: $ribbonSize;
+    z-index: -1; // only necessary for flat (transform-style)
+    transform: translateZ(-1em); // orders the ribbon tails
+  }
+
+  &:before {
+    left: $ribbonSize * -1;
+    top: $ribbonSize;
+    border-color: $tail darken($tail, 10%) $tail $tail;
+  }
+
+  &:after {
+    right: $ribbonSize * -1;
+    top: $ribbonSize * -1;
+    border-color: $tail $tail $tail darken($tail, 10%);
   }
 }
