@@ -2,8 +2,8 @@ module Main exposing (Model, Msg(..), codeOfConduct, init, main, update, view)
 
 import Browser exposing (UrlRequest)
 import Browser.Navigation
-import Html exposing (Html, a, div, h1, h2, h3, h5, img, main_, p, section, span, text, nav, ul, li)
-import Html.Attributes exposing (class, href, id, src, target, class)
+import Html exposing (Html, a, div, h1, h2, h3, h5, img, main_, p, section, span, text)
+import Html.Attributes exposing (class, href, id, src, target)
 import Html.Events exposing (onClick)
 import Url exposing (Url)
 
@@ -67,36 +67,51 @@ view model =
 mainContent : Html Msg
 mainContent =
     main_
-        [ id "main" ]
-        [ navigationContent,
-          heroContent
-        ]
-
-heroContent : Html Msg
-heroContent =
-    section
-        [ class "hero" ]
-            [ div [class "hero__headline"] [
-                img [src "%PUBLIC_URL%/images/hero-logo.png"] []
-            ] ]
-
-navigationContent : Html Msg
-navigationContent =
-    nav
-        [ class "menu" ]
-        [
-            ul [] [
-                li [] [
-                  a [] [text "Details"]
-                ],
-                li [] [
-                  a [] [text "Speakers"]
-                ],
-                li [] [
-                  a [] [text "Tickets"]
+        [ id "splash-page" ]
+        [ section
+            [ class "intro" ]
+            [ div
+                [ class "intro__logo--flower" ]
+                [ img [ src "%PUBLIC_URL%/images/eits-logo-flower.svg" ] [] ]
+            , div
+                [ class "intro__logo--text" ]
+                [ img [ src "%PUBLIC_URL%/images/eits-logo-text.svg" ] [] ]
+            , div
+                [ class "intro__details" ]
+                [ h2
+                    [ class "intro__date" ]
+                    [ span [] [ text "May 1, 2020" ]
+                    , span [] [ text "\u{00A0}🌸\u{00A0}" ]
+                    , span [] [ text "Chicago, IL" ]
+                    ]
+                , div
+                    [ class "intro__tagline" ]
+                    [ text "A day to learn, teach, and share about Elm!" ]
+                ]
+            ]
+        , section
+            [ class "stay-tuned" ]
+            [ h3
+                [ class "stay-tuned__coming-soon" ]
+                [ text "More details "
+                , span [ class "gradient-anim" ] [ text " coming soon!" ]
+                ]
+            , div
+                [ class "footer" ]
+                [ a [ href "https://www.papercall.io/elm-in-the-spring-2020", target "_blank" ]
+                    [ text "CFP" ]
+                , text " | "
+                , a
+                    [ onClick (NavigateTo codeOfConductPath), href codeOfConductPath ]
+                    [ text "Code of Conduct" ]
+                , text " | "
+                , a
+                    [ href "https://2019.elminthespring.org/", target "_blank" ]
+                    [ text "2019 Site" ]
                 ]
             ]
         ]
+
 
 codeOfConduct : Html Msg
 codeOfConduct =

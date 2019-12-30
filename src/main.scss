@@ -139,3 +139,74 @@ img {
     }
   }
 }
+
+.hero{
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background-color: $theme-blue;
+  box-sizing: border-box;
+  border: $theme-border-width solid $theme-dark-blue;
+  background-image: url(../public/images/ray-overlay.png), url(../public/images/halftone-rose.png);
+  background-position: center center, 50% 65%;
+  background-size: cover, auto 85%;
+  background-repeat: no-repeat, no-repeat;
+  &__headline{
+    background: #ffffff;
+    height: 180px;
+    max-width: 480px;
+    display: block;
+    margin:0 auto;
+    position: absolute;
+    box-shadow: 8px 8px 5px 6px rgba(50, 50, 50, .3);
+    top: 50%;
+    transform: translateY(-45%) skew(-5deg, -5deg);
+    left:0;
+    right: 0;
+    &::before{
+      content: "";
+      display: block;
+      border: 5px solid $theme-yellow;
+      height: 100%;
+      width: 100%;
+      background: none;
+      position: absolute;
+      top: -15px;
+      left: -15px;
+    }
+    img{
+      width: 90%;
+      position: relative;
+      top: -30px;
+      margin: 0 auto 0 15px;
+      display: block;
+    }
+  }
+}
+nav.menu{
+  position: absolute;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: 40px;
+  z-index: 1;
+  ul{
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+  }
+  li{
+    display: inline-block;
+    padding-left: 8%;
+    &:first-child{
+      padding-left: 0;
+    }
+  }
+  a{
+    font-family: $londrina;
+    text-transform: uppercase;
+    color: $theme-dark-pink;
+    letter-spacing: 2px;
+    font-size:36px;
+  }
+}

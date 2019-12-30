@@ -119,3 +119,66 @@ img {
 @keyframes shine {
   to {
     background-position: 200% center; } }
+
+.hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background-color: #4f8bd3;
+  box-sizing: border-box;
+  border: 10px solid #266bbd;
+  background-image: url(../public/images/ray-overlay.png), url(../public/images/halftone-rose.png);
+  background-position: center center, 50% 65%;
+  background-size: cover, auto 85%;
+  background-repeat: no-repeat, no-repeat; }
+  .hero__headline {
+    background: #ffffff;
+    height: 180px;
+    max-width: 480px;
+    display: block;
+    margin: 0 auto;
+    position: absolute;
+    box-shadow: 8px 8px 5px 6px rgba(50, 50, 50, 0.3);
+    top: 50%;
+    transform: translateY(-45%) skew(-5deg, -5deg);
+    left: 0;
+    right: 0; }
+    .hero__headline::before {
+      content: "";
+      display: block;
+      border: 5px solid #f9f93a;
+      height: 100%;
+      width: 100%;
+      background: none;
+      position: absolute;
+      top: -15px;
+      left: -15px; }
+    .hero__headline img {
+      width: 90%;
+      position: relative;
+      top: -30px;
+      margin: 0 auto 0 15px;
+      display: block; }
+
+nav.menu {
+  position: absolute;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: 40px;
+  z-index: 1; }
+  nav.menu ul {
+    margin: 0 auto;
+    display: block;
+    text-align: center; }
+  nav.menu li {
+    display: inline-block;
+    padding-left: 8%; }
+    nav.menu li:first-child {
+      padding-left: 0; }
+  nav.menu a {
+    font-family: "Londrina Solid", cursive;
+    text-transform: uppercase;
+    color: #ffa39f;
+    letter-spacing: 2px;
+    font-size: 36px; }
