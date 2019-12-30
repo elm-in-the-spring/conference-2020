@@ -3,7 +3,7 @@ module Main exposing (Model, Msg(..), codeOfConduct, init, main, update, view)
 import Browser exposing (UrlRequest)
 import Browser.Navigation
 import Html exposing (Html, a, div, h1, h2, h3, h5, img, main_, p, section, span, text)
-import Html.Attributes exposing (class, href, id, src)
+import Html.Attributes exposing (class, href, id, src, target)
 import Html.Events exposing (onClick)
 import Url exposing (Url)
 
@@ -93,18 +93,21 @@ mainContent =
             [ class "stay-tuned" ]
             [ h3
                 [ class "stay-tuned__coming-soon" ]
-                [ text "Speaker lineup and ticket sales"
+                [ text "More details "
                 , span [ class "gradient-anim" ] [ text " coming soon!" ]
                 ]
             , div
                 [ class "footer" ]
-                [ a
-                    [ href "https://2019.elminthespring.org/" ]
-                    [ text "2019 Site" ]
+                [ a [ href "https://www.papercall.io/elm-in-the-spring-2020", target "_blank" ]
+                    [ text "CFP" ]
                 , text " | "
                 , a
                     [ onClick (NavigateTo codeOfConductPath), href codeOfConductPath ]
                     [ text "Code of Conduct" ]
+                , text " | "
+                , a
+                    [ href "https://2019.elminthespring.org/", target "_blank" ]
+                    [ text "2019 Site" ]
                 ]
             ]
         ]
