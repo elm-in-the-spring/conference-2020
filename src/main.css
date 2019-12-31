@@ -57,6 +57,11 @@ section {
   scroll-behavior: smooth; }
   section h1 {
     margin-top: 60px !important; }
+  section h1, section h2, section h3, section h4, section h5, section h6 {
+    text-transform: uppercase;
+    font-family: "Londrina Solid", cursive;
+    letter-spacing: 3px;
+    font-weight: normal; }
   section .content {
     position: relative;
     z-index: 2; }
@@ -115,11 +120,6 @@ section {
     bottom: 10px; }
     #splash-page .footer a {
       color: var(--theme-on-secondary); }
-
-#code-of-conduct {
-  background: var(--theme-secondary);
-  color: var(--theme-on-secondary);
-  padding: 20px; }
 
 .gradient-anim {
   background: linear-gradient(to right, var(--theme-on-secondary) 20%, #449dd5 40%, #449dd5 60%, var(--theme-on-secondary) 80%);
@@ -422,12 +422,6 @@ h1.callout {
     position: absolute;
     z-index: -1; }
 
-h1, h2, h3, h4, h5, h6 {
-  text-transform: uppercase;
-  font-family: "Londrina Solid", cursive;
-  letter-spacing: 3px;
-  font-weight: normal; }
-
 .btn {
   padding: 12px 30px;
   background: #f9f93a;
@@ -479,8 +473,6 @@ a.animate {
   text-decoration: none;
   padding: 0.1em 0.25em;
   border-bottom: 2px solid #ffffff; }
-  a.animate.black {
-    border-color: #000000; }
   a.animate:after {
     content: '';
     display: block;
@@ -497,8 +489,6 @@ a.animate {
   a.animate:hover, a.animate:focus {
     border-bottom: 2px solid #ffffff;
     color: #000000; }
-    a.animate:hover.black, a.animate:focus.black {
-      border-color: #000000; }
     a.animate:hover::after, a.animate:focus::after {
       content: '';
       display: block;
@@ -509,8 +499,11 @@ a.animate {
       left: 0;
       background: #ffffff;
       z-index: -1; }
-      a.animate:hover::after.black, a.animate:focus::after.black {
-        background: #000000; }
+  a.animate.black:hover, a.animate.black:focus {
+    color: #ffffff;
+    border-color: #000000; }
+    a.animate.black:hover:after, a.animate.black:focus:after {
+      background: #000000; }
 
 .divider--hatched {
   background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAI0lEQVQYV2NkYGD4////fwYYYEThMTAwwAUYGRlBShECMC0ArqQS9QsD0f0AAAAASUVORK5CYII=");
@@ -557,3 +550,61 @@ footer {
       color: #ffffff; }
       #newsletter a:hover:after {
         background: #000000; }
+
+.page--stand-alone {
+  color: #000000; }
+  .page--stand-alone .container--wrapper {
+    padding: 60px 20px 80px 20px; }
+  .page--stand-alone .logo-container {
+    background: #ffffff;
+    max-width: 230px;
+    padding: 0px 20px;
+    margin: 0 auto 30px auto;
+    transform: skew(-5deg, -5deg);
+    box-shadow: 8px 8px 5px 6px rgba(50, 50, 50, 0.3); }
+    .page--stand-alone .logo-container::before {
+      content: "";
+      display: block;
+      border: 3px solid #f9f93a;
+      height: 100%;
+      width: 100%;
+      background: none;
+      position: absolute;
+      top: -8px;
+      left: -8px;
+      transition: border-color .3s ease-in-out; }
+    .page--stand-alone .logo-container:hover::before {
+      border-color: #ffa39f; }
+    .page--stand-alone .logo-container img {
+      top: -8px;
+      position: relative; }
+  .page--stand-alone .hero {
+    padding: 60px 20px 30px 20px;
+    background: #266bbd; }
+  .page--stand-alone nav.menu {
+    position: relative;
+    width: 100%;
+    top: 0;
+    margin-top: 20px; }
+    .page--stand-alone nav.menu a {
+      font-size: 1.3em; }
+  .page--stand-alone h1 {
+    font-weight: bold;
+    line-height: 1.3; }
+    .page--stand-alone h1:first-child {
+      margin-top: 0; }
+  .page--stand-alone h2 {
+    font-size: 1.3em; }
+  .page--stand-alone h2, .page--stand-alone h3, .page--stand-alone h4, .page--stand-alone h5, .page--stand-alone h6 {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px; }
+    .page--stand-alone h2:first-child, .page--stand-alone h3:first-child, .page--stand-alone h4:first-child, .page--stand-alone h5:first-child, .page--stand-alone h6:first-child {
+      margin-top: 0; }
+  .page--stand-alone p {
+    margin-bottom: 15px; }
+    .page--stand-alone p:last-child {
+      margin-bottom: 0; }
+  .page--stand-alone a {
+    font-weight: bold;
+    color: #000000; }
