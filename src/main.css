@@ -241,11 +241,12 @@ nav.menu {
   position: relative;
   display: flex;
   align-items: center;
-  justify-items: center; }
+  justify-items: center;
+  padding-bottom: 35px; }
   #details .content {
     border: 3px solid rgba(255, 255, 255, 0.3);
     background-color: rgba(38, 107, 189, 0.93);
-    min-width: calc(100vw - 80px);
+    min-width: calc(100vw - 60px);
     min-height: calc(100vh - 80px);
     margin: 0 auto; }
   #details h1 {

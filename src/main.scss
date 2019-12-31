@@ -282,10 +282,11 @@ $ribbonSize: 0.5em;
   display: flex;
   align-items: center;
   justify-items: center;
+  padding-bottom: 35px;
   .content{
     border: 3px solid rgba(255, 255, 255, .3);
     background-color: rgba($theme-dark-blue, .93);
-    min-width: calc(100vw - 80px);
+    min-width: calc(100vw - 60px);
     min-height: calc(100vh - 80px);
     margin: 0 auto;
   }
