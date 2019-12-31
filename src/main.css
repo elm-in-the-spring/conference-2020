@@ -248,7 +248,7 @@ nav.menu {
     background-color: rgba(38, 107, 189, 0.93);
     min-width: calc(100vw - 60px);
     min-height: calc(100vh - 80px);
-    margin: 0 auto; }
+    margin: 0 auto 0 auto; }
   #details h1 {
     color: #266bbd; }
   #details h2 {
@@ -257,7 +257,8 @@ nav.menu {
     padding: 30px;
     color: #fff;
     overflow-y: scroll;
-    max-width: 1000px; }
+    max-width: 1000px;
+    margin-top: 30px; }
     #details .copy a:not(.btn) {
       color: #ffffff;
       font-weight: bold; }
@@ -276,7 +277,7 @@ nav.menu {
   #speakers .speakers {
     padding: 0 20px;
     max-width: 1000px;
-    margin: 100px auto 0 auto; }
+    margin: 80px auto 0 auto; }
 
 .speaker {
   position: relative;
@@ -325,7 +326,7 @@ nav.menu {
       .speaker__social a:last-child {
         padding-right: 0; }
       .speaker__social a:hover, .speaker__social a:focus {
-        color: #c23616; }
+        color: #e73c4e; }
   .speaker::after {
     background: #ffffff;
     width: 100%;
@@ -351,7 +352,7 @@ nav.menu {
     .highlights .highlight:last-child {
       margin-right: 0px; }
     .highlights .highlight.talk {
-      background: #c23616;
+      background: #e73c4e;
       color: #ffffff; }
 
 #sponsors {

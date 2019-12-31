@@ -71,6 +71,7 @@ mainContent =
         [ navigationContent
           ,homeContent
           ,detailsContent
+          , divider
           ,speakersContent
           , divider
           ,sponsorsContent
@@ -154,7 +155,7 @@ sponsorsContent =
             [div [class "content"]
                 [h1 [class "callout right"] [text "Sponsors"]
                      ,div [class "copy"] [
-                       h2 [] [text "A special thank you to our Sponsors"]
+                       h2 [] [text "Thank you to our Sponsors"]
                        , p [] [text "Without the support, involvement, and enthusiasm of generous sponsors and supporters, Elm in the Spring would not be possible . You or your company can become a sponsor for Elm in the Spring 2020. For more info, check out ", a [href "#", class "animate black"] [text " becoming a sponsor."]]
                      ]
                      , div [class "sponsors columns"] [
