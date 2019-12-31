@@ -546,7 +546,9 @@ footer {
   #newsletter h1 {
     color: #000000; }
   #newsletter iframe {
-    width: 100%; }
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto; }
   #newsletter a {
     font-weight: bold;
     border-color: #000000;
