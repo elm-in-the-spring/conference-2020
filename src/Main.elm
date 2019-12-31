@@ -2,7 +2,7 @@ module Main exposing (Model, Msg(..), codeOfConduct, init, main, update, view)
 
 import Browser exposing (UrlRequest)
 import Browser.Navigation
-import Html exposing (Html, a, div, h1, h2, h3, h5, img, main_, p, section, span, text, nav, ul, li, footer)
+import Html exposing (Html, iframe, a, div, h1, h2, h3, h5, img, main_, p, section, span, text, nav, ul, li, footer)
 import Html.Attributes exposing (class, href, id, src, target, class, alt, style)
 import Html.Events exposing (onClick)
 import Url exposing (Url)
@@ -70,7 +70,9 @@ mainContent =
         [ id "main" ]
         [ navigationContent
           ,homeContent
-          ,detailsContent
+          , detailsContent
+          , divider
+          , newsletterContent
           , divider
           ,speakersContent
           , divider
@@ -175,15 +177,28 @@ navigationContent =
         [
             ul [] [
                 li [] [
-                  a [] [text "Details"]
+                  a [href "#"] [text "Details"]
                 ],
                 li [] [
-                  a [] [text "Speakers"]
+                  a [href "#"] [text "Speakers"]
                 ],
                 li [] [
-                  a [] [text "Tickets"]
+                  a [href "#"] [text "Tickets"]
                 ]
             ]
+        ]
+
+newsletterContent : Html Msg
+newsletterContent =
+    section
+        [ id "newsletter" ]
+        [
+           div [class "content"] [
+                h1 [] [text "Stay In Touch" ]
+                , p [] [text "For  conference updates, join our mailing list. No spam. Ever."]
+                , iframe [src "https://smithsa.github.io/newsletter/"] []
+                , p [] [text "Or, follow ", a [href "#", class "animate"] [text "@elminthespring"], span [] [text " on Twitter"]]
+           ]
         ]
 
 divider : Html Msg
@@ -193,7 +208,7 @@ divider =
 footerContent : Html Msg
 footerContent =
     footer [] [ div [class "footer__content columns"] [
-        div [class "column"] [ p [] [text "© Elm in the Spring 2019"]]
+        div [class "column"] [ p [] [text "© Elm in the Spring 2020"]]
         , div [class "column"] [
             a [href "#", class "open-source-note"] [
                 img [src "%PUBLIC_URL%/images/open-source-note.svg", alt "This site is open source and built in Elm"] []

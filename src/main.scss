@@ -224,6 +224,10 @@ nav.menu{
     color: $theme-dark-pink;
     letter-spacing: 2px;
     font-size:2em;
+    transition: color .3s ease-in-out;
+    &:hover, &:focus{
+      color: $theme-yellow;
+    }
   }
 }
 
@@ -296,6 +300,9 @@ $ribbonSize: 0.5em;
   h2{
     color: #fff;
   }
+  .btn{
+    margin-top: 30px;
+  }
   .copy{
     padding: 30px;
     color: #fff;
@@ -365,7 +372,7 @@ $ribbonSize: 0.5em;
       font-family: $londrina;
       text-transform: uppercase;
       letter-spacing: 2px;
-      font-size: 1.3rem;
+      font-size: 1.5rem;
       color: #000000;
       margin: 0;
     }
@@ -473,7 +480,7 @@ $ribbonSize: 0.5em;
   }
 }
 
-h1{
+h1.callout{
   background: #ffffff;
   color: $theme-blue;
   display: block;
@@ -585,7 +592,7 @@ a.animate{
       background: #000000;
     }
   }
-  &:hover {
+  &:hover, &:focus {
     border-bottom: 2px solid #ffffff;
     color: #000000;
     &.black{
@@ -628,8 +635,39 @@ footer{
     color: #ffffff;
   }
   .open-source-note{
-    max-width: 400px;
+    max-width: 350px;
     display: block;
     margin:0 0 0 auto;
+    img{
+      transition: all .3s ease-in-out;
+    }
+    &:hover, &:focus{
+      img{
+        transform: scale(1.18);
+      }
+    }
+  }
+}
+
+#newsletter{
+  text-align: center;
+  color: #000000;
+  background: $theme-light-yellow;
+  h1{
+    color: #000000;
+  }
+  iframe{
+    width: 100%;
+  }
+  a{
+    font-weight: bold;
+    border-color: #000000;
+    color: #000000;
+    &:hover{
+      color: #ffffff;
+      &:after{
+        background: #000000;
+      }
+    }
   }
 }

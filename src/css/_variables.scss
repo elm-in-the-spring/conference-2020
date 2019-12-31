@@ -19,6 +19,7 @@ $theme-dark-blue: #266bbd;
 $theme-dark-pink: #ffa39f;
 $theme-darker-pink: #e73c4e;
 $theme-yellow: #f9f93a;
+$theme-light-yellow: lighten($theme-yellow, 30%);
 $theme-border-width: 10px;
 $theme-translucent-black: rgba(0, 0, 0, .2);
 // contrast theme

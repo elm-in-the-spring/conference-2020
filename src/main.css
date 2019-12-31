@@ -196,7 +196,10 @@ nav.menu {
     text-transform: uppercase;
     color: #ffa39f;
     letter-spacing: 2px;
-    font-size: 2em; }
+    font-size: 2em;
+    transition: color .3s ease-in-out; }
+    nav.menu a:hover, nav.menu a:focus {
+      color: #f9f93a; }
 
 .ribbon {
   background: #f9f93a;
@@ -253,6 +256,8 @@ nav.menu {
     color: #266bbd; }
   #details h2 {
     color: #fff; }
+  #details .btn {
+    margin-top: 30px; }
   #details .copy {
     padding: 30px;
     color: #fff;
@@ -306,7 +311,7 @@ nav.menu {
       font-family: "Londrina Solid", cursive;
       text-transform: uppercase;
       letter-spacing: 2px;
-      font-size: 1.3rem;
+      font-size: 1.5rem;
       color: #000000;
       margin: 0; }
   .speaker__bio {
@@ -390,7 +395,7 @@ nav.menu {
   margin-left: auto;
   margin-right: auto; }
 
-h1 {
+h1.callout {
   background: #ffffff;
   color: #4f8bd3;
   display: block;
@@ -400,15 +405,15 @@ h1 {
   width: 100%;
   text-align: center;
   position: relative; }
-  h1.left {
+  h1.callout.left {
     margin: 0 auto 0 -40px; }
-    h1.left:after {
+    h1.callout.left:after {
       left: -10px; }
-  h1.right {
+  h1.callout.right {
     margin: 0 -40px 0 auto; }
-    h1.right:after {
+    h1.callout.right:after {
       right: -10px; }
-  h1:after {
+  h1.callout:after {
     content: " ";
     background: #000000;
     width: 100%;
@@ -489,12 +494,12 @@ a.animate {
     transition: all 0.1s cubic-bezier(0, 0.59, 1, 0.26); }
     a.animate:after.black {
       background: #000000; }
-  a.animate:hover {
+  a.animate:hover, a.animate:focus {
     border-bottom: 2px solid #ffffff;
     color: #000000; }
-    a.animate:hover.black {
+    a.animate:hover.black, a.animate:focus.black {
       border-color: #000000; }
-    a.animate:hover::after {
+    a.animate:hover::after, a.animate:focus::after {
       content: '';
       display: block;
       position: absolute;
@@ -504,7 +509,7 @@ a.animate {
       left: 0;
       background: #ffffff;
       z-index: -1; }
-      a.animate:hover::after.black {
+      a.animate:hover::after.black, a.animate:focus::after.black {
         background: #000000; }
 
 .divider--hatched {
@@ -526,6 +531,27 @@ footer {
   footer p {
     color: #ffffff; }
   footer .open-source-note {
-    max-width: 400px;
+    max-width: 350px;
     display: block;
     margin: 0 0 0 auto; }
+    footer .open-source-note img {
+      transition: all .3s ease-in-out; }
+    footer .open-source-note:hover img, footer .open-source-note:focus img {
+      transform: scale(1.18); }
+
+#newsletter {
+  text-align: center;
+  color: #000000;
+  background: #fefece; }
+  #newsletter h1 {
+    color: #000000; }
+  #newsletter iframe {
+    width: 100%; }
+  #newsletter a {
+    font-weight: bold;
+    border-color: #000000;
+    color: #000000; }
+    #newsletter a:hover {
+      color: #ffffff; }
+      #newsletter a:hover:after {
+        background: #000000; }
