@@ -312,8 +312,16 @@ $ribbonSize: 0.5em;
 }
 
 #speakers{
-  background-image: linear-gradient(to right bottom, #f9cac8, #fbc0be, #fdb7b4, #feada9, #ffa39f);
   padding-bottom: 80px;
+  background:
+          radial-gradient(black 3px, transparent 4px),
+          radial-gradient(black 3px, transparent 4px),
+          linear-gradient( theme-var($--theme-secondary) 4px, transparent 0),
+          linear-gradient(45deg, transparent 74px, transparent 75px, $theme-translucent-black 75px, $theme-translucent-black 76px, transparent 77px, transparent 109px),
+          linear-gradient(-45deg, transparent 75px, transparent 76px, $theme-translucent-black 76px, $theme-translucent-black 77px, transparent 78px, transparent 109px),
+          theme-var($--theme-secondary);
+  background-size: 109px 109px, 109px 109px,100% 6px, 109px 109px, 109px 109px;
+  background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
   h1{
     background: #ffffff;
     color: $theme-darker-pink;
@@ -374,9 +382,10 @@ $ribbonSize: 0.5em;
   &__social{
     margin-bottom: 20px;
     a{
-      color: #000000;
+      color: $theme-dark-blue;
       font-size: 1.3em;
       padding-right:10px;
+      transition: color .3s ease-in-out;
       &:last-child{
         padding-right: 0;
       }

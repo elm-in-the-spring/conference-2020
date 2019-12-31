@@ -265,8 +265,10 @@ nav.menu {
         color: #266bbd; }
 
 #speakers {
-  background-image: linear-gradient(to right bottom, #f9cac8, #fbc0be, #fdb7b4, #feada9, #ffa39f);
-  padding-bottom: 80px; }
+  padding-bottom: 80px;
+  background: radial-gradient(black 3px, transparent 4px), radial-gradient(black 3px, transparent 4px), linear-gradient(var(--theme-secondary) 4px, transparent 0), linear-gradient(45deg, transparent 74px, transparent 75px, rgba(0, 0, 0, 0.2) 75px, rgba(0, 0, 0, 0.2) 76px, transparent 77px, transparent 109px), linear-gradient(-45deg, transparent 75px, transparent 76px, rgba(0, 0, 0, 0.2) 76px, rgba(0, 0, 0, 0.2) 77px, transparent 78px, transparent 109px), var(--theme-secondary);
+  background-size: 109px 109px, 109px 109px,100% 6px, 109px 109px, 109px 109px;
+  background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px; }
   #speakers h1 {
     background: #ffffff;
     color: #e73c4e; }
@@ -317,9 +319,10 @@ nav.menu {
   .speaker__social {
     margin-bottom: 20px; }
     .speaker__social a {
-      color: #000000;
+      color: #266bbd;
       font-size: 1.3em;
-      padding-right: 10px; }
+      padding-right: 10px;
+      transition: color .3s ease-in-out; }
       .speaker__social a:last-child {
         padding-right: 0; }
       .speaker__social a:hover, .speaker__social a:focus {
