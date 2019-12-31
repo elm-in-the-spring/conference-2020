@@ -32,7 +32,8 @@
 
 html {
   font-size: 16px;
-  scroll-snap-type: y mandatory; }
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth; }
   @media screen and (min-width: 600px) {
     html {
       font-size: 18px; } }
@@ -47,6 +48,20 @@ body {
 img {
   max-width: 100%;
   height: auto; }
+
+section {
+  width: 100vw;
+  height: 100vh;
+  scroll-snap-align: start;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  scroll-behavior: smooth; }
+  section h1 {
+    margin-top: 60px !important; }
+  section .content {
+    position: relative;
+    z-index: 2; }
 
 #splash-page {
   display: grid;
@@ -120,14 +135,6 @@ img {
 @keyframes shine {
   to {
     background-position: 200% center; } }
-
-section {
-  width: 100vw;
-  min-height: 100vh;
-  scroll-snap-align: start;
-  padding: 20px;
-  box-sizing: border-box;
-  overflow-x: hidden; }
 
 #home {
   position: relative;
@@ -236,17 +243,16 @@ nav.menu {
   display: flex;
   align-items: center;
   justify-items: center; }
-  #details h1 {
-    margin-top: 60px; }
   #details .content {
-    position: relative;
-    z-index: 2;
     border: 3px solid rgba(255, 255, 255, 0.3);
     background-color: rgba(38, 107, 189, 0.93);
     min-width: calc(100vw - 80px);
     min-height: calc(100vh - 80px);
-    margin: 0 auto;
-    box-sizing: content-box; }
+    margin: 0 auto; }
+  #details h1 {
+    color: #266bbd; }
+  #details h2 {
+    color: #fff; }
   #details .copy {
     padding: 30px;
     color: #fff;
@@ -258,27 +264,101 @@ nav.menu {
       #details .copy a:not(.btn):hover {
         color: #266bbd; }
 
+#speakers {
+  background-image: linear-gradient(to right bottom, #f9cac8, #fbc0be, #fdb7b4, #feada9, #ffa39f);
+  padding-bottom: 80px; }
+  #speakers h1 {
+    background: #ffffff;
+    color: #e73c4e; }
+    #speakers h1::after {
+      background: #e73c4e; }
+  #speakers .speakers {
+    padding: 0 20px;
+    max-width: 1000px;
+    margin: 100px auto 0 auto; }
+
+.speaker:not(:last-child) {
+  margin-bottom: 100px; }
+
+.speaker:last-child {
+  margin-bottom: 0; }
+
+.speaker__profile_img {
+  background-size: cover;
+  background-position: center center;
+  min-height: 380px;
+  position: relative;
+  border: 3px solid #000000;
+  background-repeat: no-repeat; }
+  .speaker__profile_img span {
+    color: #000000; }
+  .speaker__profile_img h3 {
+    background: #ffffff;
+    padding: 7px 15px;
+    border-top: 3px solid #000000;
+    border-left: 3px solid #000000;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-family: "Londrina Solid", cursive;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1.3rem;
+    color: #000000;
+    margin: 0; }
+
+.speaker__bio {
+  padding: 30px; }
+  .speaker__bio p {
+    color: #000000; }
+
+.speaker__social {
+  margin-bottom: 20px; }
+  .speaker__social a {
+    color: #000000;
+    font-size: 1.3em;
+    padding-right: 10px; }
+    .speaker__social a:last-child {
+      padding-right: 0; }
+    .speaker__social a:hover, .speaker__social a:focus {
+      color: #c23616; }
+
+.highlights {
+  margin-bottom: 20px; }
+  .highlights .highlight {
+    padding: 5px 8px;
+    font-family: "Londrina Solid", cursive;
+    letter-spacing: 2px;
+    text-transform: uppercase; }
+    .highlights .highlight.keynote {
+      background: #c23616;
+      color: #ffffff; }
+
 h1 {
   background: #ffffff;
   color: #4f8bd3;
   display: block;
   padding: 10px 20px;
   min-width: 220px;
-  max-width: 280px;
+  max-width: 380px;
+  width: 100%;
   text-align: center;
   position: relative; }
   h1.left {
-    margin: 0 auto 0 0; }
+    margin: 0 auto 0 -40px; }
+    h1.left:after {
+      left: -10px; }
   h1.right {
     margin: 0 -40px 0 auto; }
+    h1.right:after {
+      right: -10px; }
   h1:after {
     content: " ";
     background: #000000;
     width: 100%;
     height: 100%;
-    position: absolute;
     bottom: -10px;
-    right: -10px;
+    position: absolute;
     z-index: -1; }
 
 h1, h2, h3, h4, h5, h6 {
@@ -336,7 +416,7 @@ a.animate {
   display: inline-block;
   position: relative;
   text-decoration: none;
-  padding: 0.1em 0.3em;
+  padding: 0.1em 0.25em;
   border-bottom: 2px solid #ffffff; }
   a.animate:after {
     content: '';

@@ -14,6 +14,7 @@
 html {
   font-size: 16px;
   scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
   @media screen and (min-width: 600px) {
     font-size: 18px;
   }
@@ -33,6 +34,22 @@ img {
   height: auto;
 }
 
+section{
+  width: 100vw;
+  height: 100vh;
+  scroll-snap-align: start;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  h1{
+    margin-top: 60px !important;
+  }
+  .content{
+    position: relative;
+    z-index: 2;
+  }
+}
 // *************************
 #splash-page {
   display: grid;
@@ -139,14 +156,7 @@ img {
     }
   }
 }
-section{
-  width: 100vw;
-  min-height: 100vh;
-  scroll-snap-align: start;
-  padding: 20px;
-  box-sizing: border-box;
-  overflow-x: hidden;
-}
+
 #home{
   position: relative;
   height: 100vh;
@@ -273,18 +283,18 @@ $ribbonSize: 0.5em;
   display: flex;
   align-items: center;
   justify-items: center;
-  h1{
-    margin-top: 60px;
-  }
   .content{
-    position: relative;
-    z-index: 2;
     border: 3px solid rgba(255, 255, 255, .3);
     background-color: rgba($theme-dark-blue, .93);
     min-width: calc(100vw - 80px);
     min-height: calc(100vh - 80px);
     margin: 0 auto;
-    box-sizing: content-box;
+  }
+  h1{
+    color: $theme-dark-blue;
+  }
+  h2{
+    color: #fff;
   }
   .copy{
     padding: 30px;
@@ -300,29 +310,120 @@ $ribbonSize: 0.5em;
     }
   }
 }
+
+#speakers{
+  background-image: linear-gradient(to right bottom, #f9cac8, #fbc0be, #fdb7b4, #feada9, #ffa39f);
+  padding-bottom: 80px;
+  h1{
+    background: #ffffff;
+    color: $theme-darker-pink;
+    &::after{
+      background: $theme-darker-pink;
+    }
+  }
+  .speakers{
+    padding:0 20px;
+    max-width: 1000px;
+    margin: 100px auto 0 auto;
+  }
+}
+.speaker{
+  &:not(:last-child){
+    margin-bottom: 100px;
+  }
+  &:last-child{
+    margin-bottom: 0;
+  }
+  &__profile_img{
+    span{
+      color: #000000;
+    }
+    background-size: cover;
+    background-position: center center;
+    min-height: 380px;
+    position: relative;
+    border: 3px solid #000000;
+    background-repeat: no-repeat;
+    h3{
+      background: #ffffff;
+      padding: 7px 15px;
+      border-top: 3px solid #000000;
+      border-left: 3px solid #000000;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      font-family: $londrina;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 1.3rem;
+      color: #000000;
+      margin: 0;
+    }
+  }
+  &__bio{
+    padding: 30px;
+    p{
+      color: #000000;
+    }
+  }
+  &__social{
+    margin-bottom: 20px;
+    a{
+      color: #000000;
+      font-size: 1.3em;
+      padding-right:10px;
+      &:last-child{
+        padding-right: 0;
+      }
+      &:hover, &:focus{
+        color: $theme-red;
+      }
+    }
+  }
+}
+.highlights{
+  margin-bottom: 20px;
+  .highlight{
+    padding: 5px 8px;
+    font-family: $londrina;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    &.keynote{
+      background: $theme-red;
+      color: #ffffff;
+    }
+  }
+}
+
 h1{
   background: #ffffff;
   color: $theme-blue;
   display: block;
   padding:10px 20px;
   min-width: 220px;
-  max-width: 280px;
+  max-width: 380px;
+  width: 100%;
   text-align: center;
   position: relative;
   &.left{
-    margin:0 auto 0 0;
+    margin:0 auto 0 -40px;
+    &:after{
+      left: -10px;
+    }
   }
   &.right{
     margin:0 -40px 0 auto;
+    &:after{
+      right: -10px;
+    }
   }
   &:after{
     content: " ";
     background: #000000;
     width:100%;
     height: 100%;
-    position: absolute;
     bottom: -10px;
-    right: -10px;
+    position: absolute;
     z-index: -1;
   }
 }
@@ -332,6 +433,7 @@ h1, h2, h3, h4, h5, h6{
   letter-spacing: 3px;
   font-weight: normal;
 }
+
 .btn{
   padding: 12px 30px;
   background: $theme-yellow;
@@ -385,7 +487,7 @@ a.animate{
   display: inline-block;
   position: relative;
   text-decoration: none;
-  padding: 0.1em 0.3em;
+  padding: 0.1em 0.25em;
   border-bottom: 2px solid #ffffff;
   &:after {
     content: '';

@@ -3,7 +3,7 @@ module Main exposing (Model, Msg(..), codeOfConduct, init, main, update, view)
 import Browser exposing (UrlRequest)
 import Browser.Navigation
 import Html exposing (Html, a, div, h1, h2, h3, h5, img, main_, p, section, span, text, nav, ul, li)
-import Html.Attributes exposing (class, href, id, src, target, class, alt)
+import Html.Attributes exposing (class, href, id, src, target, class, alt, style)
 import Html.Events exposing (onClick)
 import Url exposing (Url)
 
@@ -71,6 +71,7 @@ mainContent =
         [ navigationContent
           ,homeContent
           ,detailsContent
+          ,speakersContent
         ]
 
 homeContent : Html Msg
@@ -100,6 +101,47 @@ detailsContent =
                 ]
 
             ]
+
+
+speakersContent : Html Msg
+speakersContent =
+    section
+        [id "speakers"]
+        [div [class "content"]
+                [ h1 [class "callout left"] [text "Speakers"]
+                 , div [class "speakers"] [
+                    div [class "speaker columns"] [
+                        div [class "speaker__profile_img is-half column", style "background-image" "url(%PUBLIC_URL%/images/speakers/emma.jpg)", style "background-position" "top center"] [
+                            h3 [] [text "Emma Cunningham"]
+                        ]
+                        , div [class "speaker__bio is-half column"] [
+                            div [class "speaker__social"]  [
+                                a [href "#"] [span [class "fab fa-github"] []]
+                                ,a [href "#"] [span [class "fab fa-twitter"] []]
+                                ,a [href "#"] [span [class "fas fa-globe"] []]
+                            ]
+                            , div [class "highlights"] [span [class "highlight keynote"] [text "Keynote Speaker"]]
+                            , p [] [text "Emma Cunningham is a formal semanticist turned software engineer who currently is interested in thinking about distributed systems, data pipeline tooling, data visualization, and query optimization. As a former linguist, they often think about how expressive type systems, reliable error messaging, and higher order logic can help solve these concerns in a maintainable and scalable manner. When they’re not cranking out code, Emma practices sleight-of-hand magic and ferments all kinds of things in their hometown of Los Angeles."]
+                            ]
+                    ]
+                    ,div [class "speaker columns"] [
+                        div [class "speaker__profile_img is-half column", style "background-image" "url(%PUBLIC_URL%/images/speakers/kofi.jpg)", style "background-position" "50% 80%"] [
+                            h3 [] [text "Kofi Gumbs"]
+                        ]
+                        , div [class "speaker__bio is-half column"] [
+                            div [class "speaker__social"]  [
+                                a [href "#"] [span [class "fab fa-github"] []]
+                                ,a [href "#"] [span [class "fab fa-twitter"] []]
+                                ,a [href "#"] [span [class "fas fa-globe"] []]
+                            ]
+                            , p [] [text "Kofi lives in Chicago and writes software, both professionally and for fun. By day, he works at HubTran, using test-driven development wherever he can. By night, he theorizes how to make those tests unnecessary— using declarative systems with strong guarantees."]
+                            ]
+                    ]
+                 ]
+                ]
+        ]
+
+
 navigationContent : Html Msg
 navigationContent =
     nav
