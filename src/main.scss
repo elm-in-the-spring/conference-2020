@@ -13,7 +13,7 @@
 
 html {
   font-size: 16px;
-
+  scroll-snap-type: y mandatory;
   @media screen and (min-width: 600px) {
     font-size: 18px;
   }
@@ -139,8 +139,15 @@ img {
     }
   }
 }
-
-.hero{
+section{
+  width: 100vw;
+  min-height: 100vh;
+  scroll-snap-align: start;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+#home{
   position: relative;
   height: 100vh;
   width: 100%;
@@ -151,7 +158,7 @@ img {
   background-position: center center, 50% 65%;
   background-size: cover, auto 85%;
   background-repeat: no-repeat, no-repeat;
-  &__headline{
+  .hero__headline{
     background: #ffffff;
     height: 180px;
     max-width: 480px;
@@ -255,5 +262,156 @@ $ribbonSize: 0.5em;
     right: $ribbonSize * -1;
     top: $ribbonSize * -1;
     border-color: $tail $tail $tail darken($tail, 10%);
+  }
+}
+
+#details{
+  background-color: $theme-dark-blue;
+  background-image: url(../public/images/halftone-rose.png);
+  background-size: cover;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  h1{
+    margin-top: 60px;
+  }
+  .content{
+    position: relative;
+    z-index: 2;
+    border: 3px solid rgba(255, 255, 255, .3);
+    background-color: rgba($theme-dark-blue, .93);
+    min-width: calc(100vw - 80px);
+    min-height: calc(100vh - 80px);
+    margin: 0 auto;
+    box-sizing: content-box;
+  }
+  .copy{
+    padding: 30px;
+    color: #fff;
+    overflow-y: scroll;
+    max-width: 1000px;
+    a:not(.btn){
+      color: #ffffff;
+      font-weight: bold;
+      &:hover{
+        color: $theme-dark-blue;
+      }
+    }
+  }
+}
+h1{
+  background: #ffffff;
+  color: $theme-blue;
+  display: block;
+  padding:10px 20px;
+  min-width: 220px;
+  max-width: 280px;
+  text-align: center;
+  position: relative;
+  &.left{
+    margin:0 auto 0 0;
+  }
+  &.right{
+    margin:0 -40px 0 auto;
+  }
+  &:after{
+    content: " ";
+    background: #000000;
+    width:100%;
+    height: 100%;
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    z-index: -1;
+  }
+}
+h1, h2, h3, h4, h5, h6{
+  text-transform: uppercase;
+  font-family: $londrina;
+  letter-spacing: 3px;
+  font-weight: normal;
+}
+.btn{
+  padding: 12px 30px;
+  background: $theme-yellow;
+  color: #000000;
+  display: block;
+  max-width: 280px;
+  text-align: center;
+  font-size: 1.2em;
+  font-family: $londrina;
+  letter-spacing: 3px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background .3s ease-in-out;
+  position: relative;
+  border: 3px solid #000000;
+  &:hover, &:focus{
+    background: #000000;
+    color: #ffffff;
+  }
+  &::before{
+    content: " ";
+    background-size: 150px 130px;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    display: block;
+    position: absolute;
+    right: -10px;
+    bottom: -10px;
+    z-index: -1;
+    border: 3px solid #000000;
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAI0lEQVQYV2NkYGD4////fwYYYEThMTAwwAUYGRlBShECMC0ArqQS9QsD0f0AAAAASUVORK5CYII=");
+  }
+}
+
+.a11y-hidden{
+  position: absolute;
+  z-index: -9999;
+  width:1px;
+  height: 1px;
+  font-size: 0;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  clip: rect(0,0,0,0);
+}
+
+a.animate{
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  padding: 0.1em 0.3em;
+  border-bottom: 2px solid #ffffff;
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #ffffff;
+    z-index: -1;
+    transition: all 0.1s cubic-bezier(0.000, 0.590, 1.000, 0.260);
+  }
+  &:hover {
+    border-bottom: 2px solid #ffffff;
+    color: #000000;
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: #ffffff;
+      z-index: -1;
+    }
   }
 }

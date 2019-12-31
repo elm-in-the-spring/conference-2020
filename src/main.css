@@ -31,7 +31,8 @@
   box-sizing: inherit; }
 
 html {
-  font-size: 16px; }
+  font-size: 16px;
+  scroll-snap-type: y mandatory; }
   @media screen and (min-width: 600px) {
     html {
       font-size: 18px; } }
@@ -120,7 +121,15 @@ img {
   to {
     background-position: 200% center; } }
 
-.hero {
+section {
+  width: 100vw;
+  min-height: 100vh;
+  scroll-snap-align: start;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-x: hidden; }
+
+#home {
   position: relative;
   height: 100vh;
   width: 100%;
@@ -131,7 +140,7 @@ img {
   background-position: center center, 50% 65%;
   background-size: cover, auto 85%;
   background-repeat: no-repeat, no-repeat; }
-  .hero__headline {
+  #home .hero__headline {
     background: #ffffff;
     height: 180px;
     max-width: 480px;
@@ -143,7 +152,7 @@ img {
     transform: translateY(-45%) skew(-5deg, -5deg);
     left: 0;
     right: 0; }
-    .hero__headline::before {
+    #home .hero__headline::before {
       content: "";
       display: block;
       border: 5px solid #f9f93a;
@@ -153,7 +162,7 @@ img {
       position: absolute;
       top: -15px;
       left: -15px; }
-    .hero__headline img {
+    #home .hero__headline img {
       width: 90%;
       position: relative;
       top: -30px;
@@ -218,3 +227,138 @@ nav.menu {
     right: -0.5em;
     top: -0.5em;
     border-color: #e0e007 #e0e007 #e0e007 #aeae05; }
+
+#details {
+  background-color: #266bbd;
+  background-image: url(../public/images/halftone-rose.png);
+  background-size: cover;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-items: center; }
+  #details h1 {
+    margin-top: 60px; }
+  #details .content {
+    position: relative;
+    z-index: 2;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    background-color: rgba(38, 107, 189, 0.93);
+    min-width: calc(100vw - 80px);
+    min-height: calc(100vh - 80px);
+    margin: 0 auto;
+    box-sizing: content-box; }
+  #details .copy {
+    padding: 30px;
+    color: #fff;
+    overflow-y: scroll;
+    max-width: 1000px; }
+    #details .copy a:not(.btn) {
+      color: #ffffff;
+      font-weight: bold; }
+      #details .copy a:not(.btn):hover {
+        color: #266bbd; }
+
+h1 {
+  background: #ffffff;
+  color: #4f8bd3;
+  display: block;
+  padding: 10px 20px;
+  min-width: 220px;
+  max-width: 280px;
+  text-align: center;
+  position: relative; }
+  h1.left {
+    margin: 0 auto 0 0; }
+  h1.right {
+    margin: 0 -40px 0 auto; }
+  h1:after {
+    content: " ";
+    background: #000000;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    z-index: -1; }
+
+h1, h2, h3, h4, h5, h6 {
+  text-transform: uppercase;
+  font-family: "Londrina Solid", cursive;
+  letter-spacing: 3px;
+  font-weight: normal; }
+
+.btn {
+  padding: 12px 30px;
+  background: #f9f93a;
+  color: #000000;
+  display: block;
+  max-width: 280px;
+  text-align: center;
+  font-size: 1.2em;
+  font-family: "Londrina Solid", cursive;
+  letter-spacing: 3px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background .3s ease-in-out;
+  position: relative;
+  border: 3px solid #000000; }
+  .btn:hover, .btn:focus {
+    background: #000000;
+    color: #ffffff; }
+  .btn::before {
+    content: " ";
+    background-size: 150px 130px;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    display: block;
+    position: absolute;
+    right: -10px;
+    bottom: -10px;
+    z-index: -1;
+    border: 3px solid #000000;
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAI0lEQVQYV2NkYGD4////fwYYYEThMTAwwAUYGRlBShECMC0ArqQS9QsD0f0AAAAASUVORK5CYII="); }
+
+.a11y-hidden {
+  position: absolute;
+  z-index: -9999;
+  width: 1px;
+  height: 1px;
+  font-size: 0;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  clip: rect(0, 0, 0, 0); }
+
+a.animate {
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  padding: 0.1em 0.3em;
+  border-bottom: 2px solid #ffffff; }
+  a.animate:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #ffffff;
+    z-index: -1;
+    transition: all 0.1s cubic-bezier(0, 0.59, 1, 0.26); }
+  a.animate:hover {
+    border-bottom: 2px solid #ffffff;
+    color: #000000; }
+    a.animate:hover::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: #ffffff;
+      z-index: -1; }

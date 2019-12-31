@@ -3,7 +3,7 @@ module Main exposing (Model, Msg(..), codeOfConduct, init, main, update, view)
 import Browser exposing (UrlRequest)
 import Browser.Navigation
 import Html exposing (Html, a, div, h1, h2, h3, h5, img, main_, p, section, span, text, nav, ul, li)
-import Html.Attributes exposing (class, href, id, src, target, class)
+import Html.Attributes exposing (class, href, id, src, target, class, alt)
 import Html.Events exposing (onClick)
 import Url exposing (Url)
 
@@ -68,21 +68,38 @@ mainContent : Html Msg
 mainContent =
     main_
         [ id "main" ]
-        [ navigationContent,
-          heroContent
+        [ navigationContent
+          ,homeContent
+          ,detailsContent
         ]
 
-heroContent : Html Msg
-heroContent =
+homeContent : Html Msg
+homeContent =
     section
-        [ class "hero" ]
+        [ id "home" ]
             [ div [class "hero__headline"] [
-                img [src "%PUBLIC_URL%/images/hero-logo.png"] []
+                h1 [class "a11y-hidden"] [text "Elm In the Spring 2020"]
+                , img [src "%PUBLIC_URL%/images/hero-logo.png", alt "Elm In the Spring"] []
             ]
             , div [class "ribbon"] [text "Chicago ❀ May 1, 2020"]
 
             ]
+detailsContent : Html Msg
+detailsContent =
+    section
+        [ id "details" ]
+            [div [class "content"]
+                [h1 [class "callout right"] [text "Details"]
+                     ,div [class "copy"] [
+                       h2 [] [text "All Elm, all day!"]
+                       , p [] [text "Elm in the Spring is a single-track, single-day conference for developers who love Elm. Whether you’re an Elm expert scaling up your production app or you're just starting out with your first Elm project, join us for a great day of learning, teaching, and community"]
+                       , p [] [text "Elm in the Spring 2020 will take place on Friday, May 1st at the ", a [href "#", class "animate"] [text "Newberry Library"], span [] [text " in Chicago."]]
+                       , p [] [text "All attendees are expected to observe the conference ", a [href "#", class "animate"] [text "Code of Conduct."]]
+                       , a [class "btn btn--yellow", href "http://google.com"] [text "Get Your Tickets"]
+                     ]
+                ]
 
+            ]
 navigationContent : Html Msg
 navigationContent =
     nav
