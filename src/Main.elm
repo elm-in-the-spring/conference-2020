@@ -72,6 +72,7 @@ mainContent =
           ,homeContent
           ,detailsContent
           ,speakersContent
+          ,sponsersContent
         ]
 
 homeContent : Html Msg
@@ -142,6 +143,26 @@ speakersContent =
                 ]
         ]
 
+
+sponsersContent : Html Msg
+sponsersContent =
+    section
+        [ id "sponsers" ]
+            [div [class "content"]
+                [h1 [class "callout right"] [text "Sponsers"]
+                     ,div [class "copy"] [
+                       h2 [] [text "A special thank you to our Sponsors"]
+                       , p [] [text "Elm in the Spring could not be made possible without the support, involvement, and enthusiasm of generous sponsors and supporters. You or your company can become a sponsor for Elm in the Spring 2020. For more info, check out ", a [href "#", class "animate black"] [text " becoming a sponsor."]]
+                     ]
+                     , div [class "sponsors columns"] [
+                        div [class "sponsor column is-one-quarter"] [ img [src "%PUBLIC_URL%/images/sponsors/espark-logo.svg", alt "eSpark Learning"] []]
+                        , div [class "sponsor column is-one-quarter"] [ img [src "%PUBLIC_URL%/images/sponsors/spantree-logo.svg", alt "eSpark Learning"] []]
+                        , div [class "sponsor column is-one-quarter"] [ img [src "%PUBLIC_URL%/images/sponsors/espark-logo.svg", alt "eSpark Learning"] []]
+                        , div [class "sponsor column is-one-quarter"] [ img [src "%PUBLIC_URL%/images/sponsors/spantree-logo.svg", alt "eSpark Learning"] []]
+                     ]
+                ]
+
+            ]
 
 navigationContent : Html Msg
 navigationContent =
