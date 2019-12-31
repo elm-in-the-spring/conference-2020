@@ -580,7 +580,9 @@ footer {
       position: relative; }
   .page--stand-alone .hero {
     padding: 60px 20px 30px 20px;
-    background: #266bbd; }
+    background-color: #266bbd;
+    background-image: url("../public/images/circle-half-tone.png");
+    background-size: 100% auto; }
   .page--stand-alone nav.menu {
     position: relative;
     width: 100%;

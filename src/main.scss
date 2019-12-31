@@ -704,7 +704,9 @@ footer{
   }
   .hero{
     padding: 60px 20px 30px 20px;
-    background: $theme-dark-blue;
+    background-color: $theme-dark-blue;
+    background-image: url("../public/images/circle-half-tone.png");
+    background-size: 100% auto;
   }
   nav.menu{
     position: relative;
