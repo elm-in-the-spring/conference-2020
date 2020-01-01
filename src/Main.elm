@@ -166,7 +166,7 @@ sponsorsContent =
                 [h1 [class "callout right"] [text "Sponsors"]
                      ,div [class "copy"] [
                        h2 [] [text "Thank you to our Sponsors"]
-                       , p [] [text "Without the support, involvement, and enthusiasm of generous sponsors and supporters, Elm in the Spring would not be possible . You or your company can become a sponsor for Elm in the Spring 2020. For more info, check out ", a [href "#", class "animate black"] [text " becoming a sponsor."]]
+                       , p [] [text "Without the support, involvement, and enthusiasm of generous sponsors and supporters, Elm in the Spring would not be possible . You or your company can become a sponsor for Elm in the Spring 2020. For more info, check out ", a [href sponsorshipPath, onClick (NavigateTo sponsorshipPath), class "animate black"] [text " becoming a sponsor."]]
                      ]
                      , div [class "sponsors columns"] [
                         div [class "sponsor column is-one-quarter"] [ img [src "%PUBLIC_URL%/images/sponsors/espark-logo.svg", alt "eSpark Learning"] []]
