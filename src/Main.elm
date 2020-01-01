@@ -101,8 +101,8 @@ detailsContent =
                      ,div [class "copy"] [
                        h2 [] [text "All Elm, all day!"]
                        , p [] [text "Elm in the Spring is a single-track, single-day conference for developers who love Elm. Whether you’re an Elm expert scaling up your production app or you're just starting out with your first Elm project, join us for a great day of learning, teaching, and community"]
-                       , p [] [text "Elm in the Spring 2020 will take place on Friday, May 1st at the ", a [href "#", class "animate"] [text "Newberry Library"], span [] [text " in Chicago."]]
-                       , p [] [text "All attendees are expected to observe the conference ", a [href "#", class "animate"] [text "Code of Conduct."]]
+                       , p [] [text "Elm in the Spring 2020 will take place on Friday, May 1st at the ", a [href "https://www.google.com/maps?q=Newberry+Library+Chicago", target "_blank", class "animate"] [text "Newberry Library"], span [] [text " in Chicago."]]
+                       , p [] [text "All attendees are expected to observe the conference ", a [href codeOfConductPath, onClick (NavigateTo codeOfConductPath), class "animate"] [text "Code of Conduct."]]
                        , a [class "btn btn--yellow", href "http://google.com"] [text "Get Your Tickets"]
                      ]
                 ]
@@ -177,13 +177,13 @@ navigationContent =
         [
             ul [] [
                 li [] [
-                  a [href "#"] [text "Details"]
+                  a [href "./#details", onClick (NavigateTo "./#details")] [text "Details"]
                 ],
                 li [] [
-                  a [href "#"] [text "Speakers"]
+                  a [href "./#speakers", onClick (NavigateTo "./#speakers")] [text "Speakers"]
                 ],
                 li [] [
-                  a [href "#"] [text "Tickets"]
+                  a [href "https://www.papercall.io/elm-in-the-spring-2020", target "_blank"] [text "Submit Talk"]
                 ]
             ]
         ]
@@ -197,7 +197,7 @@ newsletterContent =
                 h1 [] [text "Stay In Touch" ]
                 , p [] [text "For  conference updates, join our mailing list. No spam. Ever."]
                 , iframe [src "https://smithsa.github.io/newsletter/"] []
-                , p [] [text "Or, follow ", a [href "#", class "animate"] [text "@elminthespring"], span [] [text " on Twitter"]]
+                , p [] [text "Or, follow ", a [href "https://twitter.com/elminthespring?lang=en", target "_blank", class "animate"] [text "@elminthespring"], span [] [text " on Twitter"]]
            ]
         ]
 
@@ -210,7 +210,7 @@ footerContent =
     footer [] [ div [class "footer__content columns"] [
         div [class "column"] [ p [] [text "© Elm in the Spring 2020"]]
         , div [class "column"] [
-            a [href "#", class "open-source-note"] [
+            a [href "https://github.com/elm-in-the-spring/conference-2020", target "_blank", class "open-source-note"] [
                 img [src "%PUBLIC_URL%/images/open-source-note.svg", alt "This site is open source and built in Elm"] []
             ]
         ]
@@ -222,7 +222,7 @@ standAlonePageHeader : Html Msg
 standAlonePageHeader =
     div [ class "hero" ]
         [ div [class "logo-container"]
-            [ a [href "#"] [img [src "%PUBLIC_URL%/images/hero-logo.png", alt "Elm In the Spring", class "logo"] []]]
+            [ a [href "./#home", onClick (NavigateTo "./#home")] [img [src "%PUBLIC_URL%/images/hero-logo.png", alt "Elm In the Spring", class "logo"] []]]
         , navigationContent ]
 
 wrapContentInStandAlonePage: Html Msg -> Html Msg
@@ -245,7 +245,7 @@ codeOfConduct =
                     , h2 [ id "need-help" ] [ text "Need Help?" ]
                     , p []
                         [ text "In advance of the conference, please contact the organizing team at "
-                        , a [ href "mailto:hello@elminthespring.org", class "animate black" ] [ text "hello@elminthespring.org" ]
+                        , a [ href "mailto:hello@elminthespring.org", target "_blank", class "animate black" ] [ text "hello@elminthespring.org" ]
                         , text " any time you need help or have questions or concerns. In the weeks before the conference, we’ll send out direct contact info for the organizers so you can reach out to us in real time via text, phone, or Twitter."
                         ]
                     , h2 [ id "the-quick-version" ] [ text "The Quick Version" ]

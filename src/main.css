@@ -181,7 +181,8 @@ nav.menu {
   left: 0;
   right: 0;
   top: 40px;
-  z-index: 1; }
+  z-index: 1;
+  padding: 0 20px; }
   nav.menu ul {
     margin: 0 auto;
     display: block;
@@ -196,7 +197,7 @@ nav.menu {
     text-transform: uppercase;
     color: #ffa39f;
     letter-spacing: 2px;
-    font-size: 2em;
+    font-size: 1.8em;
     transition: color .3s ease-in-out; }
     nav.menu a:hover, nav.menu a:focus {
       color: #f9f93a; }
@@ -587,7 +588,8 @@ footer {
     position: relative;
     width: 100%;
     top: 0;
-    margin-top: 20px; }
+    margin-top: 20px;
+    padding: 0; }
     .page--stand-alone nav.menu a {
       font-size: 1.3em; }
   .page--stand-alone h1 {

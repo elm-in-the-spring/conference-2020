@@ -207,6 +207,7 @@ nav.menu{
   right: 0;
   top: 40px;
   z-index: 1;
+  padding: 0 20px;
   ul{
     margin: 0 auto;
     display: block;
@@ -224,7 +225,7 @@ nav.menu{
     text-transform: uppercase;
     color: $theme-dark-pink;
     letter-spacing: 2px;
-    font-size:2em;
+    font-size:1.8em;
     transition: color .3s ease-in-out;
     &:hover, &:focus{
       color: $theme-yellow;
@@ -713,6 +714,7 @@ footer{
     width: 100%;
     top: 0;
     margin-top:20px;
+    padding: 0;
     a{
       font-size: 1.3em;
     }
