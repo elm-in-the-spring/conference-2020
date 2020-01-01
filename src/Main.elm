@@ -225,13 +225,21 @@ standAlonePageHeader =
             [ a [href "#"] [img [src "%PUBLIC_URL%/images/hero-logo.png", alt "Elm In the Spring", class "logo"] []]]
         , navigationContent ]
 
+wrapContentInStandAlonePage: Html Msg -> Html Msg
+wrapContentInStandAlonePage innerHtml =
+    div [] [
+        standAlonePageHeader
+        , divider
+        , innerHtml
+        , divider
+        , footerContent
+    ]
+
 codeOfConduct : Html Msg
 codeOfConduct =
     main_ [ class "page--stand-alone" ]
-        [
-        standAlonePageHeader
-        , divider
-        , div [class "container container--wrapper"] [
+        [ wrapContentInStandAlonePage
+            (div [class "container container--wrapper"] [
             h1 [ id "conference-code-of-conduct" ] [ text "Conference Code of Conduct" ]
                      , p [] [ text "All attendees, speakers, sponsors and volunteers at our conference are required to agree with the following code of conduct. Organisers will enforce this code throughout the event. We expect cooperation from all participants to help ensure a safe environment for everybody." ]
                     , h2 [ id "need-help" ] [ text "Need Help?" ]
@@ -253,9 +261,7 @@ codeOfConduct =
                     , p [] [ text "Conference staff will be happy to help participants contact hotel/venue security or local law enforcement, provide escorts, or otherwise assist those experiencing harassment to feel safe for the duration of the conference. We value your attendance. " ]
                     , p [] [ text "We expect participants to follow these rules at conference and workshop venues and conference-related social events." ]
 
-        ]
-        , divider
-        , footerContent
+        ])
         ]
 
 
