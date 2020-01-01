@@ -55,10 +55,18 @@ codeOfConductPath =
     "/code-of-conduct"
 
 
+sponsorshipPath : String
+sponsorshipPath =
+    "/sponsorship"
+
+
 view : Model -> Html Msg
 view model =
     if model.url.path == codeOfConductPath then
         codeOfConduct
+
+    else if model.url.path == sponsorshipPath then
+        sponsorship
 
     else
         mainContent
@@ -260,6 +268,36 @@ codeOfConduct =
                     , p [] [ text " Conference staff can be identified as they'll be wearing branded clothing and/or badges. " ]
                     , p [] [ text "Conference staff will be happy to help participants contact hotel/venue security or local law enforcement, provide escorts, or otherwise assist those experiencing harassment to feel safe for the duration of the conference. We value your attendance. " ]
                     , p [] [ text "We expect participants to follow these rules at conference and workshop venues and conference-related social events." ]
+
+        ])
+        ]
+
+sponsorship : Html Msg
+sponsorship =
+    main_ [ class "page--stand-alone" ]
+        [ wrapContentInStandAlonePage
+            (div [class "container container--wrapper"] [
+            h1 [ ] [ text "Sponsorship" ]
+                     , p [] [ text "Interested in supporting the community? Sponsor Elm in the Spring! Contact us at ", a [href "mailto:hello@elminthespring.org", target "_blank", class "animate black"] [text "hello@elminthespring.org"], span [] [text " for more information."] ]
+                     , h2 [] [text "Old Grove"]
+                     , p [] [text "Price: $2,500"]
+                     , ul [] [
+                            li [] [text "20% discount on ticket purchases"]
+                            ,li [] [text "On-stage banner and speaker introduction opportunity. Limited space, first come first served!"]
+                            ,li [] [text "Logo included in videos and displayed on presentation screen between talks"]
+                        ]
+                     , h2 [] [text "Shade Tree"]
+                     , p [] [text "Price: $1,000"]
+                     , ul [] [
+                            li [] [text "15% discount on ticket purchases"]
+                            ,li [] [text "Special thank-you from the organizers during announcements"]
+                            ,li [] [text "Logo displayed on presentation screen between talks"]
+                        ]
+                     , h2 [] [text "Spring Sapling"]
+                     , p [] [text "Price: $500"]
+                     , ul [] [
+                            li [] [text "10% discount on ticket purchases"]
+                        ]
 
         ])
         ]

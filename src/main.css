@@ -556,6 +556,14 @@ footer {
   color: #000000; }
   .page--stand-alone .container--wrapper {
     padding: 60px 20px 80px 20px; }
+    .page--stand-alone .container--wrapper ul {
+      margin-bottom: 15px;
+      margin-left: 20px; }
+      .page--stand-alone .container--wrapper ul li {
+        list-style-type: disc;
+        margin-bottom: 10px; }
+        .page--stand-alone .container--wrapper ul li:last-child {
+          margin-bottom: 0px; }
   .page--stand-alone .logo-container {
     background: #ffffff;
     max-width: 230px;

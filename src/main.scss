@@ -673,6 +673,17 @@ footer{
 .page--stand-alone{
   .container--wrapper{
     padding: 60px 20px 80px 20px;
+    ul{
+      li{
+        list-style-type: disc;
+        margin-bottom: 10px;
+        &:last-child{
+          margin-bottom: 0px;
+        }
+      }
+      margin-bottom: 15px;
+      margin-left: 20px;
+    }
   }
   .logo-container{
     background: #ffffff;
