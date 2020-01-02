@@ -760,3 +760,11 @@ footer{
   }
   color: #000000;
 }
+
+#grants{
+  background: #ffffff;
+  color: $theme-dark-blue;
+  p{
+    color: darken($theme-dark-blue, 10%);
+  }
+}

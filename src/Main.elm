@@ -80,6 +80,8 @@ mainContent =
           ,homeContent
           , detailsContent
           , divider
+          , grantsInfoSection
+          , divider
           , newsletterContent
           , divider
           ,speakersContent
@@ -110,13 +112,20 @@ detailsContent =
                        h2 [] [text "All Elm, all day!"]
                        , p [] [text "Elm in the Spring is a single-track, single-day conference for developers who love Elm. Whether you’re an Elm expert scaling up your production app or you're just starting out with your first Elm project, join us for a great day of learning, teaching, and community"]
                        , p [] [text "Elm in the Spring 2020 will take place on Friday, May 1st at the ", a [href "https://www.google.com/maps?q=Newberry+Library+Chicago", target "_blank", class "animate"] [text "Newberry Library"], span [] [text " in Chicago."]]
-                       , p [] [text "All attendees are expected to observe the conference ", a [href codeOfConductPath, onClick (NavigateTo codeOfConductPath), class "animate"] [text "Code of Conduct."]]
+                       , p [] [text "All attendees are expected to observe the conference ", a [href codeOfConductPath, onClick (NavigateTo codeOfConductPath), class "animate"] [text "Code of Conduct"], span [] [text "."]]
                        , a [class "btn btn--yellow", href "http://google.com"] [text "Get Your Tickets"]
                      ]
                 ]
 
             ]
 
+grantsInfoSection : Html Msg
+grantsInfoSection =
+    section
+        [id "grants"]
+        [ h1 [] [text "Conference Grants"]
+          , p [] [text "We strive to be an inclusive, accessible, and welcoming community. To help break down the barriers that prevent diversity in technology, we are excited to provide conference grants. If you would like to attend the conference but are not able to due to financial circumstances, please fill out the ", a [href "https://forms.gle/wJZYRRoxTcbGvuti9", target "_blank", class "animate"] [text "grant form"], span [] [text "."] ]
+        ]
 
 speakersContent : Html Msg
 speakersContent =
