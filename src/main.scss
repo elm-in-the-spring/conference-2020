@@ -621,7 +621,7 @@ a.animate{
   &.blue{
     border-bottom: 2px solid $theme-dark-blue;
     &:hover, &:focus {
-      color: red;
+      color: #ffffff;
       border-bottom: 2px solid $theme-dark-blue;
       &:after{
         background: $theme-dark-blue;

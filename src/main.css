@@ -513,7 +513,7 @@ a.animate {
   a.animate.blue {
     border-bottom: 2px solid #266bbd; }
     a.animate.blue:hover, a.animate.blue:focus {
-      color: red;
+      color: #ffffff;
       border-bottom: 2px solid #266bbd; }
       a.animate.blue:hover:after, a.animate.blue:focus:after {
         background: #266bbd; }
