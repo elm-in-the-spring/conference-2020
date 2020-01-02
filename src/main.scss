@@ -168,6 +168,14 @@ section{
   background-position: center center, 50% 65%;
   background-size: cover, auto 85%;
   background-repeat: no-repeat, no-repeat;
+  @include sm{
+    background-size: cover, auto 60%;
+    background-position: center center, 50% 50%;
+  }
+  @include xsm{
+    background-size: cover, auto 50%;
+    background-position: center center, 50% 50%;
+  }
   .hero__headline{
     background: #ffffff;
     height: 180px;
@@ -180,6 +188,15 @@ section{
     transform: translateY(-45%) skew(-5deg, -5deg);
     left:0;
     right: 0;
+    z-index: 3;
+    @include sm{
+      height: 110px;
+      max-width: 330px;
+    }
+    @include xsm{
+      height: 90px;
+      max-width: 250px;
+    }
     &::before{
       content: "";
       display: block;
@@ -190,6 +207,10 @@ section{
       position: absolute;
       top: -15px;
       left: -15px;
+      @include xsm{
+        top: -10px;
+        left: -10px;
+      }
     }
     img{
       width: 90%;
@@ -197,6 +218,12 @@ section{
       top: -30px;
       margin: 0 auto 0 15px;
       display: block;
+      @include sm{
+        width: 85%;
+      }
+      @include xsm{
+        top: -16px;
+      }
     }
   }
 }
@@ -216,6 +243,9 @@ nav.menu{
   li{
     display: inline-block;
     padding-left: 8%;
+    @include xsm{
+      padding-left:15px;
+    }
     &:first-child{
       padding-left: 0;
     }
@@ -229,6 +259,12 @@ nav.menu{
     transition: color .3s ease-in-out;
     &:hover, &:focus{
       color: $theme-yellow;
+    }
+    @include sm{
+      font-size:1.5em;
+    }
+    @include xsm{
+      font-size:1.2em;
     }
   }
 }
@@ -289,12 +325,18 @@ $ribbonSize: 0.5em;
   align-items: center;
   justify-items: center;
   padding-bottom: 35px;
+  @include xsm{
+    padding: 20px 10px 100px 10px;
+  }
   .content{
     border: 3px solid rgba(255, 255, 255, .3);
     background-color: rgba($theme-dark-blue, .93);
     min-width: calc(100vw - 60px);
     min-height: calc(100vh - 80px);
     margin: 0 auto 0 auto;
+    @include sm{
+      min-width: 0;
+    }
   }
   h1{
     color: $theme-dark-blue;
@@ -311,6 +353,9 @@ $ribbonSize: 0.5em;
     overflow-y: scroll;
     max-width: 1000px;
     margin-top: 30px;
+    @include sm{
+      padding: 30px 15px;
+    }
     a:not(.btn){
       color: #ffffff;
       font-weight: bold;
@@ -363,6 +408,9 @@ $ribbonSize: 0.5em;
     position: relative;
     border: 3px solid #000000;
     background-repeat: no-repeat;
+    @include md{
+      border-bottom: none;
+    }
     h3{
       background: #ffffff;
       padding: 7px 15px;
@@ -384,6 +432,12 @@ $ribbonSize: 0.5em;
     background: #ffffff;
     border: 3px solid #000000;
     border-left: none;
+    @include md{
+      border-left: 3px solid #000000;
+    }
+    @include sm{
+      padding: 30px 15px;
+    }
     p{
       color: #000000;
     }
@@ -479,6 +533,12 @@ $ribbonSize: 0.5em;
     display: block;
     margin-left: auto;
     margin-right: auto;
+    @include md{
+      max-width: 180px;
+    }
+    @include sm{
+      max-width: 150px;
+    }
   }
 }
 
@@ -738,6 +798,8 @@ footer{
     background-color: $theme-dark-blue;
     background-image: url("../public/images/circle-half-tone.png");
     background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-position: bottom center;
   }
   nav.menu{
     position: relative;

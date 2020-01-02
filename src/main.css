@@ -146,6 +146,14 @@ section {
   background-position: center center, 50% 65%;
   background-size: cover, auto 85%;
   background-repeat: no-repeat, no-repeat; }
+  @media (max-width: 576px) {
+    #home {
+      background-size: cover, auto 60%;
+      background-position: center center, 50% 50%; } }
+  @media (max-width: 400px) {
+    #home {
+      background-size: cover, auto 50%;
+      background-position: center center, 50% 50%; } }
   #home .hero__headline {
     background: #ffffff;
     height: 180px;
@@ -157,7 +165,16 @@ section {
     top: 50%;
     transform: translateY(-45%) skew(-5deg, -5deg);
     left: 0;
-    right: 0; }
+    right: 0;
+    z-index: 3; }
+    @media (max-width: 576px) {
+      #home .hero__headline {
+        height: 110px;
+        max-width: 330px; } }
+    @media (max-width: 400px) {
+      #home .hero__headline {
+        height: 90px;
+        max-width: 250px; } }
     #home .hero__headline::before {
       content: "";
       display: block;
@@ -168,12 +185,22 @@ section {
       position: absolute;
       top: -15px;
       left: -15px; }
+      @media (max-width: 400px) {
+        #home .hero__headline::before {
+          top: -10px;
+          left: -10px; } }
     #home .hero__headline img {
       width: 90%;
       position: relative;
       top: -30px;
       margin: 0 auto 0 15px;
       display: block; }
+      @media (max-width: 576px) {
+        #home .hero__headline img {
+          width: 85%; } }
+      @media (max-width: 400px) {
+        #home .hero__headline img {
+          top: -16px; } }
 
 nav.menu {
   position: absolute;
@@ -190,6 +217,9 @@ nav.menu {
   nav.menu li {
     display: inline-block;
     padding-left: 8%; }
+    @media (max-width: 400px) {
+      nav.menu li {
+        padding-left: 15px; } }
     nav.menu li:first-child {
       padding-left: 0; }
   nav.menu a {
@@ -201,6 +231,12 @@ nav.menu {
     transition: color .3s ease-in-out; }
     nav.menu a:hover, nav.menu a:focus {
       color: #f9f93a; }
+    @media (max-width: 576px) {
+      nav.menu a {
+        font-size: 1.5em; } }
+    @media (max-width: 400px) {
+      nav.menu a {
+        font-size: 1.2em; } }
 
 .ribbon {
   background: #f9f93a;
@@ -247,12 +283,18 @@ nav.menu {
   align-items: center;
   justify-items: center;
   padding-bottom: 35px; }
+  @media (max-width: 400px) {
+    #details {
+      padding: 20px 10px 100px 10px; } }
   #details .content {
     border: 3px solid rgba(255, 255, 255, 0.3);
     background-color: rgba(38, 107, 189, 0.93);
     min-width: calc(100vw - 60px);
     min-height: calc(100vh - 80px);
     margin: 0 auto 0 auto; }
+    @media (max-width: 576px) {
+      #details .content {
+        min-width: 0; } }
   #details h1 {
     color: #266bbd; }
   #details h2 {
@@ -265,6 +307,9 @@ nav.menu {
     overflow-y: scroll;
     max-width: 1000px;
     margin-top: 30px; }
+    @media (max-width: 576px) {
+      #details .copy {
+        padding: 30px 15px; } }
     #details .copy a:not(.btn) {
       color: #ffffff;
       font-weight: bold; }
@@ -301,6 +346,9 @@ nav.menu {
     background-repeat: no-repeat; }
     .speaker__profile_img span {
       color: #000000; }
+    @media (max-width: 769px) {
+      .speaker__profile_img {
+        border-bottom: none; } }
     .speaker__profile_img h3 {
       background: #ffffff;
       padding: 7px 15px;
@@ -320,6 +368,12 @@ nav.menu {
     background: #ffffff;
     border: 3px solid #000000;
     border-left: none; }
+    @media (max-width: 769px) {
+      .speaker__bio {
+        border-left: 3px solid #000000; } }
+    @media (max-width: 576px) {
+      .speaker__bio {
+        padding: 30px 15px; } }
     .speaker__bio p {
       color: #000000; }
   .speaker__social {
@@ -395,6 +449,12 @@ nav.menu {
   display: block;
   margin-left: auto;
   margin-right: auto; }
+  @media (max-width: 769px) {
+    .sponsor img {
+      max-width: 180px; } }
+  @media (max-width: 576px) {
+    .sponsor img {
+      max-width: 150px; } }
 
 h1.callout {
   background: #ffffff;
@@ -603,7 +663,9 @@ footer {
     padding: 60px 20px 30px 20px;
     background-color: #266bbd;
     background-image: url("../public/images/circle-half-tone.png");
-    background-size: 100% auto; }
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-position: bottom center; }
   .page--stand-alone nav.menu {
     position: relative;
     width: 100%;

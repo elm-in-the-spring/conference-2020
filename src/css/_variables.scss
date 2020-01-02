@@ -22,6 +22,21 @@ $theme-yellow: #f9f93a;
 $theme-light-yellow: lighten($theme-yellow, 30%);
 $theme-border-width: 10px;
 $theme-translucent-black: rgba(0, 0, 0, .2);
+
+$screen-xsm: 400px;
+
+// Small tablets and large smartphones (landscape view)
+$screen-sm: 576px;
+
+// Small tablets (portrait view)
+$screen-md: 769px;
+
+// Tablets and small desktops
+$screen-lg: 1024px;
+
+// Large tablets and desktops
+$screen-xl: 1216px;
+
 // contrast theme
 $theme-map-contrast: (
   $--theme-primary: #f34c84,
