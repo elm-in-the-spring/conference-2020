@@ -124,7 +124,7 @@ grantsInfoSection =
     section
         [id "grants"]
         [ h1 [] [text "Conference Grants"]
-          , p [] [text "We strive to be an inclusive, accessible, and welcoming community. To help break down the barriers that prevent diversity in technology, we are excited to provide conference grants. If you would like to attend the conference but are not able to due to financial circumstances, please fill out the ", a [href "https://forms.gle/wJZYRRoxTcbGvuti9", target "_blank", class "animate"] [text "grant form"], span [] [text "."] ]
+          , p [] [text "We strive to be an inclusive, accessible, and welcoming community. To help break down the barriers that prevent diversity in technology, we are excited to provide conference grants. If you would like to attend the conference but are not able to due to financial circumstances, please fill out the ", a [href "https://forms.gle/wJZYRRoxTcbGvuti9", target "_blank", class "animate blue"] [text "grant form"], span [] [text "."] ]
         ]
 
 speakersContent : Html Msg

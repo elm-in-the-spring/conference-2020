@@ -314,7 +314,7 @@ $ribbonSize: 0.5em;
     a:not(.btn){
       color: #ffffff;
       font-weight: bold;
-      &:hover{
+      &:hover, &:focus{
         color: $theme-dark-blue;
       }
     }
@@ -570,6 +570,7 @@ a.animate{
   text-decoration: none;
   padding: 0.1em 0.25em;
   border-bottom: 2px solid #ffffff;
+  z-index: 1;
   &:after {
     content: '';
     display: block;
@@ -581,14 +582,21 @@ a.animate{
     background: #ffffff;
     z-index: -1;
     transition: all 0.1s cubic-bezier(0.000, 0.590, 1.000, 0.260);
-    &.black{
+  }
+  &.black{
+    &:after{
       background: #000000;
+    }
+  }
+  &.blue{
+    &:after{
+      background: $theme-dark-blue;
     }
   }
   &:hover, &:focus {
     border-bottom: 2px solid #ffffff;
     color: #000000;
-    &::after {
+    &:after {
       content: '';
       display: block;
       position: absolute;
@@ -601,11 +609,22 @@ a.animate{
     }
   }
   &.black{
+    border-bottom: 2px solid #000000;
     &:hover, &:focus {
       color: #ffffff;
-      border-color: #000000;
-      &:after{;
+      border-bottom: 2px solid #000000;
+      &:after{
         background: #000000;
+      }
+    }
+  }
+  &.blue{
+    border-bottom: 2px solid $theme-dark-blue;
+    &:hover, &:focus {
+      color: red;
+      border-bottom: 2px solid $theme-dark-blue;
+      &:after{
+        background: $theme-dark-blue;
       }
     }
   }
@@ -766,5 +785,14 @@ footer{
   color: $theme-dark-blue;
   p{
     color: darken($theme-dark-blue, 10%);
+  }
+  a{
+    font-weight: bold;
+    &:hover{
+      color: #ffffff;
+      &:after{
+        background: $theme-dark-blue;
+      }
+    }
   }
 }

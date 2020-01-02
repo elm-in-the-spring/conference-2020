@@ -268,7 +268,7 @@ nav.menu {
     #details .copy a:not(.btn) {
       color: #ffffff;
       font-weight: bold; }
-      #details .copy a:not(.btn):hover {
+      #details .copy a:not(.btn):hover, #details .copy a:not(.btn):focus {
         color: #266bbd; }
 
 #speakers {
@@ -473,7 +473,8 @@ a.animate {
   position: relative;
   text-decoration: none;
   padding: 0.1em 0.25em;
-  border-bottom: 2px solid #ffffff; }
+  border-bottom: 2px solid #ffffff;
+  z-index: 1; }
   a.animate:after {
     content: '';
     display: block;
@@ -485,12 +486,14 @@ a.animate {
     background: #ffffff;
     z-index: -1;
     transition: all 0.1s cubic-bezier(0, 0.59, 1, 0.26); }
-    a.animate:after.black {
-      background: #000000; }
+  a.animate.black:after {
+    background: #000000; }
+  a.animate.blue:after {
+    background: #266bbd; }
   a.animate:hover, a.animate:focus {
     border-bottom: 2px solid #ffffff;
     color: #000000; }
-    a.animate:hover::after, a.animate:focus::after {
+    a.animate:hover:after, a.animate:focus:after {
       content: '';
       display: block;
       position: absolute;
@@ -500,11 +503,20 @@ a.animate {
       left: 0;
       background: #ffffff;
       z-index: -1; }
-  a.animate.black:hover, a.animate.black:focus {
-    color: #ffffff;
-    border-color: #000000; }
-    a.animate.black:hover:after, a.animate.black:focus:after {
-      background: #000000; }
+  a.animate.black {
+    border-bottom: 2px solid #000000; }
+    a.animate.black:hover, a.animate.black:focus {
+      color: #ffffff;
+      border-bottom: 2px solid #000000; }
+      a.animate.black:hover:after, a.animate.black:focus:after {
+        background: #000000; }
+  a.animate.blue {
+    border-bottom: 2px solid #266bbd; }
+    a.animate.blue:hover, a.animate.blue:focus {
+      color: red;
+      border-bottom: 2px solid #266bbd; }
+      a.animate.blue:hover:after, a.animate.blue:focus:after {
+        background: #266bbd; }
 
 .divider--hatched {
   background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAI0lEQVQYV2NkYGD4////fwYYYEThMTAwwAUYGRlBShECMC0ArqQS9QsD0f0AAAAASUVORK5CYII=");
@@ -626,3 +638,9 @@ footer {
   color: #266bbd; }
   #grants p {
     color: #1d5393; }
+  #grants a {
+    font-weight: bold; }
+    #grants a:hover {
+      color: #ffffff; }
+      #grants a:hover:after {
+        background: #266bbd; }
