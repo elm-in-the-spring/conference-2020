@@ -22,7 +22,9 @@ html {
     font-size: 20px;
   }
 }
-
+a:not(.animate){
+  transition: all .3s ease-in-out;
+}
 body {
   font-family: theme-var($--theme-font-family-body);
   color: theme-var($--theme-secondary);
@@ -441,6 +443,12 @@ $ribbonSize: 0.5em;
     p{
       color: #000000;
     }
+    a{
+      font-weight: bold;
+      &:hover, &:focus{
+        color: $theme-darker-pink;
+      }
+    }
   }
   &__social{
     margin-bottom: 20px;
@@ -857,4 +865,5 @@ footer{
       }
     }
   }
+
 }

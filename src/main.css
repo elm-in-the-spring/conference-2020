@@ -40,6 +40,9 @@ html {
     html {
       font-size: 20px; } }
 
+a:not(.animate) {
+  transition: all .3s ease-in-out; }
+
 body {
   font-family: var(--theme-theme-font-family-body);
   color: var(--theme-secondary); }
@@ -376,6 +379,10 @@ nav.menu {
         padding: 30px 15px; } }
     .speaker__bio p {
       color: #000000; }
+    .speaker__bio a {
+      font-weight: bold; }
+      .speaker__bio a:hover, .speaker__bio a:focus {
+        color: #e73c4e; }
   .speaker__social {
     margin-bottom: 20px; }
     .speaker__social a {
