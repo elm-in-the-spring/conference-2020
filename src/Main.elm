@@ -215,7 +215,7 @@ navigationContent =
                 [ a [ href "#speakers", onClick (ScrollTo "speakers") ] [ text "Speakers" ]
                 ]
             , li []
-                [ a [ href "https://www.papercall.io/elm-in-the-spring-2020", target "_blank" ] [ text "Submit Talk" ]
+                [ a [ href "https://www.papercall.io/elm-in-the-spring-2020", target "_blank" ] [ text "Submit A Talk" ]
                 ]
             ]
         ]
