@@ -35,7 +35,18 @@ type Msg
     | NavigateTo String
     | ScrollTo String
     | ScrollComplete String
+    | NoOp
 
+
+scrollTo : Float -> Float -> Cmd Msg
+scrollTo x y =
+    Task.attempt (\_ -> NoOp) (Browser.Dom.setViewport x y)
+
+scrollToById : String -> Cmd Msg
+scrollToById id =
+    Browser.Dom.getViewportOf id
+    |> Task.andThen (\info -> Browser.Dom.setViewport 0.0 info.viewport.y)
+    |> Task.attempt (\_ -> NoOp)
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
@@ -47,22 +58,22 @@ update msg model =
             ( { model | url = url }, Cmd.none )
 
         NavigateTo urlString ->
-            ( model, Browser.Navigation.pushUrl model.navigationKey urlString )
+            ( model, Cmd.batch [ scrollTo 0.0 0.0 , Browser.Navigation.pushUrl model.navigationKey urlString] )
 
         ScrollTo id ->
             ( model
             , Cmd.batch
-                [ Browser.Dom.getViewportOf id
-                    |> Task.andThen (\info -> Browser.Dom.setViewport 0 info.scene.height)
-                    |> Task.attempt (always <| ScrollComplete id)
-                , Browser.Navigation.pushUrl model.navigationKey ("#" ++ id)
+                [
+                    Browser.Navigation.pushUrl model.navigationKey ("../#" ++ id)
+                    , scrollToById id
                 ]
             )
 
         ScrollComplete id ->
             ( model, Cmd.none )
 
-
+        NoOp ->
+             ( model, Cmd.none )
 
 ---- VIEW ----
 
