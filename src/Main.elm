@@ -45,8 +45,8 @@ scrollTo x y =
 scrollToById : String -> Cmd Msg
 scrollToById id =
     Browser.Dom.getViewportOf id
-    |> Task.andThen (\info -> Browser.Dom.setViewport 0.0 info.viewport.y)
-    |> Task.attempt (\_ -> NoOp)
+    |> Task.andThen (\info -> Browser.Dom.setViewportOf id 0 info.scene.height)
+    |> Task.attempt (always <| ScrollComplete id)
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
@@ -65,7 +65,9 @@ update msg model =
             , Cmd.batch
                 [
                     Browser.Navigation.pushUrl model.navigationKey ("../#" ++ id)
-                    , scrollToById id
+                    , Browser.Dom.getElement id
+                          |> Task.andThen (\info -> Browser.Dom.setViewport 0 info.element.y)
+                          |> Task.attempt (always <| ScrollComplete id)
                 ]
             )
 
@@ -103,7 +105,7 @@ view model =
 mainContent : Html Msg
 mainContent =
     main_
-        [ id "main" ]
+        [ ]
         [ navigationContent
         , homeContent
         , detailsContent
