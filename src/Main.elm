@@ -170,7 +170,7 @@ speakersContent =
                                 a [href "https://gitlab.com/emmacunningham", target "_blank"] [span [class "fab fa-gitlab"] []]
                                 , a [href "https://twitter.com/emmatcu", target "_blank"] [span [class "fab fa-twitter"] []]
                             ]
-                            -- , div [class "highlights"] [span [class "highlight talk"] [text "Customizing Browsers with Elm"]]
+                            , div [class "highlights"] [span [class "highlight talk"] [text "Keynote Speaker"]]
                             , p [] [text "Emma Cunningham is a formal semanticist turned software engineer who currently is interested in thinking about distributed systems, data pipeline tooling, data visualization, and optimizing queries both for speed and semantic value. As a former linguist, they often think about how expressive type systems, reliable error messaging, and higher order logic can help solve these concerns in a maintainable and scalable manner. As a human being, their passions are in cooperation, abolition, magic, fermentation, descriptivist grammars, and a just transition away from extractive economies."]
                             ]
                     ]
