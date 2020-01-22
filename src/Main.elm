@@ -161,26 +161,39 @@ speakersContent =
         [div [class "content"]
                 [ h1 [class "callout left"] [text "Speakers"]
                  , div [class "speakers"] [
-                    --div [class "speaker columns"] [
-                    --    div [class "speaker__profile_img is-half column", style "background-image" "url(%PUBLIC_URL%/images/speakers/emma.jpg)", style "background-position" "top center"] [
-                    --        h3 [] [text "Emma Cunningham"]
-                    --    ]
-                    --    , div [class "speaker__bio is-half column"] [
-                    --        div [class "speaker__social"]  [
-                    --            a [href "#"] [span [class "fab fa-github"] []]
-                    --            ,a [href "#"] [span [class "fab fa-twitter"] []]
-                    --            ,a [href "#"] [span [class "fas fa-globe"] []]
-                    --        ]
-                    --        , div [class "highlights"] [span [class "highlight talk"] [text "Customizing Browsers with Elm"]]
-                    --        , p [] [text "Emma Cunningham is a formal semanticist turned software engineer who currently is interested in thinking about distributed systems, data pipeline tooling, data visualization, and query optimization. As a former linguist, they often think about how expressive type systems, reliable error messaging, and higher order logic can help solve these concerns in a maintainable and scalable manner. When they’re not cranking out code, Emma practices sleight-of-hand magic and ferments all kinds of things in their hometown of Los Angeles."]
-                    --        ]
-                    --]
                     div [class "speaker columns"] [
+                        div [class "speaker__profile_img is-half column", style "background-image" "url(%PUBLIC_URL%/images/speakers/emma.jpg)", style "background-position" "top center"] [
+                            h3 [] [text "Emma Cunningham"]
+                        ]
+                        , div [class "speaker__bio is-half column"] [
+                            div [class "speaker__social"]  [
+                                a [href "https://gitlab.com/emmacunningham", target "_blank"] [span [class "fab fa-gitlab"] []]
+                                , a [href "https://twitter.com/emmatcu", target "_blank"] [span [class "fab fa-twitter"] []]
+                            ]
+                            -- , div [class "highlights"] [span [class "highlight talk"] [text "Customizing Browsers with Elm"]]
+                            , p [] [text "Emma Cunningham is a formal semanticist turned software engineer who currently is interested in thinking about distributed systems, data pipeline tooling, data visualization, and optimizing queries both for speed and semantic value. As a former linguist, they often think about how expressive type systems, reliable error messaging, and higher order logic can help solve these concerns in a maintainable and scalable manner. As a human being, their passions are in cooperation, abolition, magic, fermentation, descriptivist grammars, and a just transition away from extractive economies."]
+                            ]
+                    ]
+                    , div [class "speaker columns"] [
+                        div [class "speaker__profile_img is-half column", style "background-image" "url(%PUBLIC_URL%/images/speakers/yonatan.jpg)", style "background-position" "top center"] [
+                            h3 [] [text "Yonatan Kogan"]
+                        ]
+                        , div [class "speaker__bio is-half column"] [
+                            div [class "speaker__social"]  [
+                                a [href "https://github.com/yjkogan", target "_blank"] [span [class "fab fa-github"] []]
+                                ,a [href "https://twitter.com/yjkogan", target "_blank"] [span [class "fab fa-twitter"] []]
+                            ]
+                            -- , div [class "highlights"] [span [class "highlight talk"] [text "Customizing Browsers with Elm"]]
+                            , p [] [text "Yonatan is originally from San Francisco and now lives in Columbia, SC. He is a Senior Software Engineer at ActBlue, an online fundraising platform for Democratic candidates up and down the ballot, progressive organizations, and nonprofits. He previously worked at Tock, a Chicago-based restaurant reservations company, Optimizely, an A/B testing platform, and Romotive, a Sequoia-backed robotics startup. He is also a founding member of GenderAvenger, a community dedicated to ensuring women are represented in the public dialog."]
+                            , p [] [text "Outside of work, Yonatan enjoys cooking, biking, sci-fi, watching Jeopardy, and working to improve his community."]
+                            ]
+                    ]
+                    , div [class "speaker columns"] [
                         div [class "speaker__profile_img is-half column", style "background-image" "url(%PUBLIC_URL%/images/curtains.jpg)", style "background-position" "50% 80%"] [
                             h3 [] [text "You?"]
                         ]
                         , div [class "speaker__bio is-half column"] [
-                            div [class "highlights"] [span [class "highlight talk"] [text "Coming Soon!"]]
+                            div [class "highlights"] [span [class "highlight talk"] [text "More Speakers Coming Soon!"]]
                             , p [] [text "Want to share your idea? ", a [href "https://www.papercall.io/elm-in-the-spring-2020", target "_blank"] [text "Submit a talk!"]]
                             , p [] [text "Elm in the Spring welcomes new and seasoned speakers to give a talk in Chicago! Each talk slot is 30 minutes. We’re reserving a minimum of two (2) talk spots for first-time speakers."]
                             , p [] [text "Want to see last year’s talks? Check out our ", a [href "https://www.youtube.com/elminthespring", target "_blank"] [text "Youtube channel!"]]
