@@ -373,7 +373,8 @@ nav.menu {
     border-left: none; }
     @media (max-width: 769px) {
       .speaker__bio {
-        border-left: 3px solid #000000; } }
+        border-left: 3px solid #000000;
+        font-size: 18px; } }
     @media (max-width: 576px) {
       .speaker__bio {
         padding: 30px 15px; } }
@@ -415,11 +416,13 @@ nav.menu {
     text-transform: uppercase;
     margin-right: 10px;
     display: inline-block;
-    margin-bottom: 0; }
+    margin-bottom: 0;
+    background: #e73c4e;
+    color: #ffffff; }
     .highlights .highlight:last-child {
       margin-right: 0px; }
     .highlights .highlight.talk {
-      background: #e73c4e;
+      background: #266bbd;
       color: #ffffff; }
 
 #sponsors {
