@@ -436,6 +436,7 @@ $ribbonSize: 0.5em;
     border-left: none;
     @include md{
       border-left: 3px solid #000000;
+      font-size: 18px;
     }
     @include sm{
       padding: 30px 15px;
@@ -488,11 +489,13 @@ $ribbonSize: 0.5em;
     margin-right: 10px;
     display: inline-block;
     margin-bottom: 0;
+    background: $theme-darker-pink;
+    color: #ffffff;
     &:last-child{
       margin-right: 0px;
     }
     &.talk{
-      background: $theme-darker-pink;
+      background: $theme-dark-blue;
       color: #ffffff;
     }
   }
