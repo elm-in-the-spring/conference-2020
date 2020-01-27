@@ -174,20 +174,40 @@ speakersContent =
                             , p [] [text "Emma Cunningham is a formal semanticist turned software engineer who currently is interested in thinking about distributed systems, data pipeline tooling, data visualization, and optimizing queries both for speed and semantic value. As a former linguist, they often think about how expressive type systems, reliable error messaging, and higher order logic can help solve these concerns in a maintainable and scalable manner. As a human being, their passions are in cooperation, abolition, magic, fermentation, descriptivist grammars, and a just transition away from extractive economies."]
                             ]
                     ]
---                    , div [class "speaker columns"] [
---                        div [class "speaker__profile_img is-half column", style "background-image" "url(%PUBLIC_URL%/images/speakers/yonatan.jpg)", style "background-position" "top center"] [
---                            h3 [] [text "Yonatan Kogan"]
+                    , div [class "speaker columns"] [
+                        div [class "speaker__profile_img is-half column", style "background-image" "url(%PUBLIC_URL%/images/speakers/yonatan.jpg)", style "background-position" "top center"] [
+                            h3 [] [text "Yonatan Kogan"]
+                        ]
+                        , div [class "speaker__bio is-half column"] [
+                            div [class "speaker__social"]  [
+                                a [href "https://github.com/yjkogan", target "_blank"] [span [class "fab fa-github"] []]
+                                ,a [href "https://twitter.com/yjkogan", target "_blank"] [span [class "fab fa-twitter"] []]
+                            ]
+                            , div [class "highlights"] [
+                                span [class "highlight talk"] [text "Put your Model in the Cloud"]
+                                , span [class "highlight info small"] [text "Co-Presenter"]
+                            ]
+                            , p [] [text "Yonatan is originally from San Francisco and now lives in Columbia, SC. He is a Senior Software Engineer at ActBlue, an online fundraising platform for Democratic candidates up and down the ballot, progressive organizations, and nonprofits. He previously worked at Tock, a Chicago-based restaurant reservations company, Optimizely, an A/B testing platform, and Romotive, a Sequoia-backed robotics startup. He is also a founding member of GenderAvenger, a community dedicated to ensuring women are represented in the public dialog."]
+                            , p [] [text "Outside of work, Yonatan enjoys cooking, biking, sci-fi, watching Jeopardy, and working to improve his community."]
+                            ]
+                    ]
+                    , div [class "speaker columns has-only-bio"] [
+--                        div [class "speaker__profile_img is-half column", style "background-image" "", style "background-position" "top center"] [
+--                            h3 [] [text "Jacob Matthews"]
 --                        ]
---                        , div [class "speaker__bio is-half column"] [
+                        div [class "speaker__bio is-full column"] [
 --                            div [class "speaker__social"]  [
 --                                a [href "https://github.com/yjkogan", target "_blank"] [span [class "fab fa-github"] []]
 --                                ,a [href "https://twitter.com/yjkogan", target "_blank"] [span [class "fab fa-twitter"] []]
---                            ]
---                            , div [class "highlights"] [span [class "highlight talk"] [text "Put your Model in the Cloud"]]
---                            , p [] [text "Yonatan is originally from San Francisco and now lives in Columbia, SC. He is a Senior Software Engineer at ActBlue, an online fundraising platform for Democratic candidates up and down the ballot, progressive organizations, and nonprofits. He previously worked at Tock, a Chicago-based restaurant reservations company, Optimizely, an A/B testing platform, and Romotive, a Sequoia-backed robotics startup. He is also a founding member of GenderAvenger, a community dedicated to ensuring women are represented in the public dialog."]
---                            , p [] [text "Outside of work, Yonatan enjoys cooking, biking, sci-fi, watching Jeopardy, and working to improve his community."]
---                            ]
---                    ]
+--                            ],
+                            h3 [] [text "Jacob Matthews"]
+                            , div [class "highlights"] [
+                                span [class "highlight talk"] [text "Put your Model in the Cloud"]
+                                , span [class "highlight info small"] [text "Co-Presenter"]
+                            ]
+                            , p [] [text "Jacob Matthews is a senior staff software engineer at Tock. Before becoming a professional programmer, he was a computer scientist who studied functional programming. He gravitated to Elm as a way of combining these two interests. When he's not programming, Jacob likes performing improv and playing with his baby. "]
+                            ]
+                    ]
                     , div [class "speaker columns"] [
                         div [class "speaker__profile_img is-half column", style "background-image" "url(%PUBLIC_URL%/images/curtains.jpg)", style "background-position" "50% 80%"] [
                             h3 [] [text "You?"]

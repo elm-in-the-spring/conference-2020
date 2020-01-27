@@ -370,11 +370,12 @@ nav.menu {
     padding: 30px;
     background: #ffffff;
     border: 3px solid #000000;
-    border-left: none; }
+    border-left: none;
+    font-size: 18px; }
     @media (max-width: 769px) {
       .speaker__bio {
         border-left: 3px solid #000000;
-        font-size: 18px; } }
+        font-size: 15px; } }
     @media (max-width: 576px) {
       .speaker__bio {
         padding: 30px 15px; } }
@@ -384,6 +385,14 @@ nav.menu {
       font-weight: bold; }
       .speaker__bio a:hover, .speaker__bio a:focus {
         color: #e73c4e; }
+  .speaker.has-only-bio h3 {
+    font-family: "Londrina Solid", cursive;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1.5rem;
+    color: #000000; }
+  .speaker.has-only-bio .speaker__bio {
+    border-left: 3px solid #000000; }
   .speaker__social {
     margin-bottom: 20px; }
     .speaker__social a {
@@ -424,6 +433,14 @@ nav.menu {
     .highlights .highlight.talk {
       background: #266bbd;
       color: #ffffff; }
+    .highlights .highlight.small {
+      padding: 3px 10px;
+      font-size: 14px; }
+    .highlights .highlight.info {
+      background: none;
+      color: #266bbd;
+      padding: 0;
+      display: block; }
 
 #sponsors {
   background-color: #ffffff;
