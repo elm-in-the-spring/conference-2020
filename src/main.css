@@ -307,7 +307,7 @@ nav.menu {
   #details .copy {
     padding: 30px;
     color: #fff;
-    overflow-y: scroll;
+    overflow-y: auto;
     max-width: 1000px;
     margin-top: 30px; }
     @media (max-width: 576px) {
@@ -343,7 +343,7 @@ nav.menu {
   .speaker__profile_img {
     background-size: cover;
     background-position: center center;
-    min-height: 380px;
+    min-height: 500px;
     position: relative;
     border: 3px solid #000000;
     background-repeat: no-repeat; }
@@ -351,7 +351,8 @@ nav.menu {
       color: #000000; }
     @media (max-width: 769px) {
       .speaker__profile_img {
-        border-bottom: none; } }
+        border-bottom: none;
+        min-height: 400px; } }
     .speaker__profile_img h3 {
       background: #ffffff;
       padding: 7px 15px;
