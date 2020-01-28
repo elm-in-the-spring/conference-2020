@@ -191,11 +191,11 @@ speakersContent =
                             , p [] [text "Outside of work, Yonatan enjoys cooking, biking, sci-fi, watching Jeopardy, and working to improve his community."]
                             ]
                     ]
-                    , div [class "speaker columns has-only-bio"] [
---                        div [class "speaker__profile_img is-half column", style "background-image" "", style "background-position" "top center"] [
---                            h3 [] [text "Jacob Matthews"]
---                        ]
-                        div [class "speaker__bio is-full column"] [
+                    , div [class "speaker columns"] [
+                        div [class "speaker__profile_img is-half column", style "background-image" "url(%PUBLIC_URL%/images/speakers/jacob.jpg)", style "background-position" "50% 20%"] [
+                            h3 [] [text "Jacob Matthews"]
+                        ]
+                        , div [class "speaker__bio is-half column"] [
 --                            div [class "speaker__social"]  [
 --                                a [href "https://github.com/yjkogan", target "_blank"] [span [class "fab fa-github"] []]
 --                                ,a [href "https://twitter.com/yjkogan", target "_blank"] [span [class "fab fa-twitter"] []]
