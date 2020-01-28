@@ -196,10 +196,9 @@ speakersContent =
                             h3 [] [text "Jacob Matthews"]
                         ]
                         , div [class "speaker__bio is-half column"] [
---                            div [class "speaker__social"]  [
---                                a [href "https://github.com/yjkogan", target "_blank"] [span [class "fab fa-github"] []]
---                                ,a [href "https://twitter.com/yjkogan", target "_blank"] [span [class "fab fa-twitter"] []]
---                            ],
+                            div [class "speaker__social"]  [
+                                a [href "https://twitter.com/jmatthews", target "_blank"] [span [class "fab fa-twitter"] []]
+                            ],
                             div [class "highlights"] [
                                 span [class "highlight talk"] [text "Put your Model in the Cloud"]
                                 , span [class "highlight info small"] [text "Co-Presenter"]
