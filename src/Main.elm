@@ -192,7 +192,7 @@ speakersContent =
                             ]
                     ]
                     , div [class "speaker columns"] [
-                        div [class "speaker__profile_img is-half column", style "background-image" "url(%PUBLIC_URL%/images/speakers/jacob.jpg)", style "background-position" "50% 20%"] [
+                        div [class "speaker__profile_img is-half column", style "background-image" "url(%PUBLIC_URL%/images/speakers/jacob.jpg)", style "background-position" "50% 15%"] [
                             h3 [] [text "Jacob Matthews"]
                         ]
                         , div [class "speaker__bio is-half column"] [
@@ -200,8 +200,7 @@ speakersContent =
 --                                a [href "https://github.com/yjkogan", target "_blank"] [span [class "fab fa-github"] []]
 --                                ,a [href "https://twitter.com/yjkogan", target "_blank"] [span [class "fab fa-twitter"] []]
 --                            ],
-                            h3 [] [text "Jacob Matthews"]
-                            , div [class "highlights"] [
+                            div [class "highlights"] [
                                 span [class "highlight talk"] [text "Put your Model in the Cloud"]
                                 , span [class "highlight info small"] [text "Co-Presenter"]
                             ]
