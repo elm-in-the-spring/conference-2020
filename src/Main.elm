@@ -7,6 +7,7 @@ import Html exposing (Html, a, div, footer, h1, h2, h3, h5, iframe, img, li, mai
 import Html.Attributes exposing (alt, class, href, id, src, style, target)
 import Html.Events exposing (onClick)
 import Task
+import List
 import Url exposing (Url)
 
 type alias Speaker =
@@ -26,6 +27,25 @@ type alias Talk =
         name: String
        ,description: List (Html Msg)
     }
+
+
+emma: Speaker
+emma = {
+               id = "emma-cunningham"
+               , imgPath = "/images/speakers/emma.jpg"
+               , name =  "Emma Cunningham"
+               , bio = [ p [] [text "Emma Cunningham is a formal semanticist turned software engineer who currently is interested in thinking about distributed systems, data pipeline tooling, data visualization, and optimizing queries both for speed and semantic value. As a former linguist, they often think about how expressive type systems, reliable error messaging, and higher order logic can help solve these concerns in a maintainable and scalable manner. As a human being, their passions are in cooperation, abolition, magic, fermentation, descriptivist grammars, and a just transition away from extractive economies."]]
+               , talk = {
+                    name = ""
+                    ,description = [span [] []]
+               }
+               , isCoPresenter = False
+               , isKeyNote = True
+               , social =  [
+                   a [href "https://gitlab.com/emmacunningham", target "_blank"] [span [class "fab fa-gitlab"] []]
+                   , a [href "https://twitter.com/emmatcu", target "_blank"] [span [class "fab fa-twitter"] []]
+               ]
+               }
 
 yonatan: Speaker
 yonatan = {
@@ -48,6 +68,32 @@ yonatan = {
                     , a [href "https://twitter.com/yjkogan", target "_blank"] [span [class "fab fa-twitter"] []]
                 ]
                }
+
+jacob: Speaker
+jacob = {
+               id = "jacob-matthews"
+               , imgPath = "/images/speakers/jacob.jpg"
+               , name =  "Jacob Matthews"
+               , bio = [
+                    p [] [text "Jacob Matthews is a senior staff software engineer at Tock. Before becoming a professional programmer, he was a computer scientist who studied functional programming. He gravitated to Elm as a way of combining these two interests. When he's not programming, Jacob likes performing improv and playing with his baby. "]
+               ]
+               , talk = {
+                    name = "Put Your Model in the Cloud"
+                    ,description = [
+                        span [] []
+                    ]
+               }
+               , isCoPresenter = True
+               , isKeyNote = False
+               , social =  [
+                  a [href "https://twitter.com/jmatthews", target "_blank"] [span [class "fab fa-twitter"] []]
+                ]
+               }
+
+speakers: List Speaker
+speakers =
+    [emma, yonatan, jacob]
+
 
 ---- MODEL ----
 
@@ -197,70 +243,40 @@ grantsInfoSection =
         ]
 
 
+generateSpeakerColumn: Speaker -> Html Msg
+generateSpeakerColumn speaker =
+    div [class "speaker columns"] [
+        div [class "speaker__profile_img is-half column", style "background-image" ( "url(%PUBLIC_URL%" ++ speaker.imgPath ++ ")"), style "background-position" "top center"] [
+            h3 [] [text speaker.name]
+        ]
+        , div [class "speaker__bio is-half column"] [
+            div [class "speaker__social"]  speaker.social
+            , div [class "highlights"] (highlightsHTML speaker)
+            , div [] speaker.bio
+            ]
+    ]
+
+appendedSpeakerSectionColumn: Html Msg
+appendedSpeakerSectionColumn =
+    div [class "speaker columns"] [
+        div [class "speaker__profile_img is-half column", style "background-image" "url(%PUBLIC_URL%/images/curtains.jpg)", style "background-position" "50% 80%"] [
+            h3 [] [text "You?"]
+        ]
+        , div [class "speaker__bio is-half column"] [
+            div [class "highlights"] [span [class "highlight"] [text "More Speakers Coming Soon!"]]
+            , p [] [text "Want to share your idea? ", a [href "https://www.papercall.io/elm-in-the-spring-2020", target "_blank"] [text "Submit a talk!"]]
+            , p [] [text "Elm in the Spring welcomes new and seasoned speakers to give a talk in Chicago! Each talk slot is 30 minutes. We’re reserving a minimum of two (2) talk spots for first-time speakers."]
+            , p [] [text "Want to see last year’s talks? Check out our ", a [href "https://www.youtube.com/elminthespring", target "_blank"] [text "Youtube channel!"]]
+            ]
+    ]
+
 speakersContent : Html Msg
 speakersContent =
     section
         [id "speakers"]
         [div [class "content"]
                 [ h1 [class "callout left"] [text "Speakers"]
-                 , div [class "speakers"] [
-                    div [class "speaker columns"] [
-                        div [class "speaker__profile_img is-half column", style "background-image" "url(%PUBLIC_URL%/images/speakers/emma.jpg)", style "background-position" "top center"] [
-                            h3 [] [text "Emma Cunningham"]
-                        ]
-                        , div [class "speaker__bio is-half column"] [
-                            div [class "speaker__social"]  [
-                                a [href "https://gitlab.com/emmacunningham", target "_blank"] [span [class "fab fa-gitlab"] []]
-                                , a [href "https://twitter.com/emmatcu", target "_blank"] [span [class "fab fa-twitter"] []]
-                            ]
-                            , div [class "highlights"] [span [class "highlight"] [text "Keynote Speaker"]]
-                            , p [] [text "Emma Cunningham is a formal semanticist turned software engineer who currently is interested in thinking about distributed systems, data pipeline tooling, data visualization, and optimizing queries both for speed and semantic value. As a former linguist, they often think about how expressive type systems, reliable error messaging, and higher order logic can help solve these concerns in a maintainable and scalable manner. As a human being, their passions are in cooperation, abolition, magic, fermentation, descriptivist grammars, and a just transition away from extractive economies."]
-                            ]
-                    ]
-                    , div [class "speaker columns"] [
-                        div [class "speaker__profile_img is-half column", style "background-image" "url(%PUBLIC_URL%/images/speakers/yonatan.jpg)", style "background-position" "top center"] [
-                            h3 [] [text "Yonatan Kogan"]
-                        ]
-                        , div [class "speaker__bio is-half column"] [
-                            div [class "speaker__social"]  [
-                                a [href "https://github.com/yjkogan", target "_blank"] [span [class "fab fa-github"] []]
-                                ,a [href "https://twitter.com/yjkogan", target "_blank"] [span [class "fab fa-twitter"] []]
-                            ]
-                            , div [class "highlights"] [
-                                a [class "highlight talk", href ("/speakers/" ++ yonatan.id), target "_self"] [text "Put your Model in the Cloud"]
-                                , span [class "highlight info small"] [text "Co-Presenter"]
-                            ]
-                            , p [] [text "Yonatan is originally from San Francisco and now lives in Columbia, SC. He is a Senior Software Engineer at ActBlue, an online fundraising platform for Democratic candidates up and down the ballot, progressive organizations, and nonprofits. He previously worked at Tock, a Chicago-based restaurant reservations company, Optimizely, an A/B testing platform, and Romotive, a Sequoia-backed robotics startup. He is also a founding member of GenderAvenger, a community dedicated to ensuring women are represented in the public dialog."]
-                            , p [] [text "Outside of work, Yonatan enjoys cooking, biking, sci-fi, watching Jeopardy, and working to improve his community."]
-                            ]
-                    ]
-                    , div [class "speaker columns"] [
-                        div [class "speaker__profile_img is-half column", style "background-image" "url(%PUBLIC_URL%/images/speakers/jacob.jpg)", style "background-position" "50% 15%"] [
-                            h3 [] [text "Jacob Matthews"]
-                        ]
-                        , div [class "speaker__bio is-half column"] [
-                            div [class "speaker__social"]  [
-                                a [href "https://twitter.com/jmatthews", target "_blank"] [span [class "fab fa-twitter"] []]
-                            ],
-                            div [class "highlights"] [
-                                span [class "highlight talk"] [text "Put your Model in the Cloud"]
-                                , span [class "highlight info small"] [text "Co-Presenter"]
-                            ]
-                            , p [] [text "Jacob Matthews is a senior staff software engineer at Tock. Before becoming a professional programmer, he was a computer scientist who studied functional programming. He gravitated to Elm as a way of combining these two interests. When he's not programming, Jacob likes performing improv and playing with his baby. "]
-                            ]
-                    ]
-                    , div [class "speaker columns"] [
-                        div [class "speaker__profile_img is-half column", style "background-image" "url(%PUBLIC_URL%/images/curtains.jpg)", style "background-position" "50% 80%"] [
-                            h3 [] [text "You?"]
-                        ]
-                        , div [class "speaker__bio is-half column"] [
-                            div [class "highlights"] [span [class "highlight"] [text "More Speakers Coming Soon!"]]
-                            , p [] [text "Want to share your idea? ", a [href "https://www.papercall.io/elm-in-the-spring-2020", target "_blank"] [text "Submit a talk!"]]
-                            , p [] [text "Elm in the Spring welcomes new and seasoned speakers to give a talk in Chicago! Each talk slot is 30 minutes. We’re reserving a minimum of two (2) talk spots for first-time speakers."]
-                            , p [] [text "Want to see last year’s talks? Check out our ", a [href "https://www.youtube.com/elminthespring", target "_blank"] [text "Youtube channel!"]]
-                            ]
-                    ]
-                 ]
+                 , div [class "speakers"] (List.append (List.map  generateSpeakerColumn speakers) [appendedSpeakerSectionColumn] )
                 ]
         ]
 
@@ -416,17 +432,6 @@ sponsorship =
 
 speakerIndividualSection : Speaker -> Html Msg
 speakerIndividualSection speaker =
-    let
-        highlightsHTML: List (Html Msg)
-        highlightsHTML =
-            if speaker.isCoPresenter then
-                [span [class "highlight info small"] [text "Co-Presenter"]]
-            else if speaker.isKeyNote then
-                [span [class "highlight"] [text "Keynote Speaker"]]
-            else
-                [span [] []]
-
-    in
     main_ [ class "page--stand-alone" ] [
         section
             [id "speakers", class "page--stand-alone__speaker"]
@@ -436,7 +441,7 @@ speakerIndividualSection speaker =
                                     div [class "speaker stand-alone columns"] [
                                         div [class "speaker__bio is-full column"] [
                                             div [class "speaker__social"] speaker.social
-                                            , div [class "highlights"] highlightsHTML
+                                            , div [class "highlights"] (highlightsHTML speaker)
                                             , div [] speaker.bio
                                             , h3 [] [text speaker.talk.name]
                                             , div [] speaker.talk.description
@@ -449,6 +454,14 @@ speakerIndividualSection speaker =
     ]
 
 
+highlightsHTML: Speaker -> List (Html Msg)
+highlightsHTML speaker =
+    if speaker.isCoPresenter then
+        [span [class "highlight info small"] [text "Co-Presenter"]]
+    else if speaker.isKeyNote then
+        [span [class "highlight"] [text "Keynote Speaker"]]
+    else
+        [span [] []]
 
 ---- PROGRAM ----
 
