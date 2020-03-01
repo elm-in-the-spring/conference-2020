@@ -528,6 +528,10 @@ $ribbonSize: 0.5em;
     &.talk{
       background: $theme-dark-blue;
       color: #ffffff;
+      transition: .3s background ease-in-out;
+      &:hover, &:focus{
+        background: $theme-darker-pink;
+      }
     }
     &.small{
       padding: 3px 10px;

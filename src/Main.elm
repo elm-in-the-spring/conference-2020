@@ -9,6 +9,8 @@ import Html.Events exposing (onClick)
 import Task
 import List
 import Url exposing (Url)
+import String
+import Maybe
 
 type alias Speaker =
     {
@@ -180,8 +182,22 @@ view model =
     else if model.url.path == sponsorshipPath then
         sponsorship
 
-    else if model.url.path == speakerPath yonatan.id then
-        speakerIndividualSection yonatan
+    else if String.contains "speakers" model.url.path then
+        let
+            speakerID: String
+            speakerID =
+                String.replace "/speakers/" ""  model.url.path
+
+            queriedSpeaker: Maybe Speaker
+            queriedSpeaker =
+                List.head (List.filter (\aSpeaker -> aSpeaker.id == speakerID) speakers)
+        in
+
+        case queriedSpeaker of
+            Just speaker ->
+                speakerIndividualSection speaker
+            Nothing ->
+                mainContent
     else
         mainContent
 
@@ -245,13 +261,21 @@ grantsInfoSection =
 
 generateSpeakerColumn: Speaker -> Html Msg
 generateSpeakerColumn speaker =
+    let
+        talkHiglightHTML: Html Msg
+        talkHiglightHTML =
+            if speaker.talk.name /= "" then
+                a [href ("/speakers/" ++ speaker.id), target "_self", class "highlight talk"] [text speaker.talk.name]
+            else
+                span [] []
+    in
     div [class "speaker columns"] [
         div [class "speaker__profile_img is-half column", style "background-image" ( "url(%PUBLIC_URL%" ++ speaker.imgPath ++ ")"), style "background-position" "top center"] [
             h3 [] [text speaker.name]
         ]
         , div [class "speaker__bio is-half column"] [
             div [class "speaker__social"]  speaker.social
-            , div [class "highlights"] (highlightsHTML speaker)
+            , div [class "highlights"] [talkHiglightHTML, highlightsHTML speaker]
             , div [] speaker.bio
             ]
     ]
@@ -441,7 +465,7 @@ speakerIndividualSection speaker =
                                     div [class "speaker stand-alone columns"] [
                                         div [class "speaker__bio is-full column"] [
                                             div [class "speaker__social"] speaker.social
-                                            , div [class "highlights"] (highlightsHTML speaker)
+                                            , div [class "highlights"] [ highlightsHTML speaker ]
                                             , div [] speaker.bio
                                             , h3 [] [text speaker.talk.name]
                                             , div [] speaker.talk.description
@@ -454,14 +478,14 @@ speakerIndividualSection speaker =
     ]
 
 
-highlightsHTML: Speaker -> List (Html Msg)
+highlightsHTML: Speaker -> Html Msg
 highlightsHTML speaker =
     if speaker.isCoPresenter then
-        [span [class "highlight info small"] [text "Co-Presenter"]]
+        span [class "highlight info small"] [text "Co-Presenter"]
     else if speaker.isKeyNote then
-        [span [class "highlight"] [text "Keynote Speaker"]]
+        span [class "highlight"] [text "Keynote Speaker"]
     else
-        [span [] []]
+        span [] []
 
 ---- PROGRAM ----
 

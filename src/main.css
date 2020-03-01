@@ -446,7 +446,10 @@ nav.menu {
       margin-right: 0px; }
     .highlights .highlight.talk {
       background: #266bbd;
-      color: #ffffff; }
+      color: #ffffff;
+      transition: .3s background ease-in-out; }
+      .highlights .highlight.talk:hover, .highlights .highlight.talk:focus {
+        background: #e73c4e; }
     .highlights .highlight.small {
       padding: 3px 10px;
       font-size: 14px; }
