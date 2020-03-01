@@ -9,7 +9,45 @@ import Html.Events exposing (onClick)
 import Task
 import Url exposing (Url)
 
+type alias Speaker =
+    {
+    id: String
+    , name: String
+    , imgPath: String
+    , bio: List (Html Msg)
+    , talk: Talk
+    , isKeyNote: Bool
+    , isCoPresenter: Bool
+    , social: List (Html Msg)
+    }
 
+type alias Talk =
+    {
+        name: String
+       ,description: List (Html Msg)
+    }
+
+yonatan: Speaker
+yonatan = {
+               id = "yonatan-kogan"
+               , imgPath = "/images/speakers/yonatan.jpg"
+               , name =  "Yonatan Kogan"
+               , bio = [ p [] [text "Yonatan is originally from San Francisco and now lives in Columbia, SC. He is a Senior Software Engineer at ActBlue, an online fundraising platform for Democratic candidates up and down the ballot, progressive organizations, and nonprofits. He previously worked at Tock, a Chicago-based restaurant reservations company, Optimizely, an A/B testing platform, and Romotive, a Sequoia-backed robotics startup. He is also a founding member of GenderAvenger, a community dedicated to ensuring women are represented in the public dialog."]
+                         ,p [] [text "Outside of work, Yonatan enjoys cooking, biking, sci-fi, watching Jeopardy, and working to improve his community."]
+                ]
+               , talk = {
+                    name = "Put Your Model in the Cloud"
+                    ,description = [
+                        p [] [text "Yonatan is originally from San Francisco and now lives in Columbia, SC. He is a Senior Software Engineer at ActBlue, an online fundraising platform for Democratic candidates up and down the ballot, progressive organizations, and nonprofits. He previously worked at Tock, a Chicago-based restaurant reservations company, Optimizely, an A/B testing platform, and Romotive, a Sequoia-backed robotics startup. He is also a founding member of GenderAvenger, a community dedicated to ensuring women are represented in the public dialog."]
+                    ]
+               }
+               , isCoPresenter = True
+               , isKeyNote = False
+               , social =  [
+                    a [href "https://github.com/yjkogan", target "_blank"] [span [class "fab fa-github"] []]
+                    , a [href "https://twitter.com/yjkogan", target "_blank"] [span [class "fab fa-twitter"] []]
+                ]
+               }
 
 ---- MODEL ----
 
@@ -83,6 +121,10 @@ sponsorshipPath : String
 sponsorshipPath =
     "/sponsorship"
 
+speakerPath : String -> String
+speakerPath speakerId =
+    "/speakers/" ++ speakerId
+
 
 view : Model -> Html Msg
 view model =
@@ -92,6 +134,8 @@ view model =
     else if model.url.path == sponsorshipPath then
         sponsorship
 
+    else if model.url.path == speakerPath yonatan.id then
+        speakerIndividualSection yonatan
     else
         mainContent
 
@@ -126,7 +170,6 @@ homeContent =
             ]
         , div [ class "ribbon" ] [ text "Chicago ❀ May 1, 2020" ]
         ]
-
 
 detailsContent : Html Msg
 detailsContent =
@@ -184,7 +227,7 @@ speakersContent =
                                 ,a [href "https://twitter.com/yjkogan", target "_blank"] [span [class "fab fa-twitter"] []]
                             ]
                             , div [class "highlights"] [
-                                span [class "highlight talk"] [text "Put your Model in the Cloud"]
+                                a [class "highlight talk", href ("/speakers/" ++ yonatan.id), target "_self"] [text "Put your Model in the Cloud"]
                                 , span [class "highlight info small"] [text "Co-Presenter"]
                             ]
                             , p [] [text "Yonatan is originally from San Francisco and now lives in Columbia, SC. He is a Senior Software Engineer at ActBlue, an online fundraising platform for Democratic candidates up and down the ballot, progressive organizations, and nonprofits. He previously worked at Tock, a Chicago-based restaurant reservations company, Optimizely, an A/B testing platform, and Romotive, a Sequoia-backed robotics startup. He is also a founding member of GenderAvenger, a community dedicated to ensuring women are represented in the public dialog."]
@@ -370,6 +413,40 @@ sponsorship =
                 ]
             )
         ]
+
+speakerIndividualSection : Speaker -> Html Msg
+speakerIndividualSection speaker =
+    let
+        highlightsHTML: List (Html Msg)
+        highlightsHTML =
+            if speaker.isCoPresenter then
+                [span [class "highlight info small"] [text "Co-Presenter"]]
+            else if speaker.isKeyNote then
+                [span [class "highlight"] [text "Keynote Speaker"]]
+            else
+                [span [] []]
+
+    in
+    main_ [ class "page--stand-alone" ] [
+        section
+            [id "speakers", class "page--stand-alone__speaker"]
+                        [div [class "content"]
+                                [ h1 [class "callout stand-alone left"] [text speaker.name]
+                                 , div [class "speakers"] [
+                                    div [class "speaker stand-alone columns"] [
+                                        div [class "speaker__bio is-full column"] [
+                                            div [class "speaker__social"] speaker.social
+                                            , div [class "highlights"] highlightsHTML
+                                            , div [] speaker.bio
+                                            , h3 [] [text speaker.talk.name]
+                                            , div [] speaker.talk.description
+
+                                            ]
+                                    ]
+                                 ]
+                                ]
+                        ]
+    ]
 
 
 

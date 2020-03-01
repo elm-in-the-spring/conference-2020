@@ -386,14 +386,27 @@ nav.menu {
       font-weight: bold; }
       .speaker__bio a:hover, .speaker__bio a:focus {
         color: #e73c4e; }
-  .speaker.has-only-bio h3 {
+  .speaker.stand-alone h3 {
     font-family: "Londrina Solid", cursive;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-size: 1.5rem;
-    color: #000000; }
-  .speaker.has-only-bio .speaker__bio {
-    border-left: 3px solid #000000; }
+    color: #266bbd;
+    margin-top: 1.5rem; }
+  .speaker.stand-alone .speaker__social a {
+    color: #266bbd;
+    transition: .3s color ease-in-out; }
+    .speaker.stand-alone .speaker__social a :hover, .speaker.stand-alone .speaker__social a:focus {
+      color: #e73c4e; }
+  .speaker.stand-alone .speaker__bio {
+    border-left: 3px solid #000000;
+    padding-bottom: 40px; }
+    @media (max-width: 769px) {
+      .speaker.stand-alone .speaker__bio {
+        padding-bottom: 30px; } }
+    @media (max-width: 576px) {
+      .speaker.stand-alone .speaker__bio {
+        padding-bottom: 20px; } }
   .speaker__social {
     margin-bottom: 20px; }
     .speaker__social a {
@@ -494,6 +507,15 @@ h1.callout {
   width: 100%;
   text-align: center;
   position: relative; }
+  h1.callout.stand-alone {
+    max-width: 60%; }
+    @media (max-width: 769px) {
+      h1.callout.stand-alone {
+        max-width: 75%; } }
+    @media (max-width: 576px) {
+      h1.callout.stand-alone {
+        max-width: 95%;
+        margin-left: auto !important; } }
   h1.callout.left {
     margin: 0 auto 0 -40px; }
     h1.callout.left:after {
@@ -651,6 +673,10 @@ footer {
       color: #ffffff; }
       #newsletter a:hover:after {
         background: #000000; }
+
+.page--stand-alone__speaker {
+  min-height: 100vh;
+  position: relative; }
 
 .page--stand-alone {
   color: #000000; }

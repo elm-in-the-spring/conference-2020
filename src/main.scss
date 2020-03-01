@@ -453,16 +453,33 @@ $ribbonSize: 0.5em;
       }
     }
   }
-  &.has-only-bio{
+  &.stand-alone{
     h3{
       font-family: $londrina;
       text-transform: uppercase;
       letter-spacing: 2px;
       font-size: 1.5rem;
-      color: #000000;
+      color: $theme-dark-blue;
+      margin-top: 1.5rem;
+    }
+    .speaker__social{
+      a{
+        color: $theme-dark-blue;
+        transition: .3s color ease-in-out;
+        :hover, &:focus{
+          color: $theme-darker-pink;
+        }
+      }
     }
     .speaker__bio{
       border-left: 3px solid #000000;
+      padding-bottom: 40px;
+      @include md{
+        padding-bottom: 30px;
+      }
+      @include sm{
+        padding-bottom: 20px;
+      }
     }
   }
   &__social{
@@ -587,6 +604,16 @@ h1.callout{
   width: 100%;
   text-align: center;
   position: relative;
+  &.stand-alone{
+    max-width: 60%;
+    @include md{
+      max-width: 75%;
+    }
+    @include sm{
+      max-width: 95%;
+      margin-left: auto !important;
+    }
+  }
   &.left{
     margin:0 auto 0 -40px;
     &:after{
@@ -782,6 +809,11 @@ footer{
       }
     }
   }
+}
+
+.page--stand-alone__speaker{
+  min-height: 100vh;
+  position: relative;
 }
 
 .page--stand-alone{
