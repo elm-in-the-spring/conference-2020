@@ -359,8 +359,9 @@ nav.menu {
       padding: 7px 15px;
       border-top: 3px solid #000000;
       border-left: 3px solid #000000;
+      border-bottom: 3px solid #000000;
       position: absolute;
-      bottom: 0;
+      bottom: -3px;
       right: 0;
       font-family: "Londrina Solid", cursive;
       text-transform: uppercase;
