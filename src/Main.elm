@@ -4,7 +4,7 @@ import Browser exposing (UrlRequest)
 import Browser.Dom
 import Browser.Navigation
 import Html exposing (Html, a, div, footer, h1, h2, h3, h5, iframe, img, li, main_, nav, p, section, span, text, ul)
-import Html.Attributes exposing (alt, class, href, id, src, style, target)
+import Html.Attributes exposing (alt, class, href, id, src, style, target, title)
 import Html.Events exposing (onClick)
 import Task
 import List
@@ -17,6 +17,7 @@ type alias Speaker =
     id: String
     , name: String
     , imgPath: String
+    , imgPostion: String
     , bio: List (Html Msg)
     , talk: Talk
     , isKeyNote: Bool
@@ -35,11 +36,14 @@ emma: Speaker
 emma = {
                id = "emma-cunningham"
                , imgPath = "/images/speakers/emma.jpg"
+               , imgPostion = "top center"
                , name =  "Emma Cunningham"
                , bio = [ p [] [text "Emma Cunningham is a formal semanticist turned software engineer who currently is interested in thinking about distributed systems, data pipeline tooling, data visualization, and optimizing queries both for speed and semantic value. As a former linguist, they often think about how expressive type systems, reliable error messaging, and higher order logic can help solve these concerns in a maintainable and scalable manner. As a human being, their passions are in cooperation, abolition, magic, fermentation, descriptivist grammars, and a just transition away from extractive economies."]]
                , talk = {
                     name = ""
-                    ,description = [span [] []]
+                    , description = [
+                        span [] []
+                    ]
                }
                , isCoPresenter = False
                , isKeyNote = True
@@ -53,6 +57,7 @@ yonatan: Speaker
 yonatan = {
                id = "yonatan-kogan"
                , imgPath = "/images/speakers/yonatan.jpg"
+               , imgPostion = "top center"
                , name =  "Yonatan Kogan"
                , bio = [ p [] [text "Yonatan is originally from San Francisco and now lives in Columbia, SC. He is a Senior Software Engineer at ActBlue, an online fundraising platform for Democratic candidates up and down the ballot, progressive organizations, and nonprofits. He previously worked at Tock, a Chicago-based restaurant reservations company, Optimizely, an A/B testing platform, and Romotive, a Sequoia-backed robotics startup. He is also a founding member of GenderAvenger, a community dedicated to ensuring women are represented in the public dialog."]
                          ,p [] [text "Outside of work, Yonatan enjoys cooking, biking, sci-fi, watching Jeopardy, and working to improve his community."]
@@ -60,7 +65,7 @@ yonatan = {
                , talk = {
                     name = "Put Your Model in the Cloud"
                     ,description = [
-                        p [] [text "Yonatan is originally from San Francisco and now lives in Columbia, SC. He is a Senior Software Engineer at ActBlue, an online fundraising platform for Democratic candidates up and down the ballot, progressive organizations, and nonprofits. He previously worked at Tock, a Chicago-based restaurant reservations company, Optimizely, an A/B testing platform, and Romotive, a Sequoia-backed robotics startup. He is also a founding member of GenderAvenger, a community dedicated to ensuring women are represented in the public dialog."]
+                        span [] []
                     ]
                }
                , isCoPresenter = True
@@ -75,6 +80,7 @@ jacob: Speaker
 jacob = {
                id = "jacob-matthews"
                , imgPath = "/images/speakers/jacob.jpg"
+               , imgPostion = "top center"
                , name =  "Jacob Matthews"
                , bio = [
                     p [] [text "Jacob Matthews is a senior staff software engineer at Tock. Before becoming a professional programmer, he was a computer scientist who studied functional programming. He gravitated to Elm as a way of combining these two interests. When he's not programming, Jacob likes performing improv and playing with his baby. "]
@@ -92,9 +98,111 @@ jacob = {
                 ]
                }
 
+jeremy: Speaker
+jeremy = {
+               id = "jeremy-fairbank"
+               , imgPath = "/images/speakers/jeremy.jpg"
+               , imgPostion = "top center"
+               , name =  "Jeremy Fairbank"
+               , bio = [
+                    p [] [text "Jeremy Fairbank is the author of Programming Elm from the Pragmatic Programmers.  He is a software engineer and consultant at Test Double, where he helps improve how the world builds software. He loves working in Elm whenever he has the opportunity and helping other engineers discover how awesome Elm is."]
+                    , p [] [text "Besides that, he enjoys running, hiking, singing, playing guitar, and relaxing on the beach."]
+               ]
+               , talk = {
+                    name = ""
+                    ,description = [
+                        span [] []
+                    ]
+               }
+               , isCoPresenter = False
+               , isKeyNote = False
+               , social =  [
+                  span [] []
+                ]
+               }
+
+tom: Speaker
+tom = {
+               id = "tom-davies"
+               , imgPath = "/images/speakers/tom.jpg"
+               , imgPostion = "80% center"
+               , name =  "Tom Davies"
+               , bio = [
+                    p [] [text "Tom is an engineer at Concordium, where he is working on an Elm-like programming language for their new blockchain. Tom believes in a holistic approach to software engineering which values good error messages and a healthy community as much as shipping new features."]
+               ]
+               , talk = {
+                    name = ""
+                    ,description = [
+                        span [] []
+                    ]
+               }
+               , isCoPresenter = False
+               , isKeyNote = False
+               , social =  [
+                  span [] []
+                ]
+               }
+
+dillon: Speaker
+dillon = {
+               id = "dillion-kearns"
+               , imgPath = "/images/speakers/dillon.jpg"
+               , imgPostion = "top center"
+               , name =  "Dillion Kearnss"
+               , bio = [
+                    p [] [text "Dillon is the author of elm-graphql, elm-pages, and most recently, an extensible markdown parser designed for Elm. As the founder of Incremental Elm Consulting, his mission is to set Elm teams up for success as their frontends grow. His philosophy is that \"if it's broken, your compiler should be the first to tell you.\""]
+                    ,p [] [text "Currently, he is focused on helping Chicago-based company HubTran as they grow their Elm codebase, as well as building out a set of tools to make Elm the best option available for JAMstack development!"]
+                    ,p [] [text "In his free time, he loves backpacking and playing the piano."]
+               ]
+               , talk = {
+                    name = ""
+                    ,description = [
+                        span [] []
+                    ]
+               }
+               , isCoPresenter = False
+               , isKeyNote = False
+               , social =  [
+                  span [] []
+                ]
+               }
+
+abadi: Speaker
+abadi = {
+               id = "abadi-kurniawan"
+               , imgPath = "/images/speakers/abadi.jpg"
+               , imgPostion = "top center"
+               , name =  "Abadi Kurniawan"
+               , bio = [
+                    p [] [
+                     span [] [text "Abadi is a full stack engineer at 1904labs, where he spends most of his innovation hours hacking on Elm and learning new programming languages. He's a co-organizer of the St. Louis Elm Meetup. He's the author of several Elm packages such as "]
+                     , a [href "https://github.com/abadi199/datetimepicker/", target "_blank"] [text "DateTimePicker"]
+                     , span [] [text ","]
+                     , a [href "https://github.com/abadi199/elm-input-extra", target "_blank"] [text " Input Extra"]
+                     , span [] [text ","]
+                     , a [href "https://github.com/abadi199/elm-creditcard", target "_blank"] [text " Credit Card"]
+                     , span [] [text ","]
+                     , a [href "https://github.com/abadi199/intl-phone-input", target "_blank"] [text " Intl Phone Input"],
+                     span [] [text "."]
+                   ]
+                   , p [] [text "In his free time, he enjoys playing Minecraft with his son, travelling, and watching movies with his family."]
+               ]
+               , talk = {
+                    name = ""
+                    ,description = [
+                        span [] []
+                    ]
+               }
+               , isCoPresenter = False
+               , isKeyNote = False
+               , social =  [
+                  span [] []
+                ]
+               }
+
 speakers: List Speaker
 speakers =
-    [emma, yonatan, jacob]
+    [emma, yonatan, jacob, jeremy, tom, dillon, abadi]
 
 
 ---- MODEL ----
@@ -270,8 +378,11 @@ generateSpeakerColumn speaker =
                 span [] []
     in
     div [class "speaker columns"] [
-        div [class "speaker__profile_img is-half column", style "background-image" ( "url(%PUBLIC_URL%" ++ speaker.imgPath ++ ")"), style "background-position" "top center"] [
-            h3 [] [text speaker.name]
+        div [class "speaker__profile_img is-half column", style "background-image" ( "url(%PUBLIC_URL%" ++ speaker.imgPath ++ ")"), style "background-position" speaker.imgPostion, title speaker.name] [
+            a [href ("/speakers/" ++ speaker.id), target "_self", class "speaker-link", title speaker.name] [],
+            a [href ("/speakers/" ++ speaker.id), target "_self"] [
+                h3 [] [text speaker.name]
+            ]
         ]
         , div [class "speaker__bio is-half column"] [
             div [class "speaker__social"]  speaker.social
@@ -283,13 +394,12 @@ generateSpeakerColumn speaker =
 appendedSpeakerSectionColumn: Html Msg
 appendedSpeakerSectionColumn =
     div [class "speaker columns"] [
-        div [class "speaker__profile_img is-half column", style "background-image" "url(%PUBLIC_URL%/images/curtains.jpg)", style "background-position" "50% 80%"] [
-            h3 [] [text "You?"]
+        div [class "speaker__profile_img is-half column speaker__profile_img speaker__profile_img--appended", style "background-image" "url(%PUBLIC_URL%/images/curtains.jpg)", style "background-position" "50% 80%"] [
+            h3 [] [text "Stay Tuned!"]
         ]
         , div [class "speaker__bio is-half column"] [
             div [class "highlights"] [span [class "highlight"] [text "More Speakers Coming Soon!"]]
-            , p [] [text "Want to share your idea? ", a [href "https://www.papercall.io/elm-in-the-spring-2020", target "_blank"] [text "Submit a talk!"]]
-            , p [] [text "Elm in the Spring welcomes new and seasoned speakers to give a talk in Chicago! Each talk slot is 30 minutes. We’re reserving a minimum of two (2) talk spots for first-time speakers."]
+            , p [] [text "We are happy to announce our current list of speakers, stay tuned for next slate of speakers and more information on the talks!"]
             , p [] [text "Want to see last year’s talks? Check out our ", a [href "https://www.youtube.com/elminthespring", target "_blank"] [text "Youtube channel!"]]
             ]
     ]
@@ -336,7 +446,7 @@ navigationContent =
                 [ a [ href "#speakers", onClick (ScrollTo "speakers") ] [ text "Speakers" ]
                 ]
             , li []
-                [ a [ href "https://www.papercall.io/elm-in-the-spring-2020", target "_blank" ] [ text "Submit A Talk" ]
+                [ a [ href "https://www.youtube.com/elminthespring", target "_blank" ] [ text "2019 Talks" ]
                 ]
             ]
         ]
