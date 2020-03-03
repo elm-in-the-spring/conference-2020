@@ -265,7 +265,7 @@ andy = {
 
 speakers: List Speaker
 speakers =
-    [emma, yonatan, jacob, jeremy, tom, dillon, abadi, richard, andy]
+    [emma, tom, jeremy, richard, dillon, yonatan, abadi, jacob , andy]
 
 
 ---- MODEL ----
