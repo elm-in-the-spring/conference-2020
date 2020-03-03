@@ -80,7 +80,7 @@ jacob: Speaker
 jacob = {
                id = "jacob-matthews"
                , imgPath = "/images/speakers/jacob.jpg"
-               , imgPostion = "top center"
+               , imgPostion = "50% 15%"
                , name =  "Jacob Matthews"
                , bio = [
                     p [] [text "Jacob Matthews is a senior staff software engineer at Tock. Before becoming a professional programmer, he was a computer scientist who studied functional programming. He gravitated to Elm as a way of combining these two interests. When he's not programming, Jacob likes performing improv and playing with his baby. "]
@@ -102,7 +102,7 @@ jeremy: Speaker
 jeremy = {
                id = "jeremy-fairbank"
                , imgPath = "/images/speakers/jeremy.jpg"
-               , imgPostion = "top center"
+               , imgPostion = "50% 20%"
                , name =  "Jeremy Fairbank"
                , bio = [
                     p [] [
@@ -153,7 +153,7 @@ dillon: Speaker
 dillon = {
                id = "dillion-kearns"
                , imgPath = "/images/speakers/dillon.jpg"
-               , imgPostion = "top center"
+               , imgPostion = "50% 15%"
                , name =  "Dillion Kearns"
                , bio = [
                     p [] [text "Dillon is the author of "
@@ -450,7 +450,7 @@ generateSpeakerColumn speaker =
         , div [class "speaker__bio is-half column"] [
             div [class "speaker__social"]  speaker.social
             , div [class "highlights"] [talkHiglightHTML, highlightsHTML speaker]
-            , div [] speaker.bio
+            , div [] speaker.talk.description
             ]
     ]
 
