@@ -154,7 +154,7 @@ dillon = {
                id = "dillion-kearns"
                , imgPath = "/images/speakers/dillon.jpg"
                , imgPostion = "top center"
-               , name =  "Dillion Kearnss"
+               , name =  "Dillion Kearns"
                , bio = [
                     p [] [text "Dillon is the author of "
                         , a [href "https://package.elm-lang.org/packages/dillonkearns/elm-graphql/latest", target "_blank"] [text "elm-graphql"]
