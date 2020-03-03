@@ -148,7 +148,7 @@ dillon = {
                id = "dillion-kearns"
                , imgPath = "/images/speakers/dillon.jpg"
                , imgPostion = "top center"
-               , name =  "Dillion Kearnss"
+               , name =  "Dillion Kearns"
                , bio = [
                     p [] [text "Dillon is the author of elm-graphql, elm-pages, and most recently, an extensible markdown parser designed for Elm. As the founder of Incremental Elm Consulting, his mission is to set Elm teams up for success as their frontends grow. His philosophy is that \"if it's broken, your compiler should be the first to tell you.\""]
                     ,p [] [text "Currently, he is focused on helping Chicago-based company HubTran as they grow their Elm codebase, as well as building out a set of tools to make Elm the best option available for JAMstack development!"]
