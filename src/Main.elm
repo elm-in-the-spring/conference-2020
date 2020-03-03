@@ -105,19 +105,24 @@ jeremy = {
                , imgPostion = "top center"
                , name =  "Jeremy Fairbank"
                , bio = [
-                    p [] [text "Jeremy Fairbank is the author of Programming Elm from the Pragmatic Programmers.  He is a software engineer and consultant at Test Double, where he helps improve how the world builds software. He loves working in Elm whenever he has the opportunity and helping other engineers discover how awesome Elm is."]
+                    p [] [
+                        span [] [text "Jeremy Fairbank is the author of "]
+                        , a [href "https://pragprog.com/book/jfelm/programming-elm", target "_blank"] [text "Programming Elm from the Pragmatic Programmers"]
+                        , span [] [text ". He is a software engineer and consultant at Test Double, where he helps improve how the world builds software. He loves working in Elm whenever he has the opportunity and helping other engineers discover how awesome Elm is."]
+                    ]
                     , p [] [text "Besides that, he enjoys running, hiking, singing, playing guitar, and relaxing on the beach."]
                ]
                , talk = {
-                    name = ""
+                    name = "Building Elm Frameworks by Building Command Line Elm Apps"
                     ,description = [
-                        span [] []
+                        p [] [text "Elm makes building web apps fun. What if building command line apps was the same? In this talk, discover a tool for making command line Elm apps that embraces The Elm Architecture and elm-ui-like layouts. More importantly, learn the challenges of making frameworks that adapt Elm to other contexts."]
                     ]
                }
                , isCoPresenter = False
                , isKeyNote = False
                , social =  [
-                  span [] []
+                    a [href "http://blog.jeremyfairbank.com", target "_blank"] [span [class "fa fa-globe"] []]
+                    , a [href "https://twitter.com/elpapapollo", target "_blank"] [span [class "fab fa-twitter"] []]
                 ]
                }
 
@@ -131,15 +136,16 @@ tom = {
                     p [] [text "Tom is an engineer at Concordium, where he is working on an Elm-like programming language for their new blockchain. Tom believes in a holistic approach to software engineering which values good error messages and a healthy community as much as shipping new features."]
                ]
                , talk = {
-                    name = ""
+                    name = "The Elm compiler: An Earnest Teammate"
                     ,description = [
-                        span [] []
+                        p [] [text "The Elm compiler is really smart and generates code that runs super fast!"]
+                        , p [] [text "In this talk I'll share my love for the compiler and give you a whirlwind tour of its inner workings and a taste of some of the neat tricks that it employs behind the scenes to make your experience as great as it is."]
                     ]
                }
                , isCoPresenter = False
                , isKeyNote = False
                , social =  [
-                  span [] []
+                   a [href "https://twitter.com/todavies5", target "_blank"] [span [class "fab fa-twitter"] []]
                 ]
                }
 
@@ -150,20 +156,27 @@ dillon = {
                , imgPostion = "top center"
                , name =  "Dillion Kearnss"
                , bio = [
-                    p [] [text "Dillon is the author of elm-graphql, elm-pages, and most recently, an extensible markdown parser designed for Elm. As the founder of Incremental Elm Consulting, his mission is to set Elm teams up for success as their frontends grow. His philosophy is that \"if it's broken, your compiler should be the first to tell you.\""]
+                    p [] [text "Dillon is the author of "
+                        , a [href "https://package.elm-lang.org/packages/dillonkearns/elm-graphql/latest", target "_blank"] [text "elm-graphql"]
+                        , span [] [text ", "]
+                        , a [href "https://elm-pages.com/", target "_blank" ] [text "elm-pages"]
+                        , span [] [text ", and most recently, an extensible markdown parser designed for Elm. As the founder of Incremental Elm Consulting, his mission is to set Elm teams up for success as their frontends grow. His philosophy is that \"if it's broken, your compiler should be the first to tell you.\""]
+                    ]
                     ,p [] [text "Currently, he is focused on helping Chicago-based company HubTran as they grow their Elm codebase, as well as building out a set of tools to make Elm the best option available for JAMstack development!"]
                     ,p [] [text "In his free time, he loves backpacking and playing the piano."]
                ]
                , talk = {
-                    name = ""
+                    name = "It Takes a Community to Build a Markdown Parser"
                     ,description = [
-                        span [] []
+                        p [] [text "What makes a great Elm Package? A strong core concept, driven by disciplined vision. And a great execution, driven by thoughtful tests and tooling."]
+                        , p [] [text "This talk will reveal the secret sauce of a markdown parsing library, which enhances both core ingredients: tapping into an awesome community."]
                     ]
                }
                , isCoPresenter = False
                , isKeyNote = False
                , social =  [
-                  span [] []
+                   a [href "https://incrementalelm.com", target "_blank"] [span [class "fa fa-globe"] []]
+                   , a [href "https://twitter.com/dillontkearns", target "_blank"] [span [class "fab fa-twitter"] []]
                 ]
                }
 
@@ -188,21 +201,71 @@ abadi = {
                    , p [] [text "In his free time, he enjoys playing Minecraft with his son, travelling, and watching movies with his family."]
                ]
                , talk = {
-                    name = ""
+                    name = "Animation Without Code"
                     ,description = [
-                        span [] []
+                        p [] [text "Building animations in Elm can be challenging. A simple transition animation between 2 pages in Elm requires keeping the model of both pages until the transition is finished. I will share my experiment of using web standards to create a simple animation system in Elm with very little amount of code."]
                     ]
                }
                , isCoPresenter = False
                , isKeyNote = False
                , social =  [
-                  span [] []
+                  a [href "https://github.com/abadi199", target "_blank"] [span [class "fab fa-github"] []]
+                  , a [href "https://twitter.com/abadikurniawan", target "_blank"] [span [class "fab fa-twitter"] []]
+                ]
+               }
+
+richard: Speaker
+richard = {
+               id = "richard-feldman"
+               , imgPath = "/images/speakers/richard.jpg"
+               , imgPostion = "top center"
+               , name =  "Richard Feldman"
+               , bio = [
+                    p [] [text "Richard is the author of "
+                        , a [href "https://www.manning.com/books/elm-in-action?a_aid=elm_in_action&a_bid=b15edc5c", target "_blank"] [text "Elm in Action"]
+                        , span [] [text " from Manning Publications, and the instructor for the Frontend Masters Introduction to Elm and Advanced Elm workshops. When he’s not writing about Elm, teaching Elm, speaking about Elm, working on his Elm open-source projects, or using Elm professionally at NoRedInk, you can find him hosting the Philadelphia Elm meetup."]
+                        ]
+                   , p [] [text "Some have said he’s “into Elm,” but he’s not sure where they got that wild idea."]
+               ]
+               , talk = {
+                    name = "Maintainable Performance Optimization in Elm"
+                    ,description = [
+                        p [] [text "Delightful software runs fast, but performance optimizations often reduce code clarity. How do we balance the two? How often should we use Html.Lazy? What about tricks like (x - y == 0)? How should performance considerations affect API design? This talk explores the tradeoffs around these decisions."]
+                    ]
+               }
+               , isCoPresenter = False
+               , isKeyNote = False
+               , social =  [
+                   a [href "https://www.manning.com/books/elm-in-action?a_aid=elm_in_action&a_bid=b15edc5c", target "_blank"] [span [class "fa fa-globe"] []]
+                   , a [href "https://twitter.com/dillontkearns", target "_blank"] [span [class "fab fa-twitter"] []]
+                ]
+               }
+
+andy: Speaker
+andy = {
+               id = "andy-thompson"
+               , imgPath = "/images/speakers/andy.jpg"
+               , imgPostion = "top center"
+               , name =  "Andy Thompson"
+               , bio = [
+                    p [] []
+               ]
+               , talk = {
+                    name = ""
+                    ,description = [
+                        p [] []
+                    ]
+               }
+               , isCoPresenter = False
+               , isKeyNote = False
+               , social =  [
+                    span [] []
                 ]
                }
 
 speakers: List Speaker
 speakers =
-    [emma, yonatan, jacob, jeremy, tom, dillon, abadi]
+    [emma, yonatan, jacob, jeremy, tom, dillon, abadi, richard, andy]
 
 
 ---- MODEL ----
