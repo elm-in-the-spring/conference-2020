@@ -461,8 +461,8 @@ generateSpeakerColumn speaker =
     in
     div [ class "speaker columns" ]
         [ div [ class "speaker__profile_img is-half column", style "background-image" ("url(%PUBLIC_URL%" ++ speaker.imgPath ++ ")"), style "background-position" speaker.imgPostion, title speaker.name ]
-            [ a [ href ("/speakers/" ++ speaker.id), target "_self", class "speaker-link", title speaker.name ] []
-            , a [ href ("/speakers/" ++ speaker.id), target "_self" ]
+            [ a [ href <| speakerPath speaker.id, onClick (NavigateTo <| speakerPath speaker.id), class "speaker-link", title speaker.name ] []
+            , a [ href <| speakerPath speaker.id, onClick (NavigateTo <| speakerPath speaker.id) ]
                 [ h3 [] [ text speaker.name ]
                 ]
             ]
