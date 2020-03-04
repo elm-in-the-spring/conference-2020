@@ -1,9 +1,9 @@
-module Main exposing (Model, Msg(..), codeOfConduct, init, main, update, view)
+module Main exposing (main)
 
 import Browser exposing (UrlRequest)
 import Browser.Dom
 import Browser.Navigation
-import Html exposing (Html, a, div, footer, h1, h2, h3, h5, iframe, img, li, main_, nav, p, section, span, text, ul)
+import Html exposing (Html, a, div, footer, h1, h2, h3, iframe, img, li, main_, nav, p, section, span, text, ul)
 import Html.Attributes exposing (alt, class, href, id, src, style, target, title)
 import Html.Events exposing (onClick)
 import List
