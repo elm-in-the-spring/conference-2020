@@ -652,23 +652,25 @@ sponsorship =
 speakerIndividualSection : Speaker -> Html Msg
 speakerIndividualSection speaker =
     main_ [ class "page--stand-alone" ]
-        [ section
-            [ id "speakers", class "page--stand-alone__speaker" ]
-            [ div [ class "content" ]
-                [ h1 [ class "callout stand-alone left" ] [ text speaker.name ]
-                , div [ class "speakers" ]
-                    [ div [ class "speaker stand-alone columns" ]
-                        [ div [ class "speaker__bio is-full column" ]
-                            [ div [ class "speaker__social" ] speaker.social
-                            , div [ class "highlights" ] [ highlightsHTML speaker ]
-                            , div [] speaker.bio
-                            , h3 [] [ text speaker.talk.name ]
-                            , div [] speaker.talk.description
+        [ wrapContentInStandAlonePage
+            (section
+                [ id "speakers", class "page--stand-alone__speaker" ]
+                [ div [ class "content" ]
+                    [ h1 [ class "callout stand-alone left" ] [ text speaker.name ]
+                    , div [ class "speakers" ]
+                        [ div [ class "speaker stand-alone columns" ]
+                            [ div [ class "speaker__bio is-full column" ]
+                                [ div [ class "speaker__social" ] speaker.social
+                                , div [ class "highlights" ] [ highlightsHTML speaker ]
+                                , div [] speaker.bio
+                                , h3 [] [ text speaker.talk.name ]
+                                , div [] speaker.talk.description
+                                ]
                             ]
                         ]
                     ]
                 ]
-            ]
+            )
         ]
 
 
