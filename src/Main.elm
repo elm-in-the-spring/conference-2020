@@ -1,57 +1,56 @@
-module Main exposing (Model, Msg(..), codeOfConduct, init, main, update, view)
+module Main exposing (main)
 
 import Browser exposing (UrlRequest)
 import Browser.Dom
 import Browser.Navigation
-import Html exposing (Html, a, div, footer, h1, h2, h3, h5, iframe, img, li, main_, nav, p, section, span, text, ul)
+import Html exposing (Html, a, div, footer, h1, h2, h3, iframe, img, li, main_, nav, p, section, span, text, ul)
 import Html.Attributes exposing (alt, class, href, id, src, style, target, title)
 import Html.Events exposing (onClick)
-import Task
 import List
-import Url exposing (Url)
 import String
-import Maybe
+import Task
+import Url exposing (Url)
+
 
 type alias Speaker =
-    {
-    id: String
-    , name: String
-    , imgPath: String
-    , imgPostion: String
-    , bio: List (Html Msg)
-    , talk: Talk
-    , isKeyNote: Bool
-    , isCoPresenter: Bool
-    , social: List (Html Msg)
+    { id : String
+    , name : String
+    , imgPath : String
+    , imgPostion : String
+    , bio : List (Html Msg)
+    , talk : Talk
+    , isKeyNote : Bool
+    , isCoPresenter : Bool
+    , social : List (Html Msg)
     }
+
 
 type alias Talk =
-    {
-        name: String
-       ,description: List (Html Msg)
+    { name : String
+    , description : List (Html Msg)
     }
 
 
-emma: Speaker
-emma = {
-               id = "emma-cunningham"
-               , imgPath = "/images/speakers/emma.jpg"
-               , imgPostion = "top center"
-               , name =  "Emma Cunningham"
-               , bio = [ p [] [text "Emma Cunningham is a formal semanticist turned software engineer who currently is interested in thinking about distributed systems, data pipeline tooling, data visualization, and optimizing queries both for speed and semantic value. As a former linguist, they often think about how expressive type systems, reliable error messaging, and higher order logic can help solve these concerns in a maintainable and scalable manner. As a human being, their passions are in cooperation, abolition, magic, fermentation, descriptivist grammars, and a just transition away from extractive economies."]]
-               , talk = {
-                    name = ""
-                    , description = [
-                        span [] []
-                    ]
-               }
-               , isCoPresenter = False
-               , isKeyNote = True
-               , social =  [
-                   a [href "https://gitlab.com/emmacunningham", target "_blank"] [span [class "fab fa-gitlab"] []]
-                   , a [href "https://twitter.com/emmatcu", target "_blank"] [span [class "fab fa-twitter"] []]
-               ]
-               }
+emma : Speaker
+emma =
+    { id = "emma-cunningham"
+    , imgPath = "/images/speakers/emma.jpg"
+    , imgPostion = "top center"
+    , name = "Emma Cunningham"
+    , bio = [ p [] [ text "Emma Cunningham is a formal semanticist turned software engineer who currently is interested in thinking about distributed systems, data pipeline tooling, data visualization, and optimizing queries both for speed and semantic value. As a former linguist, they often think about how expressive type systems, reliable error messaging, and higher order logic can help solve these concerns in a maintainable and scalable manner. As a human being, their passions are in cooperation, abolition, magic, fermentation, descriptivist grammars, and a just transition away from extractive economies." ] ]
+    , talk =
+        { name = ""
+        , description =
+            [ span [] []
+            ]
+        }
+    , isCoPresenter = False
+    , isKeyNote = True
+    , social =
+        [ a [ href "https://gitlab.com/emmacunningham", target "_blank" ] [ span [ class "fab fa-gitlab" ] [] ]
+        , a [ href "https://twitter.com/emmatcu", target "_blank" ] [ span [ class "fab fa-twitter" ] [] ]
+        ]
+    }
 
 yonatan: Speaker
 yonatan = {
@@ -98,174 +97,183 @@ jacob = {
                 ]
                }
 
-jeremy: Speaker
-jeremy = {
-               id = "jeremy-fairbank"
-               , imgPath = "/images/speakers/jeremy.jpg"
-               , imgPostion = "50% 20%"
-               , name =  "Jeremy Fairbank"
-               , bio = [
-                    p [] [
-                        span [] [text "Jeremy Fairbank is the author of "]
-                        , a [href "https://pragprog.com/book/jfelm/programming-elm", target "_blank"] [text "Programming Elm from the Pragmatic Programmers"]
-                        , span [] [text ". He is a software engineer and consultant at Test Double, where he helps improve how the world builds software. He loves working in Elm whenever he has the opportunity and helping other engineers discover how awesome Elm is."]
-                    ]
-                    , p [] [text "Besides that, he enjoys running, hiking, singing, playing guitar, and relaxing on the beach."]
-               ]
-               , talk = {
-                    name = "Building Elm Frameworks by Building Command Line Elm Apps"
-                    ,description = [
-                        p [] [text "Elm makes building web apps fun. What if building command line apps was the same? In this talk, discover a tool for making command line Elm apps that embraces The Elm Architecture and elm-ui-like layouts. More importantly, learn the challenges of making frameworks that adapt Elm to other contexts."]
-                    ]
-               }
-               , isCoPresenter = False
-               , isKeyNote = False
-               , social =  [
-                    a [href "http://blog.jeremyfairbank.com", target "_blank"] [span [class "fa fa-globe"] []]
-                    , a [href "https://twitter.com/elpapapollo", target "_blank"] [span [class "fab fa-twitter"] []]
-                ]
-               }
+jeremy : Speaker
+jeremy =
+    { id = "jeremy-fairbank"
+    , imgPath = "/images/speakers/jeremy.jpg"
+    , imgPostion = "50% 20%"
+    , name = "Jeremy Fairbank"
+    , bio =
+        [ p []
+            [ span [] [ text "Jeremy Fairbank is the author of " ]
+            , a [ href "https://pragprog.com/book/jfelm/programming-elm", target "_blank" ] [ text "Programming Elm from the Pragmatic Programmers" ]
+            , span [] [ text ". He is a software engineer and consultant at Test Double, where he helps improve how the world builds software. He loves working in Elm whenever he has the opportunity and helping other engineers discover how awesome Elm is." ]
+            ]
+        , p [] [ text "Besides that, he enjoys running, hiking, singing, playing guitar, and relaxing on the beach." ]
+        ]
+    , talk =
+        { name = "Building Elm Frameworks by Building Command Line Elm Apps"
+        , description =
+            [ p [] [ text "Elm makes building web apps fun. What if building command line apps was the same? In this talk, discover a tool for making command line Elm apps that embraces The Elm Architecture and elm-ui-like layouts. More importantly, learn the challenges of making frameworks that adapt Elm to other contexts." ]
+            ]
+        }
+    , isCoPresenter = False
+    , isKeyNote = False
+    , social =
+        [ a [ href "http://blog.jeremyfairbank.com", target "_blank" ] [ span [ class "fa fa-globe" ] [] ]
+        , a [ href "https://twitter.com/elpapapollo", target "_blank" ] [ span [ class "fab fa-twitter" ] [] ]
+        ]
+    }
 
-tom: Speaker
-tom = {
-               id = "tom-davies"
-               , imgPath = "/images/speakers/tom.jpg"
-               , imgPostion = "80% center"
-               , name =  "Tom Davies"
-               , bio = [
-                    p [] [text "Tom is an engineer at Concordium, where he is working on an Elm-like programming language for their new blockchain. Tom believes in a holistic approach to software engineering which values good error messages and a healthy community as much as shipping new features."]
-               ]
-               , talk = {
-                    name = "The Elm compiler: An Earnest Teammate"
-                    ,description = [
-                        p [] [text "The Elm compiler is really smart and generates code that runs super fast!"]
-                        , p [] [text "In this talk I'll share my love for the compiler and give you a whirlwind tour of its inner workings and a taste of some of the neat tricks that it employs behind the scenes to make your experience as great as it is."]
-                    ]
-               }
-               , isCoPresenter = False
-               , isKeyNote = False
-               , social =  [
-                   a [href "https://twitter.com/todavies5", target "_blank"] [span [class "fab fa-twitter"] []]
-                ]
-               }
 
-dillon: Speaker
-dillon = {
-               id = "dillion-kearns"
-               , imgPath = "/images/speakers/dillon.jpg"
-               , imgPostion = "50% 15%"
-               , name =  "Dillion Kearns"
-               , bio = [
-                    p [] [text "Dillon is the author of "
-                        , a [href "https://package.elm-lang.org/packages/dillonkearns/elm-graphql/latest", target "_blank"] [text "elm-graphql"]
-                        , span [] [text ", "]
-                        , a [href "https://elm-pages.com/", target "_blank" ] [text "elm-pages"]
-                        , span [] [text ", and most recently, an extensible markdown parser designed for Elm. As the founder of Incremental Elm Consulting, his mission is to set Elm teams up for success as their frontends grow. His philosophy is that \"if it's broken, your compiler should be the first to tell you.\""]
-                    ]
-                    ,p [] [text "Currently, he is focused on helping Chicago-based company HubTran as they grow their Elm codebase, as well as building out a set of tools to make Elm the best option available for JAMstack development!"]
-                    ,p [] [text "In his free time, he loves backpacking and playing the piano."]
-               ]
-               , talk = {
-                    name = "It Takes a Community to Build a Markdown Parser"
-                    ,description = [
-                        p [] [text "What makes a great Elm Package? A strong core concept, driven by disciplined vision. And a great execution, driven by thoughtful tests and tooling."]
-                        , p [] [text "This talk will reveal the secret sauce of a markdown parsing library, which enhances both core ingredients: tapping into an awesome community."]
-                    ]
-               }
-               , isCoPresenter = False
-               , isKeyNote = False
-               , social =  [
-                   a [href "https://incrementalelm.com", target "_blank"] [span [class "fa fa-globe"] []]
-                   , a [href "https://twitter.com/dillontkearns", target "_blank"] [span [class "fab fa-twitter"] []]
-                ]
-               }
+tom : Speaker
+tom =
+    { id = "tom-davies"
+    , imgPath = "/images/speakers/tom.jpg"
+    , imgPostion = "80% center"
+    , name = "Tom Davies"
+    , bio =
+        [ p [] [ text "Tom is an engineer at Concordium, where he is working on an Elm-like programming language for their new blockchain. Tom believes in a holistic approach to software engineering which values good error messages and a healthy community as much as shipping new features." ]
+        ]
+    , talk =
+        { name = "The Elm compiler: An Earnest Teammate"
+        , description =
+            [ p [] [ text "The Elm compiler is really smart and generates code that runs super fast!" ]
+            , p [] [ text "In this talk I'll share my love for the compiler and give you a whirlwind tour of its inner workings and a taste of some of the neat tricks that it employs behind the scenes to make your experience as great as it is." ]
+            ]
+        }
+    , isCoPresenter = False
+    , isKeyNote = False
+    , social =
+        [ a [ href "https://twitter.com/todavies5", target "_blank" ] [ span [ class "fab fa-twitter" ] [] ]
+        ]
+    }
 
-abadi: Speaker
-abadi = {
-               id = "abadi-kurniawan"
-               , imgPath = "/images/speakers/abadi.jpg"
-               , imgPostion = "top center"
-               , name =  "Abadi Kurniawan"
-               , bio = [
-                    p [] [
-                     span [] [text "Abadi is a full stack engineer at 1904labs, where he spends most of his innovation hours hacking on Elm and learning new programming languages. He's a co-organizer of the St. Louis Elm Meetup. He's the author of several Elm packages such as "]
-                     , a [href "https://github.com/abadi199/datetimepicker/", target "_blank"] [text "DateTimePicker"]
-                     , span [] [text ","]
-                     , a [href "https://github.com/abadi199/elm-input-extra", target "_blank"] [text " Input Extra"]
-                     , span [] [text ","]
-                     , a [href "https://github.com/abadi199/elm-creditcard", target "_blank"] [text " Credit Card"]
-                     , span [] [text ","]
-                     , a [href "https://github.com/abadi199/intl-phone-input", target "_blank"] [text " Intl Phone Input"],
-                     span [] [text "."]
-                   ]
-                   , p [] [text "In his free time, he enjoys playing Minecraft with his son, travelling, and watching movies with his family."]
-               ]
-               , talk = {
-                    name = "Animation Without Code"
-                    ,description = [
-                        p [] [text "Building animations in Elm can be challenging. A simple transition animation between 2 pages in Elm requires keeping the model of both pages until the transition is finished. I will share my experiment of using web standards to create a simple animation system in Elm with very little amount of code."]
-                    ]
-               }
-               , isCoPresenter = False
-               , isKeyNote = False
-               , social =  [
-                  a [href "https://github.com/abadi199", target "_blank"] [span [class "fab fa-github"] []]
-                  , a [href "https://twitter.com/abadikurniawan", target "_blank"] [span [class "fab fa-twitter"] []]
-                ]
-               }
 
-richard: Speaker
-richard = {
-               id = "richard-feldman"
-               , imgPath = "/images/speakers/richard.jpg"
-               , imgPostion = "top center"
-               , name =  "Richard Feldman"
-               , bio = [
-                    p [] [text "Richard is the author of "
-                        , a [href "https://www.manning.com/books/elm-in-action?a_aid=elm_in_action&a_bid=b15edc5c", target "_blank"] [text "Elm in Action"]
-                        , span [] [text " from Manning Publications, and the instructor for the Frontend Masters Introduction to Elm and Advanced Elm workshops. When he’s not writing about Elm, teaching Elm, speaking about Elm, working on his Elm open-source projects, or using Elm professionally at NoRedInk, you can find him hosting the Philadelphia Elm meetup."]
-                        ]
-                   , p [] [text "Some have said he’s “into Elm,” but he’s not sure where they got that wild idea."]
-               ]
-               , talk = {
-                    name = "Maintainable Performance Optimization in Elm"
-                    ,description = [
-                        p [] [text "Delightful software runs fast, but performance optimizations often reduce code clarity. How do we balance the two? How often should we use Html.Lazy? What about tricks like (x - y == 0)? How should performance considerations affect API design? This talk explores the tradeoffs around these decisions."]
-                    ]
-               }
-               , isCoPresenter = False
-               , isKeyNote = False
-               , social =  [
-                   a [href "https://www.manning.com/books/elm-in-action?a_aid=elm_in_action&a_bid=b15edc5c", target "_blank"] [span [class "fa fa-globe"] []]
-                   , a [href "https://twitter.com/dillontkearns", target "_blank"] [span [class "fab fa-twitter"] []]
-                ]
-               }
+dillon : Speaker
+dillon =
+    { id = "dillion-kearns"
+    , imgPath = "/images/speakers/dillon.jpg"
+    , imgPostion = "50% 15%"
+    , name = "Dillion Kearns"
+    , bio =
+        [ p []
+            [ text "Dillon is the author of "
+            , a [ href "https://package.elm-lang.org/packages/dillonkearns/elm-graphql/latest", target "_blank" ] [ text "elm-graphql" ]
+            , span [] [ text ", " ]
+            , a [ href "https://elm-pages.com/", target "_blank" ] [ text "elm-pages" ]
+            , span [] [ text ", and most recently, an extensible markdown parser designed for Elm. As the founder of Incremental Elm Consulting, his mission is to set Elm teams up for success as their frontends grow. His philosophy is that \"if it's broken, your compiler should be the first to tell you.\"" ]
+            ]
+        , p [] [ text "Currently, he is focused on helping Chicago-based company HubTran as they grow their Elm codebase, as well as building out a set of tools to make Elm the best option available for JAMstack development!" ]
+        , p [] [ text "In his free time, he loves backpacking and playing the piano." ]
+        ]
+    , talk =
+        { name = "It Takes a Community to Build a Markdown Parser"
+        , description =
+            [ p [] [ text "What makes a great Elm Package? A strong core concept, driven by disciplined vision. And a great execution, driven by thoughtful tests and tooling." ]
+            , p [] [ text "This talk will reveal the secret sauce of a markdown parsing library, which enhances both core ingredients: tapping into an awesome community." ]
+            ]
+        }
+    , isCoPresenter = False
+    , isKeyNote = False
+    , social =
+        [ a [ href "https://incrementalelm.com", target "_blank" ] [ span [ class "fa fa-globe" ] [] ]
+        , a [ href "https://twitter.com/dillontkearns", target "_blank" ] [ span [ class "fab fa-twitter" ] [] ]
+        ]
+    }
 
-andy: Speaker
-andy = {
-               id = "andy-thompson"
-               , imgPath = "/images/speakers/andy.jpg"
-               , imgPostion = "top center"
-               , name =  "Andy Thompson"
-               , bio = [
-                    p [] []
-               ]
-               , talk = {
-                    name = ""
-                    ,description = [
-                        p [] []
-                    ]
-               }
-               , isCoPresenter = False
-               , isKeyNote = False
-               , social =  [
-                    span [] []
-                ]
-               }
 
-speakers: List Speaker
+abadi : Speaker
+abadi =
+    { id = "abadi-kurniawan"
+    , imgPath = "/images/speakers/abadi.jpg"
+    , imgPostion = "top center"
+    , name = "Abadi Kurniawan"
+    , bio =
+        [ p []
+            [ span [] [ text "Abadi is a full stack engineer at 1904labs, where he spends most of his innovation hours hacking on Elm and learning new programming languages. He's a co-organizer of the St. Louis Elm Meetup. He's the author of several Elm packages such as " ]
+            , a [ href "https://github.com/abadi199/datetimepicker/", target "_blank" ] [ text "DateTimePicker" ]
+            , span [] [ text "," ]
+            , a [ href "https://github.com/abadi199/elm-input-extra", target "_blank" ] [ text " Input Extra" ]
+            , span [] [ text "," ]
+            , a [ href "https://github.com/abadi199/elm-creditcard", target "_blank" ] [ text " Credit Card" ]
+            , span [] [ text "," ]
+            , a [ href "https://github.com/abadi199/intl-phone-input", target "_blank" ] [ text " Intl Phone Input" ]
+            , span [] [ text "." ]
+            ]
+        , p [] [ text "In his free time, he enjoys playing Minecraft with his son, travelling, and watching movies with his family." ]
+        ]
+    , talk =
+        { name = "Animation Without Code"
+        , description =
+            [ p [] [ text "Building animations in Elm can be challenging. A simple transition animation between 2 pages in Elm requires keeping the model of both pages until the transition is finished. I will share my experiment of using web standards to create a simple animation system in Elm with very little amount of code." ]
+            ]
+        }
+    , isCoPresenter = False
+    , isKeyNote = False
+    , social =
+        [ a [ href "https://github.com/abadi199", target "_blank" ] [ span [ class "fab fa-github" ] [] ]
+        , a [ href "https://twitter.com/abadikurniawan", target "_blank" ] [ span [ class "fab fa-twitter" ] [] ]
+        ]
+    }
+
+
+richard : Speaker
+richard =
+    { id = "richard-feldman"
+    , imgPath = "/images/speakers/richard.jpg"
+    , imgPostion = "top center"
+    , name = "Richard Feldman"
+    , bio =
+        [ p []
+            [ text "Richard is the author of "
+            , a [ href "https://www.manning.com/books/elm-in-action?a_aid=elm_in_action&a_bid=b15edc5c", target "_blank" ] [ text "Elm in Action" ]
+            , span [] [ text " from Manning Publications, and the instructor for the Frontend Masters Introduction to Elm and Advanced Elm workshops. When he’s not writing about Elm, teaching Elm, speaking about Elm, working on his Elm open-source projects, or using Elm professionally at NoRedInk, you can find him hosting the Philadelphia Elm meetup." ]
+            ]
+        , p [] [ text "Some have said he’s “into Elm,” but he’s not sure where they got that wild idea." ]
+        ]
+    , talk =
+        { name = "Maintainable Performance Optimization in Elm"
+        , description =
+            [ p [] [ text "Delightful software runs fast, but performance optimizations often reduce code clarity. How do we balance the two? How often should we use Html.Lazy? What about tricks like (x - y == 0)? How should performance considerations affect API design? This talk explores the tradeoffs around these decisions." ]
+            ]
+        }
+    , isCoPresenter = False
+    , isKeyNote = False
+    , social =
+        [ a [ href "https://www.manning.com/books/elm-in-action?a_aid=elm_in_action&a_bid=b15edc5c", target "_blank" ] [ span [ class "fa fa-globe" ] [] ]
+        , a [ href "https://twitter.com/dillontkearns", target "_blank" ] [ span [ class "fab fa-twitter" ] [] ]
+        ]
+    }
+
+
+andy : Speaker
+andy =
+    { id = "andy-thompson"
+    , imgPath = "/images/speakers/andy.jpg"
+    , imgPostion = "top center"
+    , name = "Andy Thompson"
+    , bio =
+        [ p [] []
+        ]
+    , talk =
+        { name = ""
+        , description =
+            [ p [] []
+            ]
+        }
+    , isCoPresenter = False
+    , isKeyNote = False
+    , social =
+        [ span [] []
+        ]
+    }
+
+
+speakers : List Speaker
 speakers =
-    [emma, tom, jeremy, richard, dillon, yonatan, abadi, jacob , andy]
+    [ emma, tom, jeremy, richard, dillon, yonatan, abadi, jacob, andy ]
+
 
 
 ---- MODEL ----
@@ -298,11 +306,13 @@ scrollTo : Float -> Float -> Cmd Msg
 scrollTo x y =
     Task.attempt (\_ -> NoOp) (Browser.Dom.setViewport x y)
 
+
 scrollToById : String -> Cmd Msg
 scrollToById id =
     Browser.Dom.getElement id
-      |> Task.andThen (\info -> Browser.Dom.setViewport 0 info.element.y)
-      |> Task.attempt (\_ -> NoOp)
+        |> Task.andThen (\info -> Browser.Dom.setViewport 0 info.element.y)
+        |> Task.attempt (\_ -> NoOp)
+
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
@@ -314,19 +324,20 @@ update msg model =
             ( { model | url = url }, Cmd.none )
 
         NavigateTo urlString ->
-            ( model, Cmd.batch [ scrollTo 0.0 0.0 , Browser.Navigation.pushUrl model.navigationKey urlString] )
+            ( model, Cmd.batch [ scrollTo 0.0 0.0, Browser.Navigation.pushUrl model.navigationKey urlString ] )
 
         ScrollTo id ->
             ( model
             , Cmd.batch
-                [
-                    Browser.Navigation.pushUrl model.navigationKey ("../#" ++ id)
-                    , scrollToById id
+                [ Browser.Navigation.pushUrl model.navigationKey ("../#" ++ id)
+                , scrollToById id
                 ]
             )
 
         NoOp ->
-             ( model, Cmd.none )
+            ( model, Cmd.none )
+
+
 
 ---- VIEW ----
 
@@ -339,6 +350,7 @@ codeOfConductPath =
 sponsorshipPath : String
 sponsorshipPath =
     "/sponsorship"
+
 
 speakerPath : String -> String
 speakerPath speakerId =
@@ -355,20 +367,21 @@ view model =
 
     else if String.contains "speakers" model.url.path then
         let
-            speakerID: String
+            speakerID : String
             speakerID =
-                String.replace "/speakers/" ""  model.url.path
+                String.replace "/speakers/" "" model.url.path
 
-            queriedSpeaker: Maybe Speaker
+            queriedSpeaker : Maybe Speaker
             queriedSpeaker =
                 List.head (List.filter (\aSpeaker -> aSpeaker.id == speakerID) speakers)
         in
-
         case queriedSpeaker of
             Just speaker ->
                 speakerIndividualSection speaker
+
             Nothing ->
                 mainContent
+
     else
         mainContent
 
@@ -376,7 +389,7 @@ view model =
 mainContent : Html Msg
 mainContent =
     main_
-        [ ]
+        []
         [ navigationContent
         , homeContent
         , detailsContent
@@ -404,6 +417,7 @@ homeContent =
         , div [ class "ribbon" ] [ text "Chicago ❀ May 1, 2020" ]
         ]
 
+
 detailsContent : Html Msg
 detailsContent =
     section
@@ -430,51 +444,54 @@ grantsInfoSection =
         ]
 
 
-generateSpeakerColumn: Speaker -> Html Msg
+generateSpeakerColumn : Speaker -> Html Msg
 generateSpeakerColumn speaker =
     let
-        talkHiglightHTML: Html Msg
+        talkHiglightHTML : Html Msg
         talkHiglightHTML =
             if speaker.talk.name /= "" then
-                a [href ("/speakers/" ++ speaker.id), target "_self", class "highlight talk"] [text speaker.talk.name]
+                a [ href ("/speakers/" ++ speaker.id), target "_self", class "highlight talk" ] [ text speaker.talk.name ]
+
             else
                 span [] []
     in
-    div [class "speaker columns"] [
-        div [class "speaker__profile_img is-half column", style "background-image" ( "url(%PUBLIC_URL%" ++ speaker.imgPath ++ ")"), style "background-position" speaker.imgPostion, title speaker.name] [
-            a [href ("/speakers/" ++ speaker.id), target "_self", class "speaker-link", title speaker.name] [],
-            a [href ("/speakers/" ++ speaker.id), target "_self"] [
-                h3 [] [text speaker.name]
+    div [ class "speaker columns" ]
+        [ div [ class "speaker__profile_img is-half column", style "background-image" ("url(%PUBLIC_URL%" ++ speaker.imgPath ++ ")"), style "background-position" speaker.imgPostion, title speaker.name ]
+            [ a [ href <| speakerPath speaker.id, onClick (NavigateTo <| speakerPath speaker.id), class "speaker-link", title speaker.name ] []
+            , a [ href <| speakerPath speaker.id, onClick (NavigateTo <| speakerPath speaker.id) ]
+                [ h3 [] [ text speaker.name ]
+                ]
             ]
-        ]
-        , div [class "speaker__bio is-half column"] [
-            div [class "speaker__social"]  speaker.social
-            , div [class "highlights"] [talkHiglightHTML, highlightsHTML speaker]
+        , div [ class "speaker__bio is-half column" ]
+            [ div [ class "speaker__social" ] speaker.social
+            , div [ class "highlights" ] [ talkHiglightHTML, highlightsHTML speaker ]
             , div [] speaker.talk.description
             ]
-    ]
-
-appendedSpeakerSectionColumn: Html Msg
-appendedSpeakerSectionColumn =
-    div [class "speaker columns"] [
-        div [class "speaker__profile_img is-half column speaker__profile_img speaker__profile_img--appended", style "background-image" "url(%PUBLIC_URL%/images/curtains.jpg)", style "background-position" "50% 80%"] [
-            h3 [] [text "Stay Tuned!"]
         ]
-        , div [class "speaker__bio is-half column"] [
-            div [class "highlights"] [span [class "highlight"] [text "More Speakers Coming Soon!"]]
-            , p [] [text "We are happy to announce our current list of speakers, stay tuned for next slate of speakers and more information on the talks!"]
-            , p [] [text "Want to see last year’s talks? Check out our ", a [href "https://www.youtube.com/elminthespring", target "_blank"] [text "Youtube channel!"]]
+
+
+appendedSpeakerSectionColumn : Html Msg
+appendedSpeakerSectionColumn =
+    div [ class "speaker columns" ]
+        [ div [ class "speaker__profile_img is-half column speaker__profile_img speaker__profile_img--appended", style "background-image" "url(%PUBLIC_URL%/images/curtains.jpg)", style "background-position" "50% 80%" ]
+            [ h3 [] [ text "Stay Tuned!" ]
             ]
-    ]
+        , div [ class "speaker__bio is-half column" ]
+            [ div [ class "highlights" ] [ span [ class "highlight" ] [ text "More Speakers Coming Soon!" ] ]
+            , p [] [ text "We are happy to announce our current list of speakers, stay tuned for next slate of speakers and more information on the talks!" ]
+            , p [] [ text "Want to see last year’s talks? Check out our ", a [ href "https://www.youtube.com/elminthespring", target "_blank" ] [ text "Youtube channel!" ] ]
+            ]
+        ]
+
 
 speakersContent : Html Msg
 speakersContent =
     section
-        [id "speakers"]
-        [div [class "content"]
-                [ h1 [class "callout left"] [text "Speakers"]
-                 , div [class "speakers"] (List.append (List.map  generateSpeakerColumn speakers) [appendedSpeakerSectionColumn] )
-                ]
+        [ id "speakers" ]
+        [ div [ class "content" ]
+            [ h1 [ class "callout left" ] [ text "Speakers" ]
+            , div [ class "speakers" ] (List.append (List.map generateSpeakerColumn speakers) [ appendedSpeakerSectionColumn ])
+            ]
         ]
 
 
@@ -627,38 +644,59 @@ sponsorship =
             )
         ]
 
+
 speakerIndividualSection : Speaker -> Html Msg
 speakerIndividualSection speaker =
-    main_ [ class "page--stand-alone" ] [
-        section
-            [id "speakers", class "page--stand-alone__speaker"]
-                        [div [class "content"]
-                                [ h1 [class "callout stand-alone left"] [text speaker.name]
-                                 , div [class "speakers"] [
-                                    div [class "speaker stand-alone columns"] [
-                                        div [class "speaker__bio is-full column"] [
-                                            div [class "speaker__social"] speaker.social
-                                            , div [class "highlights"] [ highlightsHTML speaker ]
-                                            , div [] speaker.bio
-                                            , h3 [] [text speaker.talk.name]
-                                            , div [] speaker.talk.description
+    let
+        levelLayoutClass =
+            if List.length speaker.social > 1 then
+                "is-flex-tablet"
 
-                                            ]
-                                    ]
-                                 ]
-                                ]
+            else
+                "is-mobile"
+    in
+    main_ [ class "page--stand-alone" ]
+        [ wrapContentInStandAlonePage
+            (section
+                [ id "speakers", class "page--stand-alone__speaker" ]
+                [ div [ class "content" ]
+                    [ h1 [ class "callout stand-alone left" ]
+                        [ span [ class ("level " ++ levelLayoutClass) ]
+                            [ div [ class "level-item" ]
+                                [ text speaker.name ]
+                            , div [ class "level-item speaker__social" ]
+                                speaker.social
+                            ]
                         ]
-    ]
+                    , div [ class "speakers" ]
+                        [ div [ class "speaker stand-alone columns" ]
+                            [ div [ class "speaker__profile_img is-half column", style "background-image" ("url(%PUBLIC_URL%" ++ speaker.imgPath ++ ")"), style "background-position" speaker.imgPostion, title speaker.name ] []
+                            , div [ class "speaker__bio is-half column" ]
+                                [ div [ class "highlights" ] [ highlightsHTML speaker ]
+                                , div [] speaker.bio
+                                , h3 [] [ text speaker.talk.name ]
+                                , div [] speaker.talk.description
+                                ]
+                            ]
+                        ]
+                    ]
+                ]
+            )
+        ]
 
 
-highlightsHTML: Speaker -> Html Msg
+highlightsHTML : Speaker -> Html Msg
 highlightsHTML speaker =
     if speaker.isCoPresenter then
-        span [class "highlight info small"] [text "Co-Presenter"]
+        span [ class "highlight info small" ] [ text "Co-Presenter" ]
+
     else if speaker.isKeyNote then
-        span [class "highlight"] [text "Keynote Speaker"]
+        span [ class "highlight" ] [ text "Keynote Speaker" ]
+
     else
         span [] []
+
+
 
 ---- PROGRAM ----
 

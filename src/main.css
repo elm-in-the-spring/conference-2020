@@ -407,7 +407,6 @@ nav.menu {
     .speaker.stand-alone .speaker__social a:hover, .speaker.stand-alone .speaker__social a:focus {
       color: #e73c4e; }
   .speaker.stand-alone .speaker__bio {
-    border-left: 3px solid #000000;
     padding-bottom: 40px; }
     @media (max-width: 769px) {
       .speaker.stand-alone .speaker__bio {
@@ -423,14 +422,22 @@ nav.menu {
   .speaker__social {
     margin-bottom: 20px; }
     .speaker__social a {
-      color: #266bbd;
       font-size: 1.3em;
+      color: #266bbd;
       padding-right: 10px;
       transition: color .3s ease-in-out; }
       .speaker__social a:last-child {
         padding-right: 0; }
       .speaker__social a:hover, .speaker__social a:focus {
         color: #e73c4e; }
+    .speaker__social.level-item {
+      margin-bottom: 0; }
+      .speaker__social.level-item a {
+        font-size: 0.8em;
+        color: #e73c4e;
+        padding-right: 15px; }
+        .speaker__social.level-item a:hover, .speaker__social.level-item a:focus {
+          color: #266bbd; }
   .speaker::after {
     background: #ffffff;
     width: 100%;
