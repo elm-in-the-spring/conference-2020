@@ -3,9 +3,8 @@ module Main exposing (main)
 import Browser exposing (UrlRequest)
 import Browser.Dom
 import Browser.Navigation as Nav
-import Html exposing (Html, a, div, footer, h1, h2, h3, h5, iframe, img, li, main_, nav, p, section, span, text, ul)
+import Html exposing (Html, a, div, footer, h1, h2, h3, iframe, img, li, main_, nav, p, section, span, text, ul)
 import Html.Attributes exposing (alt, class, href, id, src, style, target)
-import Html.Events exposing (onClick)
 import Maybe.Extra as Maybe
 import Route exposing (Route(..))
 import Task
@@ -35,25 +34,20 @@ type Msg
     = NoOp
     | OnUrlRequest UrlRequest
     | OnUrlChange Url
-      -- | NavigateTo String
     | ScrollTo (Result Browser.Dom.Error Browser.Dom.Element)
-
-
-scrollTo : Float -> Float -> Cmd Msg
-scrollTo x y =
-    Task.attempt (\_ -> NoOp) (Browser.Dom.setViewport x y)
-
-
-scrollToById : String -> Cmd Msg
-scrollToById id =
-    Browser.Dom.getElement id
-        |> Task.andThen (\info -> Browser.Dom.setViewport 0 info.element.y)
-        |> Task.attempt (\_ -> NoOp)
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
+        OnUrlRequest urlRequest ->
+            case urlRequest of
+                Browser.Internal url ->
+                    ( model, Nav.pushUrl model.navigationKey (Url.toString url) )
+
+                Browser.External href ->
+                    ( model, Nav.load href )
+
         OnUrlChange url ->
             ( { model | route = Route.fromUrl url }
             , [ Browser.Dom.getElement >> Task.attempt ScrollTo
@@ -63,49 +57,26 @@ update msg model =
                 |> Cmd.batch
             )
 
-        OnUrlRequest urlRequest ->
-            case urlRequest of
-                Browser.Internal url ->
-                    ( model, Nav.pushUrl model.navigationKey (Url.toString url) )
-
-                Browser.External href ->
-                    ( model, Nav.load href )
-
-        -- OnUrlRequest _ ->
-        --     ( model, Cmd.none )
-        -- OnUrlChange url ->
-        --     ( { model | url = url }, Cmd.none )
-        -- NavigateTo urlString ->
-        --     ( model, Cmd.batch [ scrollTo 0.0 0.0 , Nav.pushUrl model.navigationKey urlString] )
-        -- ScrollTo (Ok id) ->
-        --     ( model
-        --     , Cmd.batch
-        --         [ Nav.pushUrl model.navigationKey ("../#" ++ id)
-        --         , scrollToById id
-        --         ]
-        --     )
         ScrollTo (Ok element) ->
             ( model
             , Browser.Dom.setViewport element.element.x element.element.y
                 |> Task.perform (\_ -> NoOp)
             )
 
-        ScrollTo (Err error) ->
+        ScrollTo (Err _) ->
             ( model, Cmd.none )
 
-        -- ScrollTo (Ok element) ->
-        --     ( model
-        --     , Browser.Dom.setViewport element.element.x element.element.y
-        --         |> Task.perform (\_ -> NoOp)
-        --     )
-        -- ScrollTo (Err error) ->
-        --     ( model, Cmd.none )
         NoOp ->
             ( model, Cmd.none )
 
 
 ifFragment maybeFragment applyFunction =
-    Maybe.unwrap Cmd.none applyFunction maybeFragment
+    let
+        defaultPlacementCmd =
+            Browser.Dom.setViewport 0 0
+                |> Task.perform (\_ -> NoOp)
+    in
+    Maybe.unwrap defaultPlacementCmd applyFunction maybeFragment
 
 
 
