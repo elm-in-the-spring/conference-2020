@@ -401,6 +401,7 @@ $ribbonSize: 0.5em;
     margin-bottom: 0;
   }
   &__profile_img{
+    position: relative;
     span{
       color: #000000;
     }
@@ -419,8 +420,9 @@ $ribbonSize: 0.5em;
       padding: 7px 15px;
       border-top: 3px solid #000000;
       border-left: 3px solid #000000;
+      border-bottom: 3px solid #000000;
       position: absolute;
-      bottom: 0;
+      bottom: -3px;
       right: 0;
       font-family: $londrina;
       text-transform: uppercase;
@@ -428,6 +430,14 @@ $ribbonSize: 0.5em;
       font-size: 1.5rem;
       color: #000000;
       margin: 0;
+      transition: .3s background ease-in-out;
+      &:hover, &:focus{
+        background: #000000;
+        color: #ffffff;
+      }
+    }
+    &--appended{
+      min-height: 300px;
     }
   }
   &__bio{
@@ -453,23 +463,46 @@ $ribbonSize: 0.5em;
       }
     }
   }
-  &.has-only-bio{
+  &.stand-alone{
     h3{
       font-family: $londrina;
       text-transform: uppercase;
       letter-spacing: 2px;
       font-size: 1.5rem;
-      color: #000000;
+      color: $theme-dark-blue;
+      margin-top: 1.5rem;
+    }
+    .speaker__social{
+      a{
+        color: $theme-dark-blue;
+        transition: .3s color ease-in-out;
+        &:hover, &:focus{
+          color: $theme-darker-pink;
+        }
+      }
     }
     .speaker__bio{
-      border-left: 3px solid #000000;
+      padding-bottom: 40px;
+      @include md{
+        padding-bottom: 30px;
+      }
+      @include sm{
+        padding-bottom: 20px;
+      }
+      a{
+        color: $theme-dark-blue;
+        transition: .3s color ease-in-out;
+        &:hover, &:focus{
+          color: $theme-darker-pink;
+        }
+      }
     }
   }
   &__social{
     margin-bottom: 20px;
-    a{
-      color: $theme-dark-blue;
+    a {
       font-size: 1.3em;
+      color: $theme-dark-blue;
       padding-right:10px;
       transition: color .3s ease-in-out;
       &:last-child{
@@ -477,6 +510,17 @@ $ribbonSize: 0.5em;
       }
       &:hover, &:focus{
         color: $theme-darker-pink;
+      }
+    }
+    &.level-item {
+      margin-bottom: 0;
+      a {
+        font-size: 0.8em;
+        color: $theme-darker-pink;
+        padding-right:15px;
+        &:hover, &:focus {
+          color: $theme-dark-blue;
+        }
       }
     }
   }
@@ -511,6 +555,10 @@ $ribbonSize: 0.5em;
     &.talk{
       background: $theme-dark-blue;
       color: #ffffff;
+      transition: .3s background ease-in-out;
+      &:hover, &:focus{
+        background: $theme-darker-pink;
+      }
     }
     &.small{
       padding: 3px 10px;
@@ -587,6 +635,16 @@ h1.callout{
   width: 100%;
   text-align: center;
   position: relative;
+  &.stand-alone{
+    max-width: 60%;
+    @include md{
+      max-width: 75%;
+    }
+    @include sm{
+      max-width: 95%;
+      margin-left: auto !important;
+    }
+  }
   &.left{
     margin:0 auto 0 -40px;
     &:after{
@@ -784,6 +842,11 @@ footer{
   }
 }
 
+.page--stand-alone__speaker{
+  min-height: 100vh;
+  position: relative;
+}
+
 .page--stand-alone{
   .container--wrapper{
     padding: 60px 20px 80px 20px;
@@ -893,4 +956,12 @@ footer{
     }
   }
 
+}
+
+.speaker-link{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top:0;
+  left:0;
 }
