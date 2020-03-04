@@ -65,7 +65,7 @@ yonatan = {
                , talk = {
                     name = "Put Your Model in the Cloud"
                     ,description = [
-                        span [] []
+                        p [] [text "Shared workspace applications need an agreed on view of the world that multiple clients can see and update simultaneously. In this talk we show how we used the Elm architecture in production to share a read/writable Elm model across multiple clients, with minimal server involvement."]
                     ]
                }
                , isCoPresenter = True
@@ -88,7 +88,7 @@ jacob = {
                , talk = {
                     name = "Put Your Model in the Cloud"
                     ,description = [
-                        span [] []
+                        p [] [text "Shared workspace applications need an agreed on view of the world that multiple clients can see and update simultaneously. In this talk we show how we used the Elm architecture in production to share a read/writable Elm model across multiple clients, with minimal server involvement."]
                     ]
                }
                , isCoPresenter = True
