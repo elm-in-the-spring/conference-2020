@@ -651,17 +651,32 @@ sponsorship =
 
 speakerIndividualSection : Speaker -> Html Msg
 speakerIndividualSection speaker =
+    let
+        levelLayoutClass =
+            if List.length speaker.social > 1 then
+                "is-flex-tablet"
+
+            else
+                "is-mobile"
+    in
     main_ [ class "page--stand-alone" ]
         [ wrapContentInStandAlonePage
             (section
                 [ id "speakers", class "page--stand-alone__speaker" ]
                 [ div [ class "content" ]
-                    [ h1 [ class "callout stand-alone left" ] [ text speaker.name ]
+                    [ h1 [ class "callout stand-alone left" ]
+                        [ span [ class ("level " ++ levelLayoutClass) ]
+                            [ div [ class "level-item" ]
+                                [ text speaker.name ]
+                            , div [ class "level-item speaker__social" ]
+                                speaker.social
+                            ]
+                        ]
                     , div [ class "speakers" ]
                         [ div [ class "speaker stand-alone columns" ]
-                            [ div [ class "speaker__bio is-full column" ]
-                                [ div [ class "speaker__social" ] speaker.social
-                                , div [ class "highlights" ] [ highlightsHTML speaker ]
+                            [ div [ class "speaker__profile_img is-half column", style "background-image" ("url(%PUBLIC_URL%" ++ speaker.imgPath ++ ")"), style "background-position" speaker.imgPostion, title speaker.name ] []
+                            , div [ class "speaker__bio is-half column" ]
+                                [ div [ class "highlights" ] [ highlightsHTML speaker ]
                                 , div [] speaker.bio
                                 , h3 [] [ text speaker.talk.name ]
                                 , div [] speaker.talk.description

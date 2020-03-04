@@ -482,7 +482,6 @@ $ribbonSize: 0.5em;
       }
     }
     .speaker__bio{
-      border-left: 3px solid #000000;
       padding-bottom: 40px;
       @include md{
         padding-bottom: 30px;
@@ -501,9 +500,9 @@ $ribbonSize: 0.5em;
   }
   &__social{
     margin-bottom: 20px;
-    a{
-      color: $theme-dark-blue;
+    a {
       font-size: 1.3em;
+      color: $theme-dark-blue;
       padding-right:10px;
       transition: color .3s ease-in-out;
       &:last-child{
@@ -511,6 +510,17 @@ $ribbonSize: 0.5em;
       }
       &:hover, &:focus{
         color: $theme-darker-pink;
+      }
+    }
+    &.level-item {
+      margin-bottom: 0;
+      a {
+        font-size: 0.8em;
+        color: $theme-darker-pink;
+        padding-right:15px;
+        &:hover, &:focus {
+          color: $theme-dark-blue;
+        }
       }
     }
   }
