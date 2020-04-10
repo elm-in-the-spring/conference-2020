@@ -3,7 +3,7 @@ module Main exposing (Model, Msg(..), codeOfConduct, init, main, update, view)
 import Browser exposing (UrlRequest)
 import Browser.Dom
 import Browser.Navigation
-import Html exposing (Html, a, div, footer, h1, h2, h3, h5, iframe, img, li, main_, nav, p, section, span, text, ul)
+import Html exposing (Html, a, div, footer, h1, h2, h3, h5, iframe, img, li, main_, nav, p, section, span, text, u, ul)
 import Html.Attributes exposing (alt, class, href, id, src, style, target)
 import Html.Events exposing (onClick)
 import Task
@@ -41,11 +41,13 @@ scrollTo : Float -> Float -> Cmd Msg
 scrollTo x y =
     Task.attempt (\_ -> NoOp) (Browser.Dom.setViewport x y)
 
+
 scrollToById : String -> Cmd Msg
 scrollToById id =
     Browser.Dom.getElement id
-      |> Task.andThen (\info -> Browser.Dom.setViewport 0 info.element.y)
-      |> Task.attempt (\_ -> NoOp)
+        |> Task.andThen (\info -> Browser.Dom.setViewport 0 info.element.y)
+        |> Task.attempt (\_ -> NoOp)
+
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
@@ -57,19 +59,20 @@ update msg model =
             ( { model | url = url }, Cmd.none )
 
         NavigateTo urlString ->
-            ( model, Cmd.batch [ scrollTo 0.0 0.0 , Browser.Navigation.pushUrl model.navigationKey urlString] )
+            ( model, Cmd.batch [ scrollTo 0.0 0.0, Browser.Navigation.pushUrl model.navigationKey urlString ] )
 
         ScrollTo id ->
             ( model
             , Cmd.batch
-                [
-                    Browser.Navigation.pushUrl model.navigationKey ("../#" ++ id)
-                    , scrollToById id
+                [ Browser.Navigation.pushUrl model.navigationKey ("../#" ++ id)
+                , scrollToById id
                 ]
             )
 
         NoOp ->
-             ( model, Cmd.none )
+            ( model, Cmd.none )
+
+
 
 ---- VIEW ----
 
@@ -99,9 +102,10 @@ view model =
 mainContent : Html Msg
 mainContent =
     main_
-        [ ]
+        []
         [ navigationContent
         , homeContent
+        , coronavirusContent
         , detailsContent
         , divider
         , grantsInfoSection
@@ -124,7 +128,27 @@ homeContent =
             [ h1 [ class "a11y-hidden" ] [ text "Elm In the Spring 2020" ]
             , img [ src "%PUBLIC_URL%/images/hero-logo.png", alt "Elm In the Spring" ] []
             ]
-        , div [ class "ribbon" ] [ text "Chicago ❀ May 1, 2020" ]
+        , div [ class "ribbon" ] [ text "Chicago ❀ TBD" ]
+        ]
+
+
+coronavirusContent : Html Msg
+coronavirusContent =
+    section
+        [ id "coronavirus" ]
+        [ div [ class "content" ]
+            [ h1 [ class "callout right" ] [ text "Elm in the Time of Corona" ]
+            , div [ class "copy" ]
+                [ h2 [] [ text "Elm in the Spring is postponed" ]
+                , p []
+                    [ text "Our top priority is for everyone involved in Elm in the Spring to have a positive experience, and before anything else that means a "
+                    , u [] [ text "safe" ]
+                    , text " experience. Given the pandemic and the critical need to shelter in place to protect each other and ourselves, we have postponed Elm in the Spring."
+                    ]
+                , p [] [ text "Even if the shelter in place order in Illinois were completely lifted on April 30 as currently scheduled, none of us on the Elm in the Spring team would feel comfortable asking either our attendees, our speakers, or our volunteers to travel and spend the day together." ]
+                , p [] [ text "We look forward to getting together to celebrate Elm and the community with all of you in the future. Until then, stay safe and stay home -- we'll see you on the Elm Slack!" ]
+                ]
+            ]
         ]
 
 
@@ -136,10 +160,9 @@ detailsContent =
             [ h1 [ class "callout right" ] [ text "Details" ]
             , div [ class "copy" ]
                 [ h2 [] [ text "All Elm, all day!" ]
-                , p [] [ text "Elm in the Spring is a single-track, single-day conference for developers who love Elm. Whether you’re an Elm expert scaling up your production app or you're just starting out with your first Elm project, join us for a great day of learning, teaching, and community" ]
+                , p [] [ text "Elm in the Spring is a single-track, single-day conference for developers who love Elm. Whether you’re an Elm expert scaling up your production app or you're just starting out with your first Elm project, join us for a great day of learning, teaching, and community." ]
                 , p [] [ text "Elm in the Spring 2020 will take place on Friday, May 1st at the ", a [ href "https://www.google.com/maps?q=Newberry+Library+Chicago", target "_blank", class "animate" ] [ text "Newberry Library" ], span [] [ text " in Chicago." ] ]
                 , p [] [ text "All attendees are expected to observe the conference ", a [ href codeOfConductPath, onClick (NavigateTo codeOfConductPath), class "animate" ] [ text "Code of Conduct" ], span [] [ text "." ] ]
-                , a [ class "btn btn--yellow", href "https://ti.to/elm-in-the-spring/chicago-2020/", target "_blank" ] [ text "Get Your Tickets" ]
                 ]
             ]
         ]
@@ -157,68 +180,68 @@ grantsInfoSection =
 speakersContent : Html Msg
 speakersContent =
     section
-        [id "speakers"]
-        [div [class "content"]
-                [ h1 [class "callout left"] [text "Speakers"]
-                 , div [class "speakers"] [
-                    div [class "speaker columns"] [
-                        div [class "speaker__profile_img is-half column", style "background-image" "url(%PUBLIC_URL%/images/speakers/emma.jpg)", style "background-position" "top center"] [
-                            h3 [] [text "Emma Cunningham"]
+        [ id "speakers" ]
+        [ div [ class "content" ]
+            [ h1 [ class "callout left" ] [ text "Speakers" ]
+            , div [ class "speakers" ]
+                [ div [ class "speaker columns" ]
+                    [ div [ class "speaker__profile_img is-half column", style "background-image" "url(%PUBLIC_URL%/images/speakers/emma.jpg)", style "background-position" "top center" ]
+                        [ h3 [] [ text "Emma Cunningham" ]
                         ]
-                        , div [class "speaker__bio is-half column"] [
-                            div [class "speaker__social"]  [
-                                a [href "https://gitlab.com/emmacunningham", target "_blank"] [span [class "fab fa-gitlab"] []]
-                                , a [href "https://twitter.com/emmatcu", target "_blank"] [span [class "fab fa-twitter"] []]
+                    , div [ class "speaker__bio is-half column" ]
+                        [ div [ class "speaker__social" ]
+                            [ a [ href "https://gitlab.com/emmacunningham", target "_blank" ] [ span [ class "fab fa-gitlab" ] [] ]
+                            , a [ href "https://twitter.com/emmatcu", target "_blank" ] [ span [ class "fab fa-twitter" ] [] ]
                             ]
-                            , div [class "highlights"] [span [class "highlight"] [text "Keynote Speaker"]]
-                            , p [] [text "Emma Cunningham is a formal semanticist turned software engineer who currently is interested in thinking about distributed systems, data pipeline tooling, data visualization, and optimizing queries both for speed and semantic value. As a former linguist, they often think about how expressive type systems, reliable error messaging, and higher order logic can help solve these concerns in a maintainable and scalable manner. As a human being, their passions are in cooperation, abolition, magic, fermentation, descriptivist grammars, and a just transition away from extractive economies."]
-                            ]
-                    ]
-                    , div [class "speaker columns"] [
-                        div [class "speaker__profile_img is-half column", style "background-image" "url(%PUBLIC_URL%/images/speakers/yonatan.jpg)", style "background-position" "top center"] [
-                            h3 [] [text "Yonatan Kogan"]
+                        , div [ class "highlights" ] [ span [ class "highlight" ] [ text "Keynote Speaker" ] ]
+                        , p [] [ text "Emma Cunningham is a formal semanticist turned software engineer who currently is interested in thinking about distributed systems, data pipeline tooling, data visualization, and optimizing queries both for speed and semantic value. As a former linguist, they often think about how expressive type systems, reliable error messaging, and higher order logic can help solve these concerns in a maintainable and scalable manner. As a human being, their passions are in cooperation, abolition, magic, fermentation, descriptivist grammars, and a just transition away from extractive economies." ]
                         ]
-                        , div [class "speaker__bio is-half column"] [
-                            div [class "speaker__social"]  [
-                                a [href "https://github.com/yjkogan", target "_blank"] [span [class "fab fa-github"] []]
-                                ,a [href "https://twitter.com/yjkogan", target "_blank"] [span [class "fab fa-twitter"] []]
-                            ]
-                            , div [class "highlights"] [
-                                span [class "highlight talk"] [text "Put your Model in the Cloud"]
-                                , span [class "highlight info small"] [text "Co-Presenter"]
-                            ]
-                            , p [] [text "Yonatan is originally from San Francisco and now lives in Columbia, SC. He is a Senior Software Engineer at ActBlue, an online fundraising platform for Democratic candidates up and down the ballot, progressive organizations, and nonprofits. He previously worked at Tock, a Chicago-based restaurant reservations company, Optimizely, an A/B testing platform, and Romotive, a Sequoia-backed robotics startup. He is also a founding member of GenderAvenger, a community dedicated to ensuring women are represented in the public dialog."]
-                            , p [] [text "Outside of work, Yonatan enjoys cooking, biking, sci-fi, watching Jeopardy, and working to improve his community."]
-                            ]
                     ]
-                    , div [class "speaker columns"] [
-                        div [class "speaker__profile_img is-half column", style "background-image" "url(%PUBLIC_URL%/images/speakers/jacob.jpg)", style "background-position" "50% 15%"] [
-                            h3 [] [text "Jacob Matthews"]
+                , div [ class "speaker columns" ]
+                    [ div [ class "speaker__profile_img is-half column", style "background-image" "url(%PUBLIC_URL%/images/speakers/yonatan.jpg)", style "background-position" "top center" ]
+                        [ h3 [] [ text "Yonatan Kogan" ]
                         ]
-                        , div [class "speaker__bio is-half column"] [
-                            div [class "speaker__social"]  [
-                                a [href "https://twitter.com/jmatthews", target "_blank"] [span [class "fab fa-twitter"] []]
-                            ],
-                            div [class "highlights"] [
-                                span [class "highlight talk"] [text "Put your Model in the Cloud"]
-                                , span [class "highlight info small"] [text "Co-Presenter"]
+                    , div [ class "speaker__bio is-half column" ]
+                        [ div [ class "speaker__social" ]
+                            [ a [ href "https://github.com/yjkogan", target "_blank" ] [ span [ class "fab fa-github" ] [] ]
+                            , a [ href "https://twitter.com/yjkogan", target "_blank" ] [ span [ class "fab fa-twitter" ] [] ]
                             ]
-                            , p [] [text "Jacob Matthews is a senior staff software engineer at Tock. Before becoming a professional programmer, he was a computer scientist who studied functional programming. He gravitated to Elm as a way of combining these two interests. When he's not programming, Jacob likes performing improv and playing with his baby. "]
+                        , div [ class "highlights" ]
+                            [ span [ class "highlight talk" ] [ text "Put your Model in the Cloud" ]
+                            , span [ class "highlight info small" ] [ text "Co-Presenter" ]
                             ]
-                    ]
-                    , div [class "speaker columns"] [
-                        div [class "speaker__profile_img is-half column", style "background-image" "url(%PUBLIC_URL%/images/curtains.jpg)", style "background-position" "50% 80%"] [
-                            h3 [] [text "You?"]
+                        , p [] [ text "Yonatan is originally from San Francisco and now lives in Columbia, SC. He is a Senior Software Engineer at ActBlue, an online fundraising platform for Democratic candidates up and down the ballot, progressive organizations, and nonprofits. He previously worked at Tock, a Chicago-based restaurant reservations company, Optimizely, an A/B testing platform, and Romotive, a Sequoia-backed robotics startup. He is also a founding member of GenderAvenger, a community dedicated to ensuring women are represented in the public dialog." ]
+                        , p [] [ text "Outside of work, Yonatan enjoys cooking, biking, sci-fi, watching Jeopardy, and working to improve his community." ]
                         ]
-                        , div [class "speaker__bio is-half column"] [
-                            div [class "highlights"] [span [class "highlight"] [text "More Speakers Coming Soon!"]]
-                            , p [] [text "Want to share your idea? ", a [href "https://www.papercall.io/elm-in-the-spring-2020", target "_blank"] [text "Submit a talk!"]]
-                            , p [] [text "Elm in the Spring welcomes new and seasoned speakers to give a talk in Chicago! Each talk slot is 30 minutes. We’re reserving a minimum of two (2) talk spots for first-time speakers."]
-                            , p [] [text "Want to see last year’s talks? Check out our ", a [href "https://www.youtube.com/elminthespring", target "_blank"] [text "Youtube channel!"]]
-                            ]
                     ]
-                 ]
+                , div [ class "speaker columns" ]
+                    [ div [ class "speaker__profile_img is-half column", style "background-image" "url(%PUBLIC_URL%/images/speakers/jacob.jpg)", style "background-position" "50% 15%" ]
+                        [ h3 [] [ text "Jacob Matthews" ]
+                        ]
+                    , div [ class "speaker__bio is-half column" ]
+                        [ div [ class "speaker__social" ]
+                            [ a [ href "https://twitter.com/jmatthews", target "_blank" ] [ span [ class "fab fa-twitter" ] [] ]
+                            ]
+                        , div [ class "highlights" ]
+                            [ span [ class "highlight talk" ] [ text "Put your Model in the Cloud" ]
+                            , span [ class "highlight info small" ] [ text "Co-Presenter" ]
+                            ]
+                        , p [] [ text "Jacob Matthews is a senior staff software engineer at Tock. Before becoming a professional programmer, he was a computer scientist who studied functional programming. He gravitated to Elm as a way of combining these two interests. When he's not programming, Jacob likes performing improv and playing with his baby. " ]
+                        ]
+                    ]
+                , div [ class "speaker columns" ]
+                    [ div [ class "speaker__profile_img is-half column", style "background-image" "url(%PUBLIC_URL%/images/curtains.jpg)", style "background-position" "50% 80%" ]
+                        [ h3 [] [ text "You?" ]
+                        ]
+                    , div [ class "speaker__bio is-half column" ]
+                        [ div [ class "highlights" ] [ span [ class "highlight" ] [ text "More Speakers Coming Soon!" ] ]
+                        , p [] [ text "Want to share your idea? ", a [ href "https://www.papercall.io/elm-in-the-spring-2020", target "_blank" ] [ text "Submit a talk!" ] ]
+                        , p [] [ text "Elm in the Spring welcomes new and seasoned speakers to give a talk in Chicago! Each talk slot is 30 minutes. We’re reserving a minimum of two (2) talk spots for first-time speakers." ]
+                        , p [] [ text "Want to see last year’s talks? Check out our ", a [ href "https://www.youtube.com/elminthespring", target "_blank" ] [ text "Youtube channel!" ] ]
+                        ]
+                    ]
                 ]
+            ]
         ]
 
 
@@ -247,7 +270,7 @@ navigationContent =
         [ class "menu" ]
         [ ul []
             [ li []
-                [ a [ href "#details", onClick (ScrollTo "details") ] [ text "Details" ]
+                [ a [ href "#coronavirus", onClick (ScrollTo "coronavirus") ] [ text "Details" ]
                 ]
             , li []
                 [ a [ href "#speakers", onClick (ScrollTo "speakers") ] [ text "Speakers" ]
